@@ -8854,7 +8854,7 @@
 											"top": 878,
 											"width": 196.16162109375,
 											"height": 13,
-											"text": "+getTestApplicantNum()",
+											"text": "+getTaskApplicantNum()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -11102,7 +11102,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIBMSTiE8b1hE="
 							},
-							"name": "getTestApplicantNum"
+							"name": "getTaskApplicantNum"
 						},
 						{
 							"_type": "UMLOperation",
