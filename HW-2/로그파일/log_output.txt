@@ -1,0 +1,75 @@
+[Youth]  Merge pull request #22 from Fresh-hongsi/main b3faaef
+[Fresh-hongsi]  fix: 보고서 및 채용,통계 다이어그램 수정 6101710
+[Shihong Park]  Merge pull request #12 from limce21/main b0522be
+[ChaenLim]  fix: operation명 재수정 981317a
+[ChaenLim]  fix: operation명 변경 52096bd
+[ChaenLim]  fix: analysis class diagram 관계 수정 44a47c2
+[ChaenLim]  feat: Analysis Class Diagram 추가 ca6bc67
+[IWANNAGOHOME]  Merge pull request #21 from Fresh-hongsi/main 8912e79
+[Fresh-hongsi]  fix: 채용관리 diagram 수정 a8ed7ad
+[Shihong Park]  Merge pull request #11 from limce21/main 712ed43
+[ChaenLim]  Merge pull request #20 from Fresh-hongsi/main a7af2b9
+[ChaenLim]  Merge pull request #19 from IWANNAGOHOMEE/main e289be1
+[Shihong Park]  Merge pull request #10 from limce21/main 552ade4
+[Fresh-hongsi]  fix: 파일 구조 변경, 회원관리, 통계관리 다이어그램 업데이트 6436d00
+[IWANNAGOHOME]  Delete CommunicationDiagram_채용.mdj 668fa5a
+[IWANNAGOHOME]  Merge branch 'limce21:main' into main fa1db1d
+[IWANNAGOHOME]  Merge branch 'main' of https://github.com/IWANNAGOHOMEE/SWE-HW 980e1c3
+[IWANNAGOHOME]  fix: 채용관리기능수정 4629e42
+[ChaenLim]  Merge pull request #18 from Fresh-hongsi/main bf4346f
+[Fresh-hongsi]  fix 파일구조 변경, 지원관리 diagram수정 34ea72a
+[IWANNAGOHOME]  Add files via upload 6e1fb30
+[Youth]  Merge pull request #17 from Fresh-hongsi/main 4103ddf
+[Fresh-hongsi]  fixed: 보고서 내용 수정 b894f73
+[IWANNAGOHOME]  Merge https://github.com/IWANNAGOHOMEE/SWE-HW aaaa bc3d7da
+[Shihong Park]  Merge pull request #9 from limce21/main 54b49ab
+[ChaenLim]  Merge pull request #16 from Youthhing/main 78c2018
+[Youth]  repo: 파일 디렉토리 수정 c0abf60
+[Youth]  docs: 입사지원 함수추가 9ebfa88
+[IWANNAGOHOME]  Merge pull request #15 from Youthhing/main 7252aa8
+[Youth]  docs: 채용관리 CommunicationDiagram추가 6a0b43d
+[Shihong Park]  Merge pull request #8 from limce21/main 60daa91
+[Shihong Park]  Merge pull request #14 from Youthhing/main 8060245
+[Youth]  docs: 입사지원,채용검색,상세페이지조회기능 추가 524b9cd
+[Youth]  dosc: 지원관리 입사지원 추가 ba33491
+[Youth]  Merge branch 'limce21:main' into main b1d2cb1
+[Youth]  Merge pull request #12 from IWANNAGOHOMEE/main 112f552
+[IWANNAGOHOME]  Merge branch 'limce21:main' into main 60ffb76
+[IWANNAGOHOME]  Add files via upload bafa8b1
+[Shihong Park]  Merge pull request #11 from Fresh-hongsi/main 924ad12
+[Fresh-hongsi]  docs: 지원관리, 통계관리 communication Diagram 초안 업로드 2fcd45b
+[IWANNAGOHOME]  Add files via upload f5120a6
+[IWANNAGOHOME]  docs:채용관리 bc1ba64
+[Youth]  Merge pull request #2 from limce21/main 779aa69
+[Shihong Park]  Merge pull request #7 from limce21/main f6fbfe6
+[ChaenLim]  fix: 회원관리 communication diagram 26e41de
+[Shihong Park]  Merge pull request #10 from Fresh-hongsi/main 954ec24
+[Shihong Park]  Merge pull request #6 from limce21/main 907a700
+[Youth]  Merge pull request #9 from Youthhing/main d74aa51
+[Youth]  docs: 지원관리 communicationDiagram작성 510c7b0
+[Shihong Park]  Merge pull request #5 from limce21/main ee531b4
+[ChaenLim]  feat: 회원 관리 업로드 ffcdd86
+[Shihong Park]  Merge pull request #8 from Fresh-hongsi/main c6d371c
+[Shihong Park]  Merge pull request #4 from limce21/main 77c36fc
+[Fresh-hongsi]  docs : 지원관리 communicationDiagram 작성(1) 38aaf9e
+[Youth]  Merge pull request #7 from Youthhing/main b7e70b3
+[Youth]  docs: useCase10~14 CommunicationDiagram추가 1aecd66
+[Youth]  Merge pull request #1 from limce21/main c3318bb
+[Shihong Park]  Merge pull request #3 from limce21/main 91d89a7
+[Shihong Park]  Merge pull request #5 from Youthhing/main 06fb662
+[Youth]  docs: 팀원명 포맷 수정 7cee222
+[Shihong Park]  Merge pull request #2 from limce21/main 1a2c554
+[ChaenLim]  docs: 리드미 중복 삭제 8c480b3
+[Youth]  Merge pull request #4 from Fresh-hongsi/main b03daf2
+[Fresh-hongsi]  docs: 팀원 학번 이름 추가 6e725aa
+[ChaenLim]  Merge pull request #3 from Fresh-hongsi/main 9fcf8b5
+[Fresh-hongsi]  docs: 수정된 usecase diagram mdj파일 경로 수정 a7035e8
+[Fresh-hongsi]  docs: 과제 2 명세를 반영한 보고서 초안 한글파일 업로드 2cc8dbe
+[Shihong Park]  Merge pull request #1 from limce21/main b5d2ea8
+[ChaenLim]  Merge pull request #2 from Fresh-hongsi/main 398f6b9
+[Shihong Park]  docs: 과제 2 명세를 반영한 Use Case Diagram 업로드 13769a9
+[ChaenLim]  Merge pull request #1 from Fresh-hongsi/patch-1 aec93dd
+[Shihong Park]  Update README.md e64735c
+[Shihong Park]  Create README.md f470b02
+[ChaenLim]  add: 초기 세팅 ebfb2e3
+[ChaenLim]  add: 초기 세팅 ca8a5b9
