@@ -1,0 +1,385 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <stdlib.h>
+
+using namespace std;
+
+#define MAX_STRING 32
+#define INPUT_FILE_NAME "input.txt" //입력 파일 이름 정의
+#define OUTPUT_FILE_NAME "output.txt" //출력 파일 이름 정의
+
+
+static ifstream fin; //파일 입력 관련 전역변수
+static ofstream fout; //파일 출력 관련 전역변수
+
+//채용 정보 시스템과 관련된 클래스들을 전방선언한다.
+class System;
+class SignInUI;
+class SignIn;
+class SignOut;
+class SignOutUI;
+class LogIn;
+class LogInUI;
+class LogOut;
+class LogOutUI;
+class Client;
+class ClientList;
+class GeneralClientList;
+class CompanyClientList;
+class GeneralClient;
+class CompanyClient;
+
+/*
+클래스 이름 : System 
+클래스 멤버 변수:  -
+
+기능 : 채용 정보 시스템에 대한 다음과 같은 기능을 구현함
+
+
+	< public 멤버함수 >
+	 1. void doTask()
+	   -> 파일에서 입력받은 정보에 따라 별도의 기능들을 수행한다.
+ 
+
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class System
+{
+public:
+	void doTask();
+	
+};
+
+
+
+/*
+클래스 이름 : Client <Entity 클래스>
+클래스 멤버변수:
+클래스 멤버함수: 
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class Client
+{
+private:
+	int type; //회원의 type-> 1. 회사회원 / 2. 일반회원
+	string _id;//회원의 id
+	string _pw;//회원의 pw 
+	string _name;//회원의 이름
+	//string _num;//회원이 가진 번호 -> 회사회원:사업자번호 / 일반회원: 주민번호
+	bool _isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
+
+public:
+	Client(int type, string name, string id, string pw);  //회원 객체의 생성자
+	string getId(); //회원의 id값 반환
+	string getPw(); //회원의 pw값 반환
+	bool getLogInStatus(); //회원의 로그인 상태값 반환 : true 또는 false
+	void changeLogInStatus(); //회원의 로그인 상태값 바꿔주기 : true->false / false->true
+	//void destroy();
+	int getType(); //회원의 type값 반환 : 1->회사회원 2->일반회원
+};
+
+
+
+
+/*
+클래스 이름 : GeneralClient <Entity 클래스> : Client 클래스를 상속함 -> 주민번호 필드만 따로 가짐
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class GeneralClient : public Client
+{
+private:
+	string _rrn; //일반회원의 주민번호
+
+public:
+	GeneralClient(int type,string name, string num, string id, string pw); //일반회원 객체의 생성자
+	
+
+};
+
+
+
+
+/*
+클래스 이름 : CompanyClient <Entity 클래스> : Client 클래스를 상속함 -> 사업자 번호 필드만 따로 가짐
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class CompanyClient : public Client
+{
+private:
+	string _bn; //회사회원의 사업자 번호
+
+public:
+	CompanyClient(int type,string name, string num, string id, string pw); //회사회원 객체의 생성자
+	
+};
+
+
+
+
+/*
+클래스 이름 : ClientList <Collection 클래스> : 모든 Client들에 대한 포인터들을 저장함
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class ClientList
+{
+private:
+	vector<Client*> cList; //Client 포인터 배열
+
+public:
+	void addClient(Client* C); //ClientList의 attribute인 cList에 새로 회원가입한 회원 정보를 넣어줌
+
+	int size(); //cList의 벡터 크기 반환
+
+	vector<Client*> getClientList(); //cList에 대한 모든 client객체들의 리스트를 반환
+
+	void destroy(int idx); //해당 인덱스의 client 객체를 cList에서 지움
+
+	//int count(); 
+
+
+};
+
+
+
+
+/*
+클래스 이름 : GeneralClientList <Collection 클래스> : 모든 GeneralClient들에 대한 포인터들을 저장함 
+			-> ex) 일반회원의 경우, ClientList에도 포함되어있고, GeneralClientList에도 포함되어있다
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class GeneralClientList
+{
+private:
+	vector<GeneralClient*> gCList; // GeneralClient 포인터 배열
+public:
+
+	void addGeneralClient(GeneralClient* C); //GeneralClientList의 attribute인 gCList에 새로 회원가입한 일반 회원 정보를 넣어줌
+	void destroy(string id); //해당 id값을 지닌 GeneralClient 객체를 gCList에서 지움
+};
+
+
+
+
+/*
+클래스 이름 : CompanyClientList <Collection 클래스> : 모든 CompanyClient들에 대한 포인터들을 저장함
+			-> ex) 회사회원의 경우, ClientList에도 포함되어있고, CompanyClientList에도 포함되어있다
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class CompanyClientList
+{
+private:
+	vector<CompanyClient*> cCList; // CompanyClient 포인터 배열
+public:
+	void addCompanyClient(CompanyClient* C);  //CompanyClientList의 attribute인 cCList에 새로 회원가입한 회사 회원 정보를 넣어줌
+	void destroy(string id); //해당 id값을 지닌 CompanyClient 객체를 cCList에서 지움
+};
+
+
+
+
+/*
+클래스 이름 : SignInUI <Boundary 클래스> : 회원 가입과 관련된 interface를 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class SignInUI {
+private:
+
+	SignIn* pSignIn; //회원 가입과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가진다. -> 이를 통해 control 클래스의 public 멤버함수 호출 가능
+	int type; //회원이 입력한 회원 type값
+	string name; //회원이 입력한 이름/회사이름
+	string num;  //회원이 입력한 주민번호/사업자번호
+	string id; //회원이 입력한 id
+	string pw; //회원이 입력한 pw
+	
+	
+
+public:
+	SignInUI(SignIn* refSignIn); //바운더리 클래스의 생성자-> 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+	void startInterface(); //회원 유형과 정보를 입력하라는 화면을 보여줌
+	void fillInfo(); //각 회원에게 필요 정보를 입력받고, 컨트롤 클래스에게 회원가입하라는 addNewClient함수 호출함
+	
+	
+};
+
+/*
+클래스 이름 : SignIn <Control 클래스> : 회원 가입과 관련된 control을 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class SignIn {
+	SignInUI* pSignInUI; //바운더리 클래스의 레퍼런스를 저장할 공간
+	ClientList* cList; //회원들의 정보를 지닌 collection class의 instance
+	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
+	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
+	
+public:
+	SignIn(ClientList* list, GeneralClientList*gcList,CompanyClientList* ccList); //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
+	void addNewClient(int type, string name, string num, string id, string pw); //바운더리 클래스에서 매개변수로 받은 회원의 정보를 이용해 회원 리스트에 저장하고, 회원의 타입에 따라 일반회원/회사회원의 리스트에 저장한다. 
+};
+
+
+/*
+클래스 이름 : LogIn <Control 클래스> : 로그인과 관련된 control을 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class LogIn {
+private:
+
+	LogInUI* pLogInUI; //바운더리 클래스의 레퍼런스를 저장할 공간
+	ClientList* cList; //회원들의 정보를 지닌 collection class의 instance
+	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
+	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
+	Client* curLogInClient; //현재 로그인된 회원의 reference를 담을 공간
+
+public:
+	LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList); //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
+	void tryLogIn(string id, string pw); //로그인이 가능한 경우, client의 isLogIn필드를 false에서 true로 바꿔준다
+	Client* getLogInClient(); //현재 로그인된 회원이 누구인지 반환해주는 함수
+};
+
+
+/*
+클래스 이름 : LogInUI <Boundary 클래스> : 로그인과 관련된 interface를 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class LogInUI {
+private:
+
+	LogIn* pLogIn; //컨트롤 클래스의 레퍼런스를 저장할 공간
+	string id; //회원이 입력한 id
+	string pw; //회원이 입력한 pw
+
+
+
+public:
+	LogInUI(LogIn* refLogIn); //바운더리 클래스의 생성자-> 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+	void startInterface();  //회원 id와 pw를 입력하라는 화면을 보여줌
+	void fillIDPW(); //각 회원에게 필요 정보를 입력받고, 컨트롤 클래스에게 로그인 시도하라는 tryLogIn 함수 호출함
+
+
+};
+
+
+/*
+클래스 이름 : LogOut <Control 클래스> : 로그아웃과 관련된 control을 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class LogOut {
+private:
+
+	LogOutUI* pLogOutUI; //바운더리 클래스의 레퍼런스를 저장할 공간
+	ClientList* cList; //회원들의 정보를 지닌 collection class의 instance
+	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
+	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
+	Client* curLogInClient; //로그인 객체가 매개변수로 전달해준 현재 로그인 된 client계정을 저장할 공간
+	void changeLogInStatus(Client* client); //현재 로그인되어있는 계정을 로그아웃 시키는 기능을 함
+
+public:
+	LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client); //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
+	
+	
+};
+
+
+/*
+클래스 이름 : LogOutUI <Boundary 클래스> : 로그아웃과 관련된 interface를 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class LogOutUI {
+private:
+
+	LogOut* pLogOut; //컨트롤 클래스의 레퍼런스를 저장할 공간
+	
+
+public:
+	LogOutUI(LogOut* refSignOut); //바운더리 클래스의 생성자-> 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+	void startInterface(string id,bool flag); //로그아웃되었다는 메세지를 화면에 보여줌
+
+
+};
+
+
+/*
+클래스 이름 : SignOut <Control 클래스> : 회원탈퇴와 관련된 control을 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class SignOut {
+private:
+
+	SignOutUI* pSignOutUI; //바운더리 클래스의 레퍼런스를 저장할 공간
+	ClientList* cList; //회원들의 정보를 지닌 collection class의 instance
+	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
+	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
+	Client* curLogInClient; //로그인 객체가 매개변수로 전달해준 현재 로그인 된 client계정을 저장할 공간
+
+public:
+	SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client);  //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
+	void destroy(Client* client); //로그인 되어있는 해당 회원을 탈퇴시킴
+
+};
+
+
+/*
+클래스 이름 : SignOutUI <Boundary 클래스> : 회원탈퇴와 관련된 interface를 담당한다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/31
+작성자 : 박시홍
+*/
+class SignOutUI {
+private:
+
+	SignOut* pSignOut;
+
+
+
+
+public:
+	SignOutUI(SignOut* refSignOut);  //바운더리 클래스의 생성자-> 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+	void startInterface(string id,bool flag); //회원탈퇴되었다는 메세지를 화면에 보여줌
+
+
+};
+
+
