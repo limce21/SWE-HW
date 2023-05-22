@@ -1,35 +1,20 @@
 #include "hw3.h"
 
-
-/*
-   함수이름: System::doTask
-   기능: 파일에서 입력받은 번호 두개의 값에 따라 별도의 기능을 수행하도록 한다.
-   매개변수: 없음
-   반환값: 없음
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 void System::doTask()
 {
-    int menu_level_1 = 0, menu_level_2 = 0; //input.txt파일에서 읽어들일 두개의 변수 초기화
-    int is_program_exit = 0;  //프로그램 종료 코드 -> 0: 계속 프로그램 실행 / 1: 프로그램 종료
-    
-    ClientList* clientList = new ClientList(); //Client객체들을 관리할 ClientList객체 생성 -> 이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
-    
-    GeneralClientList* gcList = new GeneralClientList(); // GeneralClient객체들을 관리할 GeneralClientList객체 생성->이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
+    int menu_level_1 = 0, menu_level_2 = 0;
+    int is_program_exit = 0;
+    ClientList* clientList = new ClientList();
+    GeneralClientList* gcList = new GeneralClientList();
+    CompanyClientList* ccList = new CompanyClientList();
+    Client* curLogInClient=0;
+    LogIn* logIn=0;
 
-    CompanyClientList* ccList = new CompanyClientList(); // CompanyClient객체들을 관리할 CompanyClientList객체 생성->이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
-
-    Client* curLogInClient=0; //현재 로그인되어 있는 Client 객체를 저장하기 위함 -> 이 값이 존재하는 경우, 로그인된 client가 이 변수에 저장되어있고, 이 객체의 정보가 필요한 control 클래스의 생성자에 매개변수로 넣어준다.
-
-    LogIn* logIn=0; //위의 curLogInClient 객체는 logIn 컨드롤 클래스의 getLogInClient() 호출을 통해 얻어낼 것이므로 logIn 컨트롤러에 접근하기 편하도록 밑의 switch문 밖에 미리 선언해놓는다.
-
-    fin.open(INPUT_FILE_NAME); //input.txt 파일 열기
-    fout.open(OUTPUT_FILE_NAME); //output.txt 파일 열기
+    fin.open(INPUT_FILE_NAME);
+    fout.open(OUTPUT_FILE_NAME);
 
 
-    while (!is_program_exit) //만약 종료코드가 입력되지 않았다면 계속 반복함
+    while (!is_program_exit)
     {
         // 입력파일에서 메뉴 숫자 2개를 읽기
         fin >> menu_level_1;
@@ -45,7 +30,7 @@ void System::doTask()
             case 1:
             {
                 fout << "1.1. 회원가입" << endl;
-                SignIn* signIn = new SignIn(clientList, gcList, ccList); //회원가입 컨트롤 클래스 생성
+                SignIn* signIn = new SignIn(clientList, gcList, ccList);
 
                 break;
             }
@@ -54,16 +39,16 @@ void System::doTask()
             {
                 fout << "1.2. 회원탈퇴" << endl;
                 
-                if (logIn != nullptr) //LogIn컨트롤 클래스가 생성되기도 전에 회원탈퇴를 시도하는 비정상적인 접근을 막기 위함 -> LogIn Control클래스가 생성되었다면
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
                 {
-                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 조회한다
-                    if (curLogInClient != nullptr) //로그인된 계정이 null이 아닐 경우에만 회원탈퇴 시도
+                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 알아온다
+                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 회원탈퇴 시도
                     {
-                        SignOut* signOut = new SignOut(clientList, gcList, ccList, curLogInClient); //회원 탈퇴 컨트롤 클래스 생성
+                        SignOut* signOut = new SignOut(clientList, gcList, ccList, curLogInClient);
 
                     }
                 }
-                else //LogIn 컨트롤 클래스가한번도 생성된 적이 없는 경우 
+                else //로그인되어있는 사람이 없는 경우 
                 {
                     cout << "회원탈퇴 할 수 없습니다" << endl;
                 }
@@ -84,9 +69,7 @@ void System::doTask()
             {
                 fout << "2.1. 로그인" << endl;
                 //LogIn* logIn = new LogIN(clientList, gcList, ccList);
-
-                logIn = new LogIn(clientList, gcList, ccList);//switch문 밖에 미리 만들어놓은 logIn변수에 LogIn 컨트롤 클래스 객체를 담는다.
-
+                logIn = new LogIn(clientList, gcList, ccList);
                 //cout << clientList->count();
                 break;
 
@@ -94,19 +77,18 @@ void System::doTask()
             }
             case 2:
             {
-                //cout << logIn->getLogInClient()->getId();
                 fout << "2.2. 로그아웃" << endl;
-                if (logIn != nullptr) //LogIn컨트롤 클래스가 생성되기도 전에 회원탈퇴를 시도하는 비정상적인 접근을 막기 위함 -> LogIn Control클래스가 생성되었다면
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
                 {
-                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 조회한다
-                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 로그아웃 시도
+                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 알아온다
+                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 회원탈퇴 시도
                     {
-                        LogOut* logOut = new LogOut(clientList, gcList, ccList, curLogInClient); //로그아웃 컨트롤 클래스 생성 
+                        LogOut* logOut = new LogOut(clientList, gcList, ccList, curLogInClient);
 
                     }
                 }
 
-                else //LogIn 컨트롤 클래스가한번도 생성된 적이 없는 경우 
+                else
                 {
                     cout<<"로그아웃 할 수 없습니다" << endl;
                 }
@@ -119,7 +101,58 @@ void System::doTask()
             break;
         }
             
-        
+        case 3: {
+            switch (menu_level_2)
+            {
+            case 1: // "3.1. 채용 정보 등록“ 메뉴 부분
+            {
+                fout << "3.1. 채용 정보 등록" << endl;
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                {   
+                    
+                    curLogInClient = logIn->getLogInClient();
+                    string tmpid = curLogInClient->getId();
+                    CompanyClient *tmpCompanyClient = ccList->findById(tmpid);
+                    int tmp = curLogInClient->getType();
+                    // int tmp = curLogInClient.getType();
+                    if (tmp == 2) {
+                        cout << "일반 회원은 채용정보 등록이 불가능합니다.\n";
+                    }
+                    else {
+                        //CompanyClient *companyClient = findByID(로그인된 객체의 id)
+                        
+                        RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient);
+                    }
+
+                    
+                   
+                }
+                else //로그인되어있는 사람이 없는 경우 
+                {
+                    cout << "채용 정보를 등록할 수 없습니다." << endl;
+                }
+                break;
+            }
+            case 2: // "3.2. 채용 정보 조회“ 메뉴 부분
+            {
+                fout << "3.2. 채용 정보 조회" << endl;
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                {
+                    curLogInClient = logIn->getLogInClient();
+                    string tmpid = curLogInClient->getId();
+                    CompanyClient* tmpCompanyClient = ccList->findById(tmpid);
+                    InquireRecruitmentInfo* inquireRecruitmentInfo = new InquireRecruitmentInfo(tmpCompanyClient);
+                }
+                else //로그인되어있는 사람이 없는 경우 
+                {
+                    cout << "채용 정보를 조회할 수 없습니다." << endl;
+                }
+                break;
+            }
+            }
+            break;
+
+        }
      
         case 6: {
             switch (menu_level_2)
@@ -127,7 +160,7 @@ void System::doTask()
             case 1: // "6.1. 종료“ 메뉴 부분
             {
                 fout << "6.1.종료" << endl << endl;
-                is_program_exit = 1;  //종료 코드를 1로 변경
+                is_program_exit = 1; 
                 break;
             }
             }
@@ -139,178 +172,80 @@ void System::doTask()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-   함수이름: 앤티티 클래스 Client의 생성자
-   기능: 회원을 생성하기 위한 클래스의 생성자로서 기능함
-   매개변수: type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호
-   반환값: 없음
 
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 Client::Client(int type, string name, string id, string pw)
 {
     this->type = type;
-    this->name = name;
-    this->id = id;
-    this->pw = pw;
+    this->_name = name;
+    this->_id = id;
+    this->_pw = pw;
     // this->_num = num;
-    this->isLogIn = false;
+    this->_isLogIn = false;
 }
 
-
-
-/*
-   함수이름: Client::getId
-   기능: 해당 회원의 id를 반환한다. 
-   매개변수: -
-   반환값: id
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 string Client::getId()
 {
-    return this->id;
+    return this->_id;
 }
 
-
-/*
-   함수이름: Client::getPw
-   기능: 해당 회원의 password를 반환한다.
-   매개변수: -
-   반환값: pw
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 string Client::getPw()
 {
-    return this->pw;
+    return this->_pw;
 }
-
-
-
-/*
-   함수이름: Client::getTyoe
-   기능: 해당 회원의 회원 타입을 반환한다.
-   매개변수: -
-   반환값: type 1:회사회원 2: 일반회원
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 int Client::getType()
 {
     return this->type;
 }
-
-/*
-   함수이름: Client::getLogInStatus
-   기능: 해당 회원의 로그인 상태를 반환한다.
-   매개변수: -
-   반환값: isLogIn -> true: 로그인 상태 / false: 로그아웃 상태
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 bool Client::getLogInStatus()
 {
-    return this->isLogIn;
+    return this->_isLogIn;
 }
 
+// 채용 정보 등록 시 getName
+string Client::getName()
+{
+    return this->_name;
+}
 
-/*
-   함수이름: Client::changeLogInStatus
-   기능: 해당 회원의 로그인 상태를 바꿔준다. true->false / false->true
-   매개변수: -
-   반환값: 없음
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 void Client::changeLogInStatus()
 {
-    if (this->isLogIn == false)
+    if (this->_isLogIn == false)
     {
-        this->isLogIn = true;
+        this->_isLogIn = true;
     }
 
     else
     {
-        this->isLogIn = false;
+        this->_isLogIn = false;
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-   함수이름: 엔티티 클래스 CompanyClient의 생성자 
-   기능:  회사회원을 생성하기 위한 클래스의 생성자로서 기능함 -> type, name, id, pw는 부모클래스인 Client의 생성자를 통해 생성한다.
-   매개변수:
-            type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호 / num: 사업자 번호
-   반환값: 없음
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 CompanyClient::CompanyClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
     this->_bn = num;
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-   함수이름: 엔티티 클래스 GeneralClient의 생성자
-   기능:  일반회원을 생성하기 위한 클래스의 생성자로서 기능함 -> type, name, id, pw는 부모클래스인 Client의 생성자를 통해 생성한다.
-   매개변수:
-            type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호 / num: 주민ㅂㄴ호
-   반환값: 없음
 
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
+string CompanyClient::getbn()
+{
+    return this->_bn;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 GeneralClient::GeneralClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
     this->_rrn = num;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-   함수이름: ClientList::addClient
-   기능: 매개변수로 들어온 회원을 회원 리스트에 추가한다.
-   매개변수: Client* -> 추가할 회원 객체
-   반환값: 없음
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 void ClientList::addClient(Client* c)
 {
     this->cList.push_back(c);
 }
 
-
-/*
-   함수이름: ClientList::size
-   기능: 회원 리스트의 크기를 반환한다.
-   매개변수: 없읍
-   반환값: size : 현재 회원 리스트의 크기
-
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 int ClientList::size()
 {
     return this->cList.size();
 }
 
-
-/*
-   함수이름: ClientList::getClientList
-   기능: 회원 리스트 전체를 반환한다
-   매개변수: 없읍
-   반환값: vector<Client* > c1
-   작성날짜: 2023/05/21
-   작성자: 박시홍
-*/
 vector<Client*> ClientList::getClientList()
 {
     vector<Client*> cl;
@@ -590,7 +525,6 @@ void LogIn::tryLogIn(string id, string pw)
 
             else //만약 로그인이 이미 되어있는 사람이 또 로그인을 시도하는 경우
             {
-                this->curLogInClient = temp[i]; //로그인 계정을 다시 curLogInClient에 넣어준다.
                 cout << "이미 로그인된 상태입니다" << endl;
             }
             
@@ -620,8 +554,6 @@ Client* LogIn::getLogInClient()
     return this->curLogInClient;
 }
 
-
-
 /*
    함수이름: 바운더리 클래스 LogInUI의 생성자
    기능: 로그인 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
@@ -630,7 +562,7 @@ Client* LogIn::getLogInClient()
             
    반환값: 없음
 
-   작성날짜: 2023/05/21
+   작성날짜: 2023/05/31
    작성자: 박시홍
 */
 LogInUI::LogInUI(LogIn* refLogIn)
@@ -640,8 +572,6 @@ LogInUI::LogInUI(LogIn* refLogIn)
     this->pw = "";
 
 }
-
-
 
 /*
    함수이름: LogInInUI::startInterface
@@ -661,7 +591,6 @@ void LogInUI::startInterface()
 
 
 
-
 /*
    함수이름: LogInUI::fillIDPW
    기능: 로그인을 위한 필요 정보를 입력받는 기능을 한다
@@ -675,9 +604,6 @@ void LogInUI::fillIDPW()
 {
     fin >> this->id >> this->pw;
 }
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -901,6 +827,151 @@ void SignOutUI::startInterface(string id,bool flag)
 
 }
 
+/*
+ 함수이름: RegisterRecruitmentInfo::RegisterRecruitmentInfo
+ 기능: RegisterRecruitmentInfo control 클래스의 생성자입니다
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+RegisterRecruitmentInfo::RegisterRecruitmentInfo(CompanyClient* companyClient)
+{
+    this->companyClient = companyClient;
+    RegisterRecruitmentInfoUI* registerRecruitmentUI = new RegisterRecruitmentInfoUI(this, this->companyClient);
+    registerRecruitmentUI->startInterface();
+}
+
+/*
+ 함수이름: RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI
+ 기능: RegisterRecruitmentInfo  boundary 클래스의 생성자입니다
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient)
+{
+    this->registerRecruitmentInfo = registerRecruitmentInfo;
+    this->companyClient = companyClient;
+
+}
+
+/*
+ 함수이름: RegisterRecruitmentInfoUI::startInterface
+ 기능: RegisterRecruitmentInfoUI에서 입력값을 읽어들이고 RecruitmentInfo에 정보를 추가, 결과를 표시하도록 합니다.
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+void RegisterRecruitmentInfoUI::startInterface()
+{
+    string _task;
+    int numOfApplicant;
+    string _finishDate;
+
+    fin >> _task >> numOfApplicant >> _finishDate;
+    registerRecruitmentInfo->addNewRecruitmentInfo(_task, numOfApplicant, _finishDate);
+    result(_task, numOfApplicant, _finishDate);
+}
+
+/*
+ 함수이름: RegisterRecruitmentInfoUI::result
+ 기능: 사용자에게 입력한 정보를 표시합니다.
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+void RegisterRecruitmentInfoUI::result(string _task, int numOfApplicant, string _finishDate)
+{
+    fout << "> ";
+    fout << _task;
+    fout << " ";
+    fout << numOfApplicant; 
+    fout << " " << _finishDate << endl;
+
+}
+
+/*
+ 함수이름: RegisterRecruitmentInfoUI::addNewRecruitmentInfo
+ 기능: companyClient에게 RecruitmentInfo를 추가하도록 합니다.
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+void RegisterRecruitmentInfo::addNewRecruitmentInfo(string _task, int numOfApplicant, string _finishDate)
+{
+    companyClient->addNewRecruitInfo(_task, numOfApplicant, _finishDate);
+}
+
+/*
+ 함수이름: CompanyClient::addNewRecruitInfo
+ 기능: company client의 포인터가 RecruitmentInfo를 추가합니다
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+void CompanyClient::addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate)
+{
+    string name;
+    string bn;
+
+    name = this->getName();
+    bn = this->getbn();
+    RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, _task, numOfApplicant, _finishDate);
+}
+
+/*
+ 함수이름: RecruitmentInfo::RecruitmentInfo
+ 기능: 새로운 RecruitmentInfo 객체를 생성합니다.
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+RecruitmentInfo::RecruitmentInfo(string _companyName, string _bn, string _task, int numOfApplicant, string _finishDate)
+{
+    this->_companyName = _companyName;
+    this->_bn = _bn;
+    this->_task = _task;
+    this->numOfApplicant = numOfApplicant;
+    this->_finishDate = _finishDate;
+}
+
+/*
+ 함수이름: InquireRecruitmentInfo::InquireRecruitmentInfo
+ 기능: InquireRecruitmentInfo control 클래스의 생성자입니다
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+InquireRecruitmentInfo::InquireRecruitmentInfo(CompanyClient* companyClient)
+{
+    this->companyClient = companyClient;
+    InquireRecruitmentInfoUI* inquireRecruitmentInfoUI = new InquireRecruitmentInfoUI(this);
+    inquireRecruitmentInfoUI->startInterface();
+}
+
+/*
+ 함수이름: InquireRecruitmentInfoUI::InquireRecruitmentInfo
+ 기능: InquireRecruitmentInfoUI boundary 클래스의 생성자입니다
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+InquireRecruitmentInfoUI::InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo)
+{
+    this->inquireRecruitmentInfo = inquireRecruitmentInfo;
+}
+
+/*
+ 함수이름: InquireRecruitmentInfoUI::startInterface
+ 기능: 사용자인 회사 회원의 RecruitmentInfo를 출력합니다.
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
+void InquireRecruitmentInfoUI::startInterface()
+{
+
+}
 ////////////////////////////////////////////////////////////////////////////////////////
 
+
+CompanyClient* CompanyClientList::findById(string id) {
+    int size = cCList.size();
+    
+    for (int i = 0; i < size; i++) {
+        if (id == cCList[i]->getId()) {
+            return cCList[i];
+        }
+    }
+}
 
