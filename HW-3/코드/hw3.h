@@ -213,14 +213,14 @@ public:
 class RecruitmentInfo
 {
 private:
-	string _companyName;
-	string _bn;
-	string _task;
-	string _finishDate;
+	string companyName;
+	string bn;
+	string task;
+	string finishDate;
 	int numOfApplicant;
 
 public:
-	RecruitmentInfo(string _companyName, string _bn, string _task, int numOfApplicant, string _finishDate); // 채용 정보 객체 생성
+	RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate); // 채용 정보 객체 생성
 };
 
 /*
@@ -423,7 +423,7 @@ private:
 
 public:
 	RegisterRecruitmentInfo(CompanyClient* companyClient);
-	void addNewRecruitmentInfo(string _task, int numOfApplicant, string _finishDate); // recruitment info에 정보를 추가합니다
+	void addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate); // recruitment info에 정보를 추가합니다
 };
 
 
@@ -443,7 +443,7 @@ private:
 public:
 	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
 	void startInterface(); // 입력값을 읽어들입니다.
-	void result(string _task, int numOfApplicant, string _finishDate); // 사용자의 화면에 결과를 표시합니다
+	void result(string task, int numOfApplicant, string finishDate); // 사용자의 화면에 결과를 표시합니다
 };
 
 /*
