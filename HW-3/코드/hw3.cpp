@@ -7,8 +7,8 @@ void System::doTask()
     ClientList* clientList = new ClientList();
     GeneralClientList* gcList = new GeneralClientList();
     CompanyClientList* ccList = new CompanyClientList();
-    Client* curLogInClient=0;
-    LogIn* logIn=0;
+    Client* curLogInClient = 0;
+    LogIn* logIn = 0;
 
     fin.open(INPUT_FILE_NAME);
     fout.open(OUTPUT_FILE_NAME);
@@ -19,7 +19,7 @@ void System::doTask()
         // 입력파일에서 메뉴 숫자 2개를 읽기
         fin >> menu_level_1;
         fin >> menu_level_2;
-        
+
         // 메뉴 구분 및 해당 연산 수행
         switch (menu_level_1)
         {
@@ -38,7 +38,7 @@ void System::doTask()
             case 2:
             {
                 fout << "1.2. 회원탈퇴" << endl;
-                
+
                 if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
                 {
                     curLogInClient = logIn->getLogInClient(); //로그인된 계정을 알아온다
@@ -90,17 +90,17 @@ void System::doTask()
 
                 else
                 {
-                    cout<<"로그아웃 할 수 없습니다" << endl;
+                    cout << "로그아웃 할 수 없습니다" << endl;
                 }
                 //curLogInClient = logIn->getLogInClient();
                 //LogOut* logOut = new LogOut(clientList, gcList, ccList,curLogInClient);
-                
+
                 break;
             }
             }
             break;
         }
-            
+
         case 3: {
             switch (menu_level_2)
             {
@@ -108,11 +108,11 @@ void System::doTask()
             {
                 fout << "3.1. 채용 정보 등록" << endl;
                 if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
-                {   
-                    
+                {
+
                     curLogInClient = logIn->getLogInClient();
                     string tmpid = curLogInClient->getId();
-                    CompanyClient *tmpCompanyClient = ccList->findById(tmpid);
+                    CompanyClient* tmpCompanyClient = ccList->findById(tmpid);
                     int tmp = curLogInClient->getType();
                     // int tmp = curLogInClient.getType();
                     if (tmp == 2) {
@@ -120,12 +120,9 @@ void System::doTask()
                     }
                     else {
                         //CompanyClient *companyClient = findByID(로그인된 객체의 id)
-                        
+
                         RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient);
                     }
-
-                    
-                   
                 }
                 else //로그인되어있는 사람이 없는 경우 
                 {
@@ -153,14 +150,14 @@ void System::doTask()
             break;
 
         }
-     
+
         case 6: {
             switch (menu_level_2)
             {
             case 1: // "6.1. 종료“ 메뉴 부분
             {
                 fout << "6.1.종료" << endl << endl;
-                is_program_exit = 1; 
+                is_program_exit = 1;
                 break;
             }
             }
@@ -346,7 +343,7 @@ void GeneralClientList::destroy(string id)
 /*
    함수이름: 컨트롤 클래스 SignIn의 생성자
    기능: 회원가입 관련 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
-   매개변수: 
+   매개변수:
             ClientList* list -> 회원들의 정보를 지닌 collection class의 instance
             GeneralClientList*gcList -> 일반 회원들의 정보를 지닌 collection class의 instance
             CompanyClientList*ccList -> 회사 회원들의 정보를 지닌 collection class의 instance
@@ -355,7 +352,7 @@ void GeneralClientList::destroy(string id)
    작성날짜: 2023/05/31
    작성자: 박시홍
 */
-SignIn::SignIn(ClientList* list,GeneralClientList*gcList, CompanyClientList*ccList)
+SignIn::SignIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList)
 {
     SignInUI* signInUI = new SignInUI(this); //바운더리 클래스와 레퍼런스 교환을 위해 바운더리 클래스의 생성자 호출
     this->cList = list; //컨트롤 클래스의 멤버 변수로 회원들의 배열 저장
@@ -370,7 +367,7 @@ SignIn::SignIn(ClientList* list,GeneralClientList*gcList, CompanyClientList*ccLi
    기능: 회원가입 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
             SignIn* refSignIn -> 회원 가입과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
-	       
+
    반환값: 없음
 
    작성날짜: 2023/05/31
@@ -403,7 +400,7 @@ void SignInUI::startInterface()
     this->pSignIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
 
 
-    
+
 }
 
 
@@ -419,7 +416,7 @@ void SignInUI::startInterface()
 void SignInUI::fillInfo()
 {
     fin >> this->type >> this->name >> this->num >> this->id >> this->pw;
-    
+
 }
 
 
@@ -441,18 +438,18 @@ void SignIn::addNewClient(int clientType, string name, string num, string id, st
 {
     if (clientType == 1) //입력받은 정보 중 type값이 회사회원인 경우
     {
-        CompanyClient* cClient = new CompanyClient(clientType,name, num, id, pw); //회사회원 객체 생성
-        Client* client = new Client(clientType,name, id, pw); //회원 객체 생성
+        CompanyClient* cClient = new CompanyClient(clientType, name, num, id, pw); //회사회원 객체 생성
+        Client* client = new Client(clientType, name, id, pw); //회원 객체 생성
         this->cList->addClient(client); //회원 리스트에 저장
         this->ccList->addCompanyClient(cClient); //회사 회원 리스트에 저장
-        
-        
-        
+
+
+
     }
 
     else //입력받은 정보 중 type값이 일반회원인 경우
     {
-        GeneralClient* gClient = new GeneralClient(clientType,name, num, id, pw); //일반회원 객체 생성
+        GeneralClient* gClient = new GeneralClient(clientType, name, num, id, pw); //일반회원 객체 생성
         Client* client = new Client(clientType, name, id, pw); //회원 객체 생성
         this->cList->addClient(client); //회원 리스트에 저장
         this->gcList->addGeneralClient(gClient); //일반회원 리스트에 저장
@@ -493,8 +490,8 @@ LogIn::LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccL
 
 /*
    함수이름: LogIn::tryLogIn
-   기능: 로그인을 하기 위해 clientList에 저장된 모든 회원의 정보를 가져온 후, id, pw이 모두 일치하고 로그인이 안되어있는 경우에만 로그인 상태로 바꿔준다. 
-   매개변수: 
+   기능: 로그인을 하기 위해 clientList에 저장된 모든 회원의 정보를 가져온 후, id, pw이 모두 일치하고 로그인이 안되어있는 경우에만 로그인 상태로 바꿔준다.
+   매개변수:
              id -> 회원이 입력한 id
              pw ->회원이 입력한 pw
    반환값: 없음
@@ -516,10 +513,10 @@ void LogIn::tryLogIn(string id, string pw)
             isMatched = true; //true값으로 변경
             if (temp[i]->getLogInStatus() == false) //그리고 해당 회원의 로그인 상태가 false라면
             {
-                
+
                 temp[i]->changeLogInStatus(); //해당 회원의 로그인 상태값을 true로 바꿔줌
                 this->curLogInClient = temp[i]; //로그인이 되었으므로 LogIn 컨트롤 클래스는 현재 로그인된 client의 정보를 갖고있는다
-                fout <<'>'<<temp[i]->getId() << ' ' << temp[i]->getPw() << endl<<endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
+                fout << '>' << temp[i]->getId() << ' ' << temp[i]->getPw() << endl << endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
                 break; //로그인을 시켰으므로 for문 탈출
             }
 
@@ -527,16 +524,16 @@ void LogIn::tryLogIn(string id, string pw)
             {
                 cout << "이미 로그인된 상태입니다" << endl;
             }
-            
+
             //break;
         }
 
-     
+
     }
 
     if (isMatched == false) //만약 어떠한 계정도 match되지 않았다면 clientList에 없는 게정임
     {
-        cout<<"없는 계정입니다." << endl;
+        cout << "없는 계정입니다." << endl;
     }
 }
 
@@ -559,7 +556,7 @@ Client* LogIn::getLogInClient()
    기능: 로그인 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
             LogIn* refLogIn -> 로그인과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
-            
+
    반환값: 없음
 
    작성날짜: 2023/05/31
@@ -619,7 +616,7 @@ void LogInUI::fillIDPW()
    작성날짜: 2023/05/31
    작성자: 박시홍
 */
-LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList,Client* client)
+LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client)
 {
     LogOutUI* logOutUI = new LogOutUI(this); //바운더리 클래스와 레퍼런스 교환을 위해 바운더리 클래스의 생성자 호출
     this->cList = list; //컨트롤 클래스의 멤버 변수로 회원들의 배열 저장
@@ -628,7 +625,7 @@ LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* c
     this->curLogInClient = client; //로그인된 Client객체를 저장
     this->pLogOutUI = logOutUI;   //바운더리 클래스의 레퍼런스 값 저장
     this->changeLogInStatus(curLogInClient); //현재 로그인된 계정의 정보를 바탕으로 로그아웃 기능 수행 명령
-    
+
 }
 
 
@@ -660,13 +657,13 @@ LogOutUI::LogOutUI(LogOut* refLogOut)
    작성날짜: 2023/05/31
    작성자: 박시홍
 */
-void LogOut::changeLogInStatus(Client* client) 
+void LogOut::changeLogInStatus(Client* client)
 {
     vector<Client*> temp; //해당 함수에서 사용할 임시 client* 벡터를 생성
     temp = this->cList->getClientList(); //매개변수로 가져온 cList의 전체 회원들 정보를 temp 배열에 저장
     string id; //로그아웃이 성공될 경우, 로그아웃된 계정을 반환하기 위한 변수
     bool isPossible = false; //로그아웃이 가능한지 알려주는 flag변수 -> true일 경우에는 로그아웃 가능, false인 경우 로그아웃 불가능
-    
+
     for (int i = 0; i < temp.size(); i++) //temp배열의 크기(저장된 회원의 수)만큼 반복
     {
         if (temp[i]->getId() == client->getId() && temp[i]->getPw() == client->getPw()) //해당 인덱스의 회원 id,pw이 로그인 된 회원의 id,pw와 일치한다면
@@ -680,10 +677,10 @@ void LogOut::changeLogInStatus(Client* client)
         }
     }
 
-    
-       this->pLogOutUI->startInterface(id,isPossible); //바운더리 클래스에 로그아웃 성공값과 로그아웃한 계정의 id값을 매개변수로 보내준다
-    
-    
+
+    this->pLogOutUI->startInterface(id, isPossible); //바운더리 클래스에 로그아웃 성공값과 로그아웃한 계정의 id값을 매개변수로 보내준다
+
+
 }
 
 /*
@@ -708,7 +705,7 @@ void LogOutUI::startInterface(string id, bool flag)
     {
         cout << "로그아웃할 수 없습니다." << endl;
     }
-    
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -796,8 +793,8 @@ void SignOut::destroy(Client* client)
         }
     }
 
-   
-    this->pSignOutUI->startInterface(id,isPossible); //바운더리 클래스에 회원탈퇴 성공값과 회원탈퇴한 계정의 id값을 매개변수로 보내준다
+
+    this->pSignOutUI->startInterface(id, isPossible); //바운더리 클래스에 회원탈퇴 성공값과 회원탈퇴한 계정의 id값을 매개변수로 보내준다
 }
 
 
@@ -811,7 +808,7 @@ void SignOut::destroy(Client* client)
    작성날짜: 2023/05/31
    작성자: 박시홍
 */
-void SignOutUI::startInterface(string id,bool flag)
+void SignOutUI::startInterface(string id, bool flag)
 {
     if (flag == true)
     {
@@ -823,7 +820,7 @@ void SignOutUI::startInterface(string id,bool flag)
     {
         cout << "회원탈퇴를 할 수 없습니다" << endl;
     }
-    
+
 
 }
 
@@ -861,13 +858,13 @@ RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* re
 */
 void RegisterRecruitmentInfoUI::startInterface()
 {
-    string _task;
+    string task;
     int numOfApplicant;
-    string _finishDate;
+    string finishDate;
 
-    fin >> _task >> numOfApplicant >> _finishDate;
-    registerRecruitmentInfo->addNewRecruitmentInfo(_task, numOfApplicant, _finishDate);
-    result(_task, numOfApplicant, _finishDate);
+    fin >> task >> numOfApplicant >> finishDate;
+    registerRecruitmentInfo->addNewRecruitmentInfo(task, numOfApplicant, finishDate);
+    result(task, numOfApplicant, finishDate);
 }
 
 /*
@@ -876,13 +873,13 @@ void RegisterRecruitmentInfoUI::startInterface()
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void RegisterRecruitmentInfoUI::result(string _task, int numOfApplicant, string _finishDate)
+void RegisterRecruitmentInfoUI::result(string task, int numOfApplicant, string finishDate)
 {
     fout << "> ";
-    fout << _task;
+    fout << task;
     fout << " ";
-    fout << numOfApplicant; 
-    fout << " " << _finishDate << endl;
+    fout << numOfApplicant;
+    fout << " " << finishDate << endl;
 
 }
 
@@ -892,9 +889,9 @@ void RegisterRecruitmentInfoUI::result(string _task, int numOfApplicant, string 
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void RegisterRecruitmentInfo::addNewRecruitmentInfo(string _task, int numOfApplicant, string _finishDate)
+void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate)
 {
-    companyClient->addNewRecruitInfo(_task, numOfApplicant, _finishDate);
+    companyClient->addNewRecruitInfo(task, numOfApplicant, finishDate);
 }
 
 /*
@@ -903,14 +900,14 @@ void RegisterRecruitmentInfo::addNewRecruitmentInfo(string _task, int numOfAppli
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void CompanyClient::addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate)
+void CompanyClient::addNewRecruitInfo(string task, int numOfApplicant, string finishDate)
 {
     string name;
     string bn;
 
     name = this->getName();
     bn = this->getbn();
-    RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, _task, numOfApplicant, _finishDate);
+    RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, task, numOfApplicant, finishDate);
 }
 
 /*
@@ -919,13 +916,13 @@ void CompanyClient::addNewRecruitInfo(string _task, int numOfApplicant, string _
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-RecruitmentInfo::RecruitmentInfo(string _companyName, string _bn, string _task, int numOfApplicant, string _finishDate)
+RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate)
 {
-    this->_companyName = _companyName;
-    this->_bn = _bn;
-    this->_task = _task;
+    this->companyName = companyName;
+    this->bn = bn;
+    this->task = task;
     this->numOfApplicant = numOfApplicant;
-    this->_finishDate = _finishDate;
+    this->finishDate = finishDate;
 }
 
 /*
@@ -967,11 +964,10 @@ void InquireRecruitmentInfoUI::startInterface()
 
 CompanyClient* CompanyClientList::findById(string id) {
     int size = cCList.size();
-    
+
     for (int i = 0; i < size; i++) {
         if (id == cCList[i]->getId()) {
             return cCList[i];
         }
     }
 }
-
