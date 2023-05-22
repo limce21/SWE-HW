@@ -26,12 +26,17 @@ class LogIn;
 class LogInUI;
 class LogOut;
 class LogOutUI;
+class RegisterRecruitmentInfo;
+class RegisterRecruitmentInfoUI;
+class InquireRecruitmentInfo;
+class InquireRecruitmentInfoUI;
 class Client;
 class ClientList;
 class GeneralClientList;
 class CompanyClientList;
 class GeneralClient;
 class CompanyClient;
+class RecruitmentInfo;
 
 /*
 클래스 이름 : System 
@@ -68,11 +73,11 @@ class Client
 {
 private:
 	int type; //회원의 type-> 1. 회사회원 / 2. 일반회원
-	string id;//회원의 id
-	string pw;//회원의 pw 
-	string name;//회원의 이름
+	string _id;//회원의 id
+	string _pw;//회원의 pw 
+	string _name;//회원의 이름
 	//string _num;//회원이 가진 번호 -> 회사회원:사업자번호 / 일반회원: 주민번호
-	bool isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
+	bool _isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
 
 public:
 	Client(int type, string name, string id, string pw);  //회원 객체의 생성자
@@ -82,6 +87,7 @@ public:
 	void changeLogInStatus(); //회원의 로그인 상태값 바꿔주기 : true->false / false->true
 	//void destroy();
 	int getType(); //회원의 type값 반환 : 1->회사회원 2->일반회원
+	string getName(); //회원의 이름 반환
 };
 
 
@@ -122,6 +128,8 @@ private:
 
 public:
 	CompanyClient(int type,string name, string num, string id, string pw); //회사회원 객체의 생성자
+	void addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate); // 채용 정보 생성하기
+	string getbn(); // 사업자정보 반환하기
 	
 };
 
@@ -176,8 +184,6 @@ public:
 };
 
 
-
-
 /*
 클래스 이름 : CompanyClientList <Collection 클래스> : 모든 CompanyClient들에 대한 포인터들을 저장함
 			-> ex) 회사회원의 경우, ClientList에도 포함되어있고, CompanyClientList에도 포함되어있다
@@ -193,10 +199,29 @@ private:
 public:
 	void addCompanyClient(CompanyClient* C);  //CompanyClientList의 attribute인 cCList에 새로 회원가입한 회사 회원 정보를 넣어줌
 	void destroy(string id); //해당 id값을 지닌 CompanyClient 객체를 cCList에서 지움
+	CompanyClient* findById(string id);
 };
 
 
+/*
+클래스 이름 : RecruitmentInfo 클래스
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
+class RecruitmentInfo
+{
+private:
+	string _companyName;
+	string _bn;
+	string _task;
+	string _finishDate;
+	int numOfApplicant;
 
+public:
+	RecruitmentInfo(string _companyName, string _bn, string _task, int numOfApplicant, string _finishDate); // 채용 정보 객체 생성
+};
 
 /*
 클래스 이름 : SignInUI <Boundary 클래스> : 회원 가입과 관련된 interface를 담당한다.
@@ -383,3 +408,72 @@ public:
 };
 
 
+/*
+클래스 이름 : RegisterRecruitmentInfo <Control 클래스>: 채용 등록을 담당합니다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
+class RegisterRecruitmentInfo
+{
+private:
+	RegisterRecruitmentInfoUI* registerRecruitmentInfoUI; // 바운더리 클래스의 레퍼런스를 저장합니다.
+	CompanyClient* companyClient; // 회사 회원
+
+public:
+	RegisterRecruitmentInfo(CompanyClient* companyClient);
+	void addNewRecruitmentInfo(string _task, int numOfApplicant, string _finishDate); // recruitment info에 정보를 추가합니다
+};
+
+
+/*
+클래스 이름 : RegisterRecruitmentInfoUI <Boundary 클래스>: 채용 등록을 담당합니다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/21
+작성자 : 김민정
+*/
+class RegisterRecruitmentInfoUI
+{
+private:
+	RegisterRecruitmentInfo* registerRecruitmentInfo;
+	CompanyClient* companyClient;
+	
+public:
+	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
+	void startInterface(); // 입력값을 읽어들입니다.
+	void result(string _task, int numOfApplicant, string _finishDate); // 사용자의 화면에 결과를 표시합니다
+};
+
+/*
+클래스 이름 : InquireRecruitmentInfo <Control 클래스>: 채용 조회를 담당합니다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
+class InquireRecruitmentInfo
+{
+private:
+	CompanyClient* companyClient;
+public:
+	InquireRecruitmentInfo(CompanyClient* companyClient);
+
+};
+
+/*
+클래스 이름 : InquireRecruitmentInfo <Boundary 클래스>: 채용 조회를 담당합니다.
+클래스 멤버변수:
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
+class InquireRecruitmentInfoUI
+{
+private:
+	InquireRecruitmentInfo* inquireRecruitmentInfo;
+public:
+	InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo);
+	void startInterface(); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
+};
