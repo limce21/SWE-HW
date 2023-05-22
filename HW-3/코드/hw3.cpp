@@ -1,4 +1,5 @@
 #include "hw3.h"
+#include "Apply.h"
 
 /*
    함수이름: System::doTask
@@ -133,6 +134,9 @@ void System::doTask()
                         //CompanyClient *companyClient = findByID(로그인된 객체의 id)
 
                         RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient, rcList);
+                        //Control 내부에서 방금 등록한 채용정보를 현재 세션으로 반영하는 작업이 필요함
+                        
+                        rcList->addNewRecruitmentInfoList(registerRecruitmentInfo->getRegisteredList());
                     }
                 }
                 else //로그인되어있는 사람이 없는 경우 
@@ -160,6 +164,34 @@ void System::doTask()
             }
             break;
 
+        }
+        case 4: {
+            switch (menu_level_2) {
+            case 1: {//채용 정보 등록
+                fout << "4.1. 채용정보 등록\n";
+                if (logIn != nullptr) {
+                    SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
+                }
+                else {
+                    cout << "일반회원으로 로그인하고 오십시오.\n";
+                }
+                break;
+            }
+            case 2: {//채용 지원
+                fout << "4.2. 채용 지원\\n";
+                if (logIn != nullptr) {
+                    curLogInClient = logIn->getLogInClient();
+                    string tmpid = curLogInClient->getId();
+                    GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                    ApplyForRecruitmentInfo* applyForRecruitmentInfo = new ApplyForRecruitmentInfo(tmpGeneralClient,rcList);
+                }
+                else {
+                    cout << "일반회원으로 로그인하고 오십시오.\n";
+                }
+                break;
+            }
+            }
+            break;
         }
 
         case 6: {
@@ -484,10 +516,23 @@ void GeneralClientList::destroy(string id)
     }
 }
 
+string RecruitmentInfo::getBn() {
+    return this->bn;
+}
+
 RecruitmentInfo* RecruitmentInfoList::findByName(string companyName) {
     int size = rCList.size();
     for (int i = 0; i < size; i++) {
         if (companyName == rCList[i]->getName()) {
+            return rCList[i];
+        }
+    }
+}
+
+RecruitmentInfo* RecruitmentInfoList::findByNum(string bn) {
+    int size = rCList.size();
+    for (int i = 0; i < size; i++) {
+        if (bn == rCList[i]->getBn()) {
             return rCList[i];
         }
     }
@@ -1038,7 +1083,7 @@ void RegisterRecruitmentInfoUI::result(string task, int numOfApplicant, string f
     fout << task;
     fout << " ";
     fout << numOfApplicant;
-    fout << " " << finishDate << endl;
+    fout << " " << finishDate << endl<<endl;
 
 }
 
@@ -1128,7 +1173,7 @@ void InquireRecruitmentInfoUI::startInterface(vector<RecruitmentInfo*> riList)
 {
     int size = riList.size();
     for (int i = 0; i < size; i++) {
-        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getApplicantNum() << " " << riList[i]->getFinishDate() << "\n";
+        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getApplicantNum() << " " << riList[i]->getFinishDate() << "\n\n";
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -1158,3 +1203,27 @@ int RecruitmentInfo::getApplicantNum() {
 string RecruitmentInfo::getFinishDate() {
     return this->finishDate;
 }
+
+RecruitmentInfoList* RegisterRecruitmentInfo::getRecruitmentInfoList() {
+    return this->recruitmentInfoList;
+}
+
+RecruitmentInfo* RegisterRecruitmentInfo::getRegisteredList() {
+    return this->registeredList;
+}
+
+
+vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() {
+    return this->rCList;
+}
+
+
+void GeneralClient::addApplication(RecruitmentInfo* ri) {
+    this->registeredList.push_back(ri);
+}
+
+//지원자수 한명 추가
+void RecruitmentInfo::addApplicantToRecruitment() {
+    this->numOfApplicant += 1;
+}
+
