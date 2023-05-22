@@ -104,6 +104,7 @@ class GeneralClient : public Client
 {
 private:
 	string _rrn; //일반회원의 주민번호
+	vector<RecruitmentInfo*> registeredList;
 
 public:
 	GeneralClient(int type,string name, string num, string id, string pw); //일반회원 객체의 생성자
@@ -125,11 +126,13 @@ class CompanyClient : public Client
 {
 private:
 	string _bn; //회사회원의 사업자 번호
-
+	vector<RecruitmentInfo*> registeredList;
 public:
 	CompanyClient(int type,string name, string num, string id, string pw); //회사회원 객체의 생성자
-	void addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate); // 채용 정보 생성하기
+	RecruitmentInfo* addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate); // 채용 정보 생성하기
 	string getbn(); // 사업자정보 반환하기
+	vector<RecruitmentInfo*> getListRegisteredInfo();
+
 	
 };
 
@@ -210,17 +213,31 @@ public:
 작성날짜 : 2023/05/22
 작성자 : 김민정
 */
-class RecruitmentInfo
-{
+class RecruitmentInfo {
 private:
 	string companyName;
 	string bn;
 	string task;
-	string finishDate;
 	int numOfApplicant;
+	string finishDate;
 
 public:
-	RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate); // 채용 정보 객체 생성
+	RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate);
+	RecruitmentInfo* getRecruitmentInfoDetails(RecruitmentInfo* ri);
+	string getName();
+	string getTask();
+	int getApplicantNum();
+	string getFinishDate();
+	void addApplicantToRecruitment(string bn);
+};
+
+class RecruitmentInfoList {
+private:
+	vector<RecruitmentInfo*> rCList; // GeneralClient 포인터 배열
+
+public:
+	void addNewRecruitmentInfoList(RecruitmentInfo* ri);
+	RecruitmentInfo* findByName(string companyName);
 };
 
 /*
@@ -420,12 +437,15 @@ class RegisterRecruitmentInfo
 private:
 	RegisterRecruitmentInfoUI* registerRecruitmentInfoUI; // 바운더리 클래스의 레퍼런스를 저장합니다.
 	CompanyClient* companyClient; // 회사 회원
+	RecruitmentInfo* registeredList;
+	RecruitmentInfoList* recruitmentInfoList;
 
 public:
-	RegisterRecruitmentInfo(CompanyClient* companyClient);
+	RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList);
 	void addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate); // recruitment info에 정보를 추가합니다
 };
 
+//this->re.push_back()
 
 /*
 클래스 이름 : RegisterRecruitmentInfoUI <Boundary 클래스>: 채용 등록을 담당합니다.
@@ -475,5 +495,5 @@ private:
 	InquireRecruitmentInfo* inquireRecruitmentInfo;
 public:
 	InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo);
-	void startInterface(); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
+	void startInterface(vector<RecruitmentInfo*> riList); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
 };

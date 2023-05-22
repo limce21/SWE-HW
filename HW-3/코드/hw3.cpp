@@ -7,6 +7,7 @@ void System::doTask()
     ClientList* clientList = new ClientList();
     GeneralClientList* gcList = new GeneralClientList();
     CompanyClientList* ccList = new CompanyClientList();
+    RecruitmentInfoList* rcList = new RecruitmentInfoList(); // 모든 채용정보가 담긴 리스트
     Client* curLogInClient = 0;
     LogIn* logIn = 0;
 
@@ -121,7 +122,7 @@ void System::doTask()
                     else {
                         //CompanyClient *companyClient = findByID(로그인된 객체의 id)
 
-                        RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient);
+                        RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient, rcList);
                     }
                 }
                 else //로그인되어있는 사람이 없는 경우 
@@ -337,6 +338,19 @@ void GeneralClientList::destroy(string id)
             this->gCList.erase(gCList.begin() + i);
         }
     }
+}
+
+RecruitmentInfo* RecruitmentInfoList::findByName(string companyName) {
+    int size = rCList.size();
+    for (int i = 0; i < size; i++) {
+        if (companyName == rCList[i]->getName()) {
+            return rCList[i];
+        }
+    }
+}
+
+string RecruitmentInfo::getName() {
+    return this->companyName;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -830,8 +844,9 @@ void SignOutUI::startInterface(string id, bool flag)
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-RegisterRecruitmentInfo::RegisterRecruitmentInfo(CompanyClient* companyClient)
+RegisterRecruitmentInfo::RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList)
 {
+    this->recruitmentInfoList = recruitmentInfoList;
     this->companyClient = companyClient;
     RegisterRecruitmentInfoUI* registerRecruitmentUI = new RegisterRecruitmentInfoUI(this, this->companyClient);
     registerRecruitmentUI->startInterface();
@@ -891,16 +906,20 @@ void RegisterRecruitmentInfoUI::result(string task, int numOfApplicant, string f
 */
 void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate)
 {
-    companyClient->addNewRecruitInfo(task, numOfApplicant, finishDate);
+    RecruitmentInfo *tmp = companyClient->addNewRecruitInfo(task, numOfApplicant, finishDate);
+    this->recruitmentInfoList->addNewRecruitmentInfoList(tmp);
 }
 
+void RecruitmentInfoList::addNewRecruitmentInfoList(RecruitmentInfo* ri) {
+    this->rCList.push_back(ri);
+}
 /*
  함수이름: CompanyClient::addNewRecruitInfo
  기능: company client의 포인터가 RecruitmentInfo를 추가합니다
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void CompanyClient::addNewRecruitInfo(string task, int numOfApplicant, string finishDate)
+RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int numOfApplicant, string finishDate)
 {
     string name;
     string bn;
@@ -908,6 +927,9 @@ void CompanyClient::addNewRecruitInfo(string task, int numOfApplicant, string fi
     name = this->getName();
     bn = this->getbn();
     RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, task, numOfApplicant, finishDate);
+    this->registeredList.push_back(newRecruitmentInfo);
+    return newRecruitmentInfo;
+
 }
 
 /*
@@ -934,8 +956,11 @@ RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int
 InquireRecruitmentInfo::InquireRecruitmentInfo(CompanyClient* companyClient)
 {
     this->companyClient = companyClient;
+    vector<RecruitmentInfo*> tmp = this->companyClient->getListRegisteredInfo();
+    int size = tmp.size();
+    
     InquireRecruitmentInfoUI* inquireRecruitmentInfoUI = new InquireRecruitmentInfoUI(this);
-    inquireRecruitmentInfoUI->startInterface();
+    inquireRecruitmentInfoUI->startInterface(tmp);
 }
 
 /*
@@ -955,9 +980,12 @@ InquireRecruitmentInfoUI::InquireRecruitmentInfoUI(InquireRecruitmentInfo* inqui
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void InquireRecruitmentInfoUI::startInterface()
+void InquireRecruitmentInfoUI::startInterface(vector<RecruitmentInfo*> riList)
 {
-
+    int size = riList.size();
+    for (int i = 0; i < size; i++) {
+        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getApplicantNum() << " " << riList[i]->getFinishDate() << "\n";
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -970,4 +998,19 @@ CompanyClient* CompanyClientList::findById(string id) {
             return cCList[i];
         }
     }
+}
+
+vector<RecruitmentInfo*> CompanyClient::getListRegisteredInfo() {
+    return registeredList;
+}
+
+
+string RecruitmentInfo::getTask() {
+    return this->task;
+}
+int RecruitmentInfo::getApplicantNum() {
+    return this->numOfApplicant;
+}
+string RecruitmentInfo::getFinishDate() {
+    return this->finishDate;
 }
