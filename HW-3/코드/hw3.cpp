@@ -1,18 +1,28 @@
 #include "hw3.h"
 
+/*
+   함수이름: System::doTask
+   기능: 파일에서 입력받은 번호 두개의 값에 따라 별도의 기능을 수행하도록 한다.
+   매개변수: 없음
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 void System::doTask()
 {
-    int menu_level_1 = 0, menu_level_2 = 0;
-    int is_program_exit = 0;
-    ClientList* clientList = new ClientList();
-    GeneralClientList* gcList = new GeneralClientList();
-    CompanyClientList* ccList = new CompanyClientList();
-    RecruitmentInfoList* rcList = new RecruitmentInfoList(); // 모든 채용정보가 담긴 리스트
-    Client* curLogInClient = 0;
-    LogIn* logIn = 0;
+    int menu_level_1 = 0, menu_level_2 = 0; //input.txt파일에서 읽어들일 두개의 변수 초기화
+    int is_program_exit = 0; //프로그램 종료 코드 -> 0: 계속 프로그램 실행 / 1: 프로그램 종료
+    ClientList* clientList = new ClientList(); //Client객체들을 관리할 ClientList객체 생성 -> 이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
+    GeneralClientList* gcList = new GeneralClientList(); // GeneralClient객체들을 관리할 GeneralClientList객체 생성->이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
+    CompanyClientList* ccList = new CompanyClientList(); // CompanyClient객체들을 관리할 CompanyClientList객체 생성->이 객체의 reference들을 각 기능을 수행하라는 controller 생성자의 매개변수로 줄 것임
 
-    fin.open(INPUT_FILE_NAME);
-    fout.open(OUTPUT_FILE_NAME);
+    RecruitmentInfoList* rcList = new RecruitmentInfoList(); // 모든 채용정보가 담긴 리스트
+    Client* curLogInClient = 0; //현재 로그인되어 있는 Client 객체를 저장하기 위함 -> 이 값이 존재하는 경우, 로그인된 client가 이 변수에 저장되어있고, 이 객체의 정보가 필요한 control 클래스의 생성자에 매개변수로 넣어준다.
+    LogIn* logIn = 0; //위의 curLogInClient 객체는 logIn 컨드롤 클래스의 getLogInClient() 호출을 통해 얻어낼 것이므로 logIn 컨트롤러에 접근하기 편하도록 밑의 switch문 밖에 미리 선언해놓는다.
+
+    fin.open(INPUT_FILE_NAME); //input.txt 파일 열기
+    fout.open(OUTPUT_FILE_NAME); //output.txt 파일 열기
 
 
     while (!is_program_exit)
@@ -31,7 +41,7 @@ void System::doTask()
             case 1:
             {
                 fout << "1.1. 회원가입" << endl;
-                SignIn* signIn = new SignIn(clientList, gcList, ccList);
+                SignIn* signIn = new SignIn(clientList, gcList, ccList); //회원가입 컨트롤 클래스 생성
 
                 break;
             }
@@ -40,16 +50,16 @@ void System::doTask()
             {
                 fout << "1.2. 회원탈퇴" << endl;
 
-                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                if (logIn != nullptr) //LogIn컨트롤 클래스가 생성되기도 전에 회원탈퇴를 시도하는 비정상적인 접근을 막기 위함 -> LogIn Control클래스가 생성되었다면
                 {
-                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 알아온다
-                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 회원탈퇴 시도
+                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 조회한다
+                    if (curLogInClient != nullptr) //로그인된 계정이 null이 아닐 경우에만 회원탈퇴 시도
                     {
-                        SignOut* signOut = new SignOut(clientList, gcList, ccList, curLogInClient);
+                        SignOut* signOut = new SignOut(clientList, gcList, ccList, curLogInClient); //회원 탈퇴 컨트롤 클래스 생성
 
                     }
                 }
-                else //로그인되어있는 사람이 없는 경우 
+                else //LogIn 컨트롤 클래스가한번도 생성된 적이 없는 경우
                 {
                     cout << "회원탈퇴 할 수 없습니다" << endl;
                 }
@@ -70,7 +80,7 @@ void System::doTask()
             {
                 fout << "2.1. 로그인" << endl;
                 //LogIn* logIn = new LogIN(clientList, gcList, ccList);
-                logIn = new LogIn(clientList, gcList, ccList);
+                logIn = new LogIn(clientList, gcList, ccList); //switch문 밖에 미리 만들어놓은 logIn변수에 LogIn 컨트롤 클래스 객체를 담는다.
                 //cout << clientList->count();
                 break;
 
@@ -79,17 +89,17 @@ void System::doTask()
             case 2:
             {
                 fout << "2.2. 로그아웃" << endl;
-                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                if (logIn != nullptr) //LogIn컨트롤 클래스가 생성되기도 전에 회원탈퇴를 시도하는 비정상적인 접근을 막기 위함 -> LogIn Control클래스가 생성되었다면
                 {
-                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 알아온다
-                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 회원탈퇴 시도
+                    curLogInClient = logIn->getLogInClient(); //로그인된 계정을 조회한다
+                    if (curLogInClient != nullptr) //로그인된 계정이 있는 경우에만 로그아웃 시도
                     {
-                        LogOut* logOut = new LogOut(clientList, gcList, ccList, curLogInClient);
+                        LogOut* logOut = new LogOut(clientList, gcList, ccList, curLogInClient); //로그아웃 컨트롤 클래스 생성 
 
                     }
                 }
 
-                else
+                else //LogIn 컨트롤 클래스가한번도 생성된 적이 없는 경우 
                 {
                     cout << "로그아웃 할 수 없습니다" << endl;
                 }
@@ -157,8 +167,8 @@ void System::doTask()
             {
             case 1: // "6.1. 종료“ 메뉴 부분
             {
-                fout << "6.1.종료" << endl << endl;
-                is_program_exit = 1;
+                fout << "6.1.종료" << endl << endl; 
+                is_program_exit = 1;  //종료 코드를 1로 변경
                 break;
             }
             }
@@ -170,7 +180,15 @@ void System::doTask()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: 앤티티 클래스 Client의 생성자
+   기능: 회원을 생성하기 위한 클래스의 생성자로서 기능함
+   매개변수: type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호
+   반환값: 없음
 
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 Client::Client(int type, string name, string id, string pw)
 {
     this->type = type;
@@ -181,23 +199,67 @@ Client::Client(int type, string name, string id, string pw)
     this->_isLogIn = false;
 }
 
+
+/*
+   함수이름: Client::getId
+   기능: 해당 회원의 id를 반환한다.
+   매개변수: -
+   반환값: id
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 string Client::getId()
 {
     return this->_id;
 }
 
+
+/*
+   함수이름: Client::getPw
+   기능: 해당 회원의 password를 반환한다.
+   매개변수: -
+   반환값: pw
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 string Client::getPw()
 {
     return this->_pw;
 }
+
+
+/*
+   함수이름: Client::getTyoe
+   기능: 해당 회원의 회원 타입을 반환한다.
+   매개변수: -
+   반환값: type 1:회사회원 2: 일반회원
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 int Client::getType()
 {
     return this->type;
 }
+
+
+/*
+   함수이름: Client::getLogInStatus
+   기능: 해당 회원의 로그인 상태를 반환한다.
+   매개변수: -
+   반환값: isLogIn -> true: 로그인 상태 / false: 로그아웃 상태
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 bool Client::getLogInStatus()
 {
     return this->_isLogIn;
 }
+
+
 
 // 채용 정보 등록 시 getName
 string Client::getName()
@@ -205,6 +267,17 @@ string Client::getName()
     return this->_name;
 }
 
+
+
+/*
+   함수이름: Client::changeLogInStatus
+   기능: 해당 회원의 로그인 상태를 바꿔준다. true->false / false->true
+   매개변수: -
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 void Client::changeLogInStatus()
 {
     if (this->_isLogIn == false)
@@ -218,32 +291,85 @@ void Client::changeLogInStatus()
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: 엔티티 클래스 CompanyClient의 생성자
+   기능:  회사회원을 생성하기 위한 클래스의 생성자로서 기능함 -> type, name, id, pw는 부모클래스인 Client의 생성자를 통해 생성한다.
+   매개변수:
+            type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호 / num: 사업자 번호
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 CompanyClient::CompanyClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
     this->_bn = num;
 }
+
+
+
 
 string CompanyClient::getbn()
 {
     return this->_bn;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: 엔티티 클래스 GeneralClient의 생성자
+   기능:  일반회원을 생성하기 위한 클래스의 생성자로서 기능함 -> type, name, id, pw는 부모클래스인 Client의 생성자를 통해 생성한다.
+   매개변수:
+            type: 회원 유형 / name: 회원 이름 /id: 회원 id / pw: 회원 비밀번호 / num: 주민ㅂㄴ호
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 GeneralClient::GeneralClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
     this->_rrn = num;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: ClientList::addClient
+   기능: 매개변수로 들어온 회원을 회원 리스트에 추가한다.
+   매개변수: Client* -> 추가할 회원 객체
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 void ClientList::addClient(Client* c)
 {
     this->cList.push_back(c);
 }
 
+
+
+/*
+   함수이름: ClientList::size
+   기능: 회원 리스트의 크기를 반환한다.
+   매개변수: 없읍
+   반환값: size : 현재 회원 리스트의 크기
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 int ClientList::size()
 {
     return this->cList.size();
 }
 
+
+
+/*
+   함수이름: ClientList::getClientList
+   기능: 회원 리스트 전체를 반환한다
+   매개변수: 없읍
+   반환값: vector<Client* > c1
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 vector<Client*> ClientList::getClientList()
 {
     vector<Client*> cl;
@@ -277,7 +403,7 @@ int ClientList::count()
    매개변수: idx -> 삭제할 회원의 인덱스값
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void ClientList::destroy(int idx)
@@ -287,11 +413,20 @@ void ClientList::destroy(int idx)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+   함수이름: CompanyClientList::addCompanyClient
+   기능: 전달받은 해당 회사 회원 정보를 회사회원 리스트에 삽입한다
+   매개변수: 없음
+   반환값: 없음
 
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 void CompanyClientList::addCompanyClient(CompanyClient* c)
 {
     this->cCList.push_back(c);
 }
+
 
 
 /*
@@ -300,7 +435,7 @@ void CompanyClientList::addCompanyClient(CompanyClient* c)
    매개변수: id -> 삭제할 회원의 id값
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void CompanyClientList::destroy(string id)
@@ -314,6 +449,15 @@ void CompanyClientList::destroy(string id)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: GeneralClientList::addGeneralClient
+   기능: 전달받은 해당 일반 회원 정보를 일반회원리스트에 삽입한다
+   매개변수: 없음
+   반환값: 없음
+
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 void GeneralClientList::addGeneralClient(GeneralClient* c)
 {
     this->gCList.push_back(c);
