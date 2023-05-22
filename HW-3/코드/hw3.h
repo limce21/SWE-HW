@@ -68,11 +68,11 @@ class Client
 {
 private:
 	int type; //회원의 type-> 1. 회사회원 / 2. 일반회원
-	string _id;//회원의 id
-	string _pw;//회원의 pw 
-	string _name;//회원의 이름
+	string id;//회원의 id
+	string pw;//회원의 pw 
+	string name;//회원의 이름
 	//string _num;//회원이 가진 번호 -> 회사회원:사업자번호 / 일반회원: 주민번호
-	bool _isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
+	bool isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
 
 public:
 	Client(int type, string name, string id, string pw);  //회원 객체의 생성자

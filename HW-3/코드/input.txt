@@ -4,10 +4,11 @@
 1 2
 2 1 hn pwd2
 1 2
+2 1 hn pwd2
 2 1 hk pwd1
 2 2
 2 1 hk pwd1
 1 2
 2 1 hn pwd2
-2 2
+2 1 hk pwd1
 6 1
