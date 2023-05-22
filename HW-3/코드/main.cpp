@@ -17,4 +17,4 @@ int main() {
 	fin.close(); //input.txt ÆÄÀÏ ´İ±â
 
 	return 0;
-}
+}	
