@@ -1,5 +1,6 @@
 #include "hw3.h"
 
+
 /*
    함수이름: System::doTask
    기능: 파일에서 입력받은 번호 두개의 값에 따라 별도의 기능을 수행하도록 한다.
@@ -134,8 +135,8 @@ void System::doTask()
 
                         RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient, rcList);
                         //Control 내부에서 방금 등록한 채용정보를 현재 세션으로 반영하는 작업이 필요함
-                        
-                        rcList->addNewRecruitmentInfoList(registerRecruitmentInfo->getRegisteredList());
+
+
                     }
                 }
                 else //로그인되어있는 사람이 없는 경우 
@@ -166,8 +167,8 @@ void System::doTask()
         }
         case 4: {
             switch (menu_level_2) {
-            case 1: {//채용 정보 등록
-                fout << "4.1. 채용정보 등록\n";
+            case 1: {//채용 정보 검색
+                fout << "4.1. 채용정보 검색\n";
                 if (logIn != nullptr) {
                     SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
                 }
@@ -626,7 +627,6 @@ void SignInUI::startInterface()
 {
     cout << "회원 유형과 정보를 입력하세요" << endl;
     this->fillInfo();
-    this->pSignIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
 
 
 
@@ -645,7 +645,7 @@ void SignInUI::startInterface()
 void SignInUI::fillInfo()
 {
     fin >> this->type >> this->name >> this->num >> this->id >> this->pw;
-
+    this->pSignIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
 }
 
 
@@ -812,7 +812,6 @@ void LogInUI::startInterface()
 {
     cout << "아이디와 패스워드를 입력하세요" << endl;
     this->fillIDPW();
-    this->pLogIn->tryLogIn(this->id, this->pw);
 }
 
 
@@ -829,6 +828,7 @@ void LogInUI::startInterface()
 void LogInUI::fillIDPW()
 {
     fin >> this->id >> this->pw;
+    this->pLogIn->tryLogIn(this->id, this->pw);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1088,13 +1088,26 @@ RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* re
 */
 void RegisterRecruitmentInfoUI::startInterface()
 {
-    string task;
-    int expectedApplicantNum;
-    string finishDate;
+    cout << "채용 정보 등록을 위한 필드를 입력하세요" << endl;
+    //string task;
+    //int numOfApplicant;
+    //string finishDate;
 
-    fin >> task >> expectedApplicantNum >> finishDate;
-    registerRecruitmentInfo->addNewRecruitmentInfo(task, expectedApplicantNum, finishDate);
-    result(task, expectedApplicantNum, finishDate);
+    //fin >> task >> numOfApplicant >> finishDate;
+    //registerRecruitmentInfo->addNewRecruitmentInfo(task, numOfApplicant, finishDate);
+    //result(task, numOfApplicant, finishDate);
+
+    this->registerInput();
+}
+
+void RegisterRecruitmentInfoUI::registerInput()
+{
+    string task;
+    int expecteApplicantNum;
+    string finishDate;
+    fin >> task >> expecteApplicantNum >> finishDate;
+    registerRecruitmentInfo->addNewRecruitmentInfo(task, expecteApplicantNum, finishDate);
+    result(task, expecteApplicantNum, finishDate);
 }
 
 /*
@@ -1355,7 +1368,7 @@ ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, Recruit
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
     RecruitmentInfoList* tmpRiList = new RecruitmentInfoList(); \
-        tmpRiList->setRecruitmentInfo(tmp);
+    tmpRiList->setRecruitmentInfo(tmp);
 
     ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
 
@@ -1368,6 +1381,7 @@ void ApplyForRecruitmentInfo::addApplicant(string bn) {
     appliedRecruitmentInfo = this->riList->findByNum(bn);
     this->gClient->addApplication(appliedRecruitmentInfo);
     this->appliedRecruitmentInfo->addApplicantToRecruitment();//이 채용정보에 지원자수 하나 추가해야함
+    fout << endl << "> " << "지원완료: " << this->appliedRecruitmentInfo->getName() << ' ' << this->appliedRecruitmentInfo->getBn() << ' ' << this->appliedRecruitmentInfo->getTask() << endl << endl;
 }
 
 // 채용지원

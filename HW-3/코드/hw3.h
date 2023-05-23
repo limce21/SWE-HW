@@ -1,6 +1,7 @@
 #ifndef HW3_H
 #define HW3_H
 
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -236,7 +237,7 @@ private:
 
 public:
 	RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate);
-	string getName()const;
+	string getName()const;//compare작성할때 읽기전용으로만 읽을 수 있음
 	string getBn();
 	string getTask();
 	int getApplicantNum();
@@ -414,10 +415,10 @@ private:
 	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
 	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
 	Client* curLogInClient; //로그인 객체가 매개변수로 전달해준 현재 로그인 된 client계정을 저장할 공간
+	void destroy(Client* client); //로그인 되어있는 해당 회원을 탈퇴시킴
 
 public:
 	SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client);  //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
-	void destroy(Client* client); //로그인 되어있는 해당 회원을 탈퇴시킴
 
 };
 
@@ -486,6 +487,7 @@ public:
 	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
 	void startInterface(); // 입력값을 읽어들입니다.
 	void result(string task, int expectedApplicantNum, string finishDate); // 사용자의 화면에 결과를 표시합니다
+	void registerInput(); //파일에서 입력값을 받아들임
 };
 
 /*
