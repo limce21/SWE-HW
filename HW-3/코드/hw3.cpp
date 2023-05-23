@@ -684,7 +684,7 @@ void SignIn::addNewClient(int clientType, string name, string num, string id, st
         this->gcList->addGeneralClient(gClient); //일반회원 리스트에 저장
     }
 
-    fout << "> " << clientType << ' ' << name << ' ' << num << ' ' << id << ' ' << pw << endl << endl; //파일에 성공 메세지 출력
+    fout << '>' << clientType << ' ' << name << ' ' << num << ' ' << id << ' ' << pw << endl << endl; //파일에 성공 메세지 출력
 }
 
 
@@ -745,7 +745,7 @@ void LogIn::tryLogIn(string id, string pw)
 
                 temp[i]->changeLogInStatus(); //해당 회원의 로그인 상태값을 true로 바꿔줌
                 this->curLogInClient = temp[i]; //로그인이 되었으므로 LogIn 컨트롤 클래스는 현재 로그인된 client의 정보를 갖고있는다
-                fout << "> " << temp[i]->getId() << ' ' << temp[i]->getPw() << endl << endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
+                fout << '>' << temp[i]->getId() << ' ' << temp[i]->getPw() << endl << endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
                 break; //로그인을 시켰으므로 for문 탈출
             }
 
@@ -926,7 +926,7 @@ void LogOutUI::startInterface(string id, bool flag)
 {
     if (flag == true) //로그아웃이 된 경우
     {
-        fout << "> " << id << endl << endl;
+        fout << '>' << id << endl << endl;
         cout << "로그아웃 되었습니다." << endl;
     }
 
@@ -1041,7 +1041,7 @@ void SignOutUI::startInterface(string id, bool flag)
 {
     if (flag == true)
     {
-        fout << "> " << id << endl << endl;
+        fout << '>' << id << endl << endl;
         cout << "회원탈퇴 되었습니다." << endl;
     }
 
@@ -1294,7 +1294,7 @@ void SearchRecruitmentInfoUI::startInterface() {
 
     fout << "> " << this->searchRecruitmentInfo->getResult()->getName() << " " <<
         this->searchRecruitmentInfo->getResult()->getBn() << " " << this->searchRecruitmentInfo->getResult()->getTask() << " " <<
-        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum() << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n"<<"\n";
+        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum() << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n";
 
 
 
@@ -1368,7 +1368,6 @@ void ApplyForRecruitmentInfo::addApplicant(string bn) {
     appliedRecruitmentInfo = this->riList->findByNum(bn);
     this->gClient->addApplication(appliedRecruitmentInfo);
     this->appliedRecruitmentInfo->addApplicantToRecruitment();//이 채용정보에 지원자수 하나 추가해야함
-    fout << endl << "> " <<"지원완료: "<< this->appliedRecruitmentInfo->getName() << ' ' << this->appliedRecruitmentInfo->getBn() << ' ' << this->appliedRecruitmentInfo->getTask() << endl << endl;
 }
 
 // 채용지원
@@ -1395,7 +1394,7 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
 
     for (int i = 0; i < size; i++) {
         fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getApplicantNum()
-            << " " << gcAppliedList[i]->getFinishDate() << "\n";
+            << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
     }
 }
 
