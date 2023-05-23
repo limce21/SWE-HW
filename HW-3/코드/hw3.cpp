@@ -1,5 +1,5 @@
 #include "hw3.h"
-#include "Apply.h"
+
 
 /*
    함수이름: System::doTask
@@ -167,28 +167,47 @@ void System::doTask()
         }
         case 4: {
             switch (menu_level_2) {
-            case 1: {//채용 정보 등록
-                fout << "4.1. 채용정보 등록\n";
-                if (logIn != nullptr) {
-                    SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
-                }
-                else {
-                    cout << "일반회원으로 로그인하고 오십시오.\n";
-                }
-                break;
+                case 1: {//채용 정보 검색
+                    fout << "4.1. 채용정보 검색\n";
+                    if (logIn != nullptr) {
+                        curLogInClient = logIn->getLogInClient();
+                        string tmpid = curLogInClient->getId();
+                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                        SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
+                    }
+                    else {
+                        cout << "일반회원으로 로그인하고 오십시오.\n";
+                    }
+                    break;
             }
-            case 2: {//채용 지원
-                fout << "4.2. 채용 지원\\n";
-                if (logIn != nullptr) {
-                    curLogInClient = logIn->getLogInClient();
-                    string tmpid = curLogInClient->getId();
-                    GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
-                    ApplyForRecruitmentInfo* applyForRecruitmentInfo = new ApplyForRecruitmentInfo(tmpGeneralClient,rcList);
+                case 2: {//채용 지원
+                    fout << "4.2. 채용 지원\n";
+                    if (logIn != nullptr) {
+                        curLogInClient = logIn->getLogInClient();
+                        string tmpid = curLogInClient->getId();
+                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                        ApplyForRecruitmentInfo* applyForRecruitmentInfo = new ApplyForRecruitmentInfo(tmpGeneralClient,rcList);
+                    }
+                    else {
+                        cout << "일반회원으로 로그인하고 오십시오.\n";
+                    }
+                    break;
+                case 3: {//지원 정보 조회
+                    fout << "4.3. 지원 정보 조회\n";
+                    if (logIn != nullptr) {
+                        curLogInClient = logIn->getLogInClient();
+                        string tmpid = curLogInClient->getId();
+                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                        InquireApplicationInfo* inquireApplicationInfo = new InquireApplicationInfo(tmpGeneralClient);
+                    }
+                    else {
+                        cout << "일반 회원으로 로그인하고 재시도 하십시오.\n";
+                    }
+                    break;
                 }
-                else {
-                    cout << "일반회원으로 로그인하고 오십시오.\n";
+                case 4: {// 지원 취소
+
                 }
-                break;
             }
             }
             break;
@@ -538,7 +557,7 @@ RecruitmentInfo* RecruitmentInfoList::findByNum(string bn) {
     }
 }
 
-string RecruitmentInfo::getName() {
+string RecruitmentInfo::getName()const {
     return this->companyName;
 }
 
@@ -1189,6 +1208,17 @@ CompanyClient* CompanyClientList::findById(string id) {
     }
 }
 
+
+GeneralClient* GeneralClientList::findById(string id) {
+    int size = gCList.size();
+
+    for (int i = 0; i < size; i++) {
+        if (id == gCList[i]->getId()) {
+            return gCList[i];
+        }
+    }
+}
+
 vector<RecruitmentInfo*> CompanyClient::getListRegisteredInfo() {
     return registeredList;
 }
@@ -1219,7 +1249,7 @@ vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() {
 
 
 void GeneralClient::addApplication(RecruitmentInfo* ri) {
-    this->registeredList.push_back(ri);
+    this->appliedList.push_back(ri);
 }
 
 //지원자수 한명 추가
@@ -1227,3 +1257,173 @@ void RecruitmentInfo::addApplicantToRecruitment() {
     this->numOfApplicant += 1;
 }
 
+
+vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
+    return this->appliedList;
+}
+
+
+int RecruitmentInfo::getExpectedApplicantNum() {
+    return this->expectedApplicantNum;
+}
+
+void RecruitmentInfoList::setRecruitmentInfo(vector<RecruitmentInfo*> riList) {
+    this->rCList = riList;
+}
+
+
+bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b) {
+    string aname = a->getName();
+    string bname = b->getName();
+    if (aname != bname) {
+        return aname < bname;
+    }
+    else return bname < aname;
+}
+
+
+bool RecruitmentInfo::operator()(const RecruitmentInfo& a, const RecruitmentInfo& b) {
+    if (a.getName() != b.getName())return a.getName() > b.getName();
+    else a.getName() < b.getName();
+}
+
+
+//-----------------------------------------------
+
+SearchRecruitmentInfoUI::SearchRecruitmentInfoUI(SearchRecruitmentInfo* searchRecruitmentInfo) {
+    this->searchRecruitmentInfo = searchRecruitmentInfo;
+}
+
+
+void SearchRecruitmentInfoUI::startInterface() {
+    //입력창을 띄우고 
+
+    string companyName;
+    fin >> companyName;
+
+
+    this->searchRecruitmentInfo->searchRecruitmentInfoListByComName(companyName);
+
+    fout << "> " << this->searchRecruitmentInfo->getResult()->getName() << " " <<
+        this->searchRecruitmentInfo->getResult()->getBn() << " " << this->searchRecruitmentInfo->getResult()->getTask() << " " <<
+        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum() << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n";
+
+
+
+
+}
+RecruitmentInfo* SearchRecruitmentInfo::getResult() {
+    return this->result;
+}
+
+SearchRecruitmentInfo::SearchRecruitmentInfo(RecruitmentInfoList* riList) {
+    this->riList = riList;
+    this->companyName = "";
+
+    SearchRecruitmentInfoUI* searchRecruitmentInfoUI = new SearchRecruitmentInfoUI(this);
+    searchRecruitmentInfoUI->startInterface();
+}
+
+void SearchRecruitmentInfo::searchRecruitmentInfoListByComName(string companyName) {
+    this->companyName = companyName;
+    this->result = this->riList->findByName(companyName);
+
+}
+
+
+//채용 지원
+
+ApplyForRecruitmentInfoUI::ApplyForRecruitmentInfoUI(ApplyForRecruitmentInfo* applyForRecruitmentInfo) {
+    this->applyForRecruitmentInfo = applyForRecruitmentInfo;
+}
+
+void ApplyForRecruitmentInfoUI::applyForRecruitmentInfoByNum(string bn) {
+    this->applyForRecruitmentInfo->addApplicant(bn);
+}
+
+
+void ApplyForRecruitmentInfoUI::startInterface(RecruitmentInfoList* riList) {
+
+    vector<RecruitmentInfo*> tmp;
+    tmp = riList->getRIList();
+    int size = tmp.size();
+    for (int i = 0; i < size; i++) {
+        fout << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask()
+            << " " << tmp[i]->getExpectedApplicantNum() << " " << tmp[i]->getFinishDate() << "\n";
+    }
+
+    string tmpBn;
+    fin >> tmpBn;
+    this->applyForRecruitmentInfoByNum(tmpBn);
+
+}
+
+
+ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList) {
+    this->gClient = gClient;
+    this->riList = riList;//현재 등록된 채용정보 리스트
+    vector<RecruitmentInfo*> tmp = riList->getRIList();
+
+    sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());//정렬
+    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList();
+    tmpRiList->setRecruitmentInfo(tmp);
+
+    ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
+
+    applyForRecruitmentInfoUI->startInterface(tmpRiList);
+}
+
+bool ApplyForRecruitmentInfo::compare(const RecruitmentInfo* a, const RecruitmentInfo* b) {
+    string aName = a->getName();
+    string bName = b->getName();
+    if (aName != bName) {
+        return aName < bName;
+    }
+    else {//회사이름이 같은 경우는 사실 존재하지 않음.
+        return true;
+    }
+}
+
+//
+void ApplyForRecruitmentInfo::addApplicant(string bn) {
+    appliedRecruitmentInfo = this->riList->findByNum(bn);
+    this->gClient->addApplication(appliedRecruitmentInfo);
+    this->appliedRecruitmentInfo->addApplicantToRecruitment();//이 채용정보에 지원자수 하나 추가해야함
+}
+
+// 채용지원
+
+// 지원정보조회
+InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
+    this->gClient = gClient;
+    this->gcAppliedList = gClient->getListAppliedInfo();
+
+    vector<RecruitmentInfo*> tmp = gcAppliedList;
+
+    int size = tmp.size();
+    sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());//정렬을 컨트롤에서해도 Rec
+
+    InquireApplicationInfoUI* inquireApplicationInfoUI = new InquireApplicationInfoUI();
+    inquireApplicationInfoUI->startInterface(tmp);
+}
+
+
+bool InquireApplicationInfo::compare(const RecruitmentInfo* a, const RecruitmentInfo* b) {
+    string aName = a->getName();
+    string bName = b->getName();
+    if (aName != bName) {
+        return aName < bName;
+    }
+    else {//회사이름이 같은 경우는 사실 존재하지 않음.
+        return true;
+    }
+}
+
+void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcAppliedList) {
+    int size = gcAppliedList.size();
+
+    for (int i = 0; i < size; i++) {
+        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getApplicantNum()
+            << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
+    }
+}

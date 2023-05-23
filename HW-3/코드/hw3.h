@@ -1,6 +1,7 @@
 #ifndef HW3_H
 #define HW3_H
 
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -40,6 +41,10 @@ class CompanyClientList;
 class GeneralClient;
 class CompanyClient;
 class RecruitmentInfo;
+class SearchRecruitmentInfoUI;
+class SearchRecruitmentInfo;
+class ApplyForRecruitmentInfoUI;
+class ApplyForRecruitmentInfo;
 
 /*
 클래스 이름 : System
@@ -107,12 +112,13 @@ class GeneralClient : public Client
 {
 private:
 	string _rrn; //일반회원의 주민번호
-	vector<RecruitmentInfo*> registeredList;
+	vector<RecruitmentInfo*> appliedList;//해당 회원이 지원한 리스트
 
 public:
 	
 	GeneralClient(int type, string name, string num, string id, string pw); //일반회원 객체의 생성자
 	void addApplication(RecruitmentInfo* ri);
+	vector<RecruitmentInfo*> getListAppliedInfo();//여기부터 작업하기
 
 };
 
@@ -188,7 +194,7 @@ public:
 
 	void addGeneralClient(GeneralClient* C); //GeneralClientList의 attribute인 gCList에 새로 회원가입한 일반 회원 정보를 넣어줌
 	void destroy(string id); //해당 id값을 지닌 GeneralClient 객체를 gCList에서 지움
-	GeneralClient* findById(string id);
+	GeneralClient* findById(string id);//해당리스트에서 id를 기준으로 회원찾는것
 };
 
 
@@ -223,18 +229,21 @@ private:
 	string companyName;
 	string bn;
 	string task;
-	int numOfApplicant;
+	int numOfApplicant;//지원자수
+	int expectedApplicantNum;//모집인원
 	string finishDate;
 
 public:
 	RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate);
-	RecruitmentInfo* getRecruitmentInfoDetails(RecruitmentInfo* ri);
-	string getName();
+	//RecruitmentInfo* getRecruitmentInfoDetails(RecruitmentInfo* ri);필요없는듯?
+	string getName()const;
 	string getBn();
 	string getTask();
 	int getApplicantNum();
+	int getExpectedApplicantNum();
 	string getFinishDate();
 	void addApplicantToRecruitment();
+	bool operator()(const RecruitmentInfo& a ,const RecruitmentInfo& b);
 };
 
 class RecruitmentInfoList {
@@ -242,12 +251,15 @@ private:
 	vector<RecruitmentInfo*> rCList; // GeneralClient 포인터 배열
 
 public:
-	RecruitmentInfoList();
-	RecruitmentInfoList(vector<RecruitmentInfo*>riList);
+	
+	
+	void setRecruitmentInfo(vector<RecruitmentInfo*> riList);
+	//RecruitmentInfoList(vector<RecruitmentInfo*>riList);
 	vector<RecruitmentInfo*> getRIList();
 	void addNewRecruitmentInfoList(RecruitmentInfo* ri);
 	RecruitmentInfo* findByName(string companyName);
 	RecruitmentInfo* findByNum(string bn);
+	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);//자신의 리스트를 오름차순 정렬로 정렬하는 함수
 
 };
 
@@ -298,6 +310,7 @@ public:
 
 
 /*
+
 클래스 이름 : LogIn <Control 클래스> : 로그인과 관련된 control을 담당한다.
 클래스 멤버변수:
 클래스 멤버함수:
@@ -509,6 +522,101 @@ private:
 public:
 	InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo);
 	void startInterface(vector<RecruitmentInfo*> riList); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
+};
+
+
+//-------------------------------
+// 채용정보검색
+
+class SearchRecruitmentInfoUI {
+private:
+	SearchRecruitmentInfo* searchRecruitmentInfo;
+public:
+	SearchRecruitmentInfoUI(SearchRecruitmentInfo* searchRecruitmentInfo);
+	void startInterface();
+
+
+};
+
+
+
+class SearchRecruitmentInfo {
+private:
+	RecruitmentInfoList* riList;
+	string companyName;
+	RecruitmentInfo* result;
+public:
+	SearchRecruitmentInfo(RecruitmentInfoList* riList);
+	RecruitmentInfo* getResult();
+	void setCompanyName(string companyName);
+	void searchRecruitmentInfoListByComName(string name);
+};
+//채용정보검색
+
+//채용 지원
+/*
+*/
+class ApplyForRecruitmentInfoUI {
+private:
+	string bn;
+	ApplyForRecruitmentInfo* applyForRecruitmentInfo;
+public:
+	ApplyForRecruitmentInfoUI(ApplyForRecruitmentInfo* applyForRecruitmentInfo);
+	void startInterface(RecruitmentInfoList* riList);
+	void applyForRecruitmentInfoByNum(string bn);
+};
+
+
+class ApplyForRecruitmentInfo {
+private:
+	GeneralClient* gClient; //지원하려고하는 일반 회원
+	RecruitmentInfoList* riList; //현재 등록된 채용정보
+	RecruitmentInfo* appliedRecruitmentInfo;//로그인한 일반회원이 지원한 채용목록
+
+public:
+	ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
+	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);
+	void addApplicant(string bn);
+};
+
+// 채용 지원
+
+// 지원 정보 조회
+
+class InquireApplicationInfoUI {
+private:
+
+public:
+	//	InquireApplicationInfoUI();
+	void startInterface(vector<RecruitmentInfo*> gcAppliedList);
+};
+
+
+
+class InquireApplicationInfo {
+private:
+	GeneralClient* gClient;
+	vector<RecruitmentInfo*> gcAppliedList;
+public:
+	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);
+	InquireApplicationInfo(GeneralClient* gClient);
+
+};
+
+
+class CompareRecruitmentInfo {
+
+public:
+	bool operator()(const RecruitmentInfo* a, const RecruitmentInfo* b) {
+		string aName = a->getName();
+		string bName = b->getName();
+		if (aName != bName) {
+			return aName < bName;
+		}
+		else {
+			return true;
+		}
+	}
 };
 
 
