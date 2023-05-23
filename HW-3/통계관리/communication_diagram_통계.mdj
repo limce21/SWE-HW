@@ -63,7 +63,7 @@
 													"font": "Arial;13;0",
 													"left": 56.72998046875,
 													"top": 61,
-													"width": 158.447265625,
+													"width": 139.1422119140625,
 													"height": 13,
 													"text": "등록한 채용 정보 통계 열람"
 												},
@@ -1796,7 +1796,7 @@
 													"height": 13,
 													"alpha": -0.162926436924558,
 													"distance": 73.97972695272672,
-													"text": "2.1 : listRegisteredInfo()"
+													"text": "1.1 : listRegisteredInfo()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -2327,89 +2327,6 @@
 											}
 										},
 										{
-											"_type": "UMLCommMessageView",
-											"_id": "AAAAAAGIAN6foYq2m9g=",
-											"_parent": {
-												"$ref": "AAAAAAGIAM6riWTVp0w="
-											},
-											"model": {
-												"$ref": "AAAAAAGIAN6foYq1ilk="
-											},
-											"subViews": [
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAN6foYq3cQk=",
-													"_parent": {
-														"$ref": "AAAAAAGIAN6foYq2m9g="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAN6foYq1ilk="
-													},
-													"font": "Arial;13;0",
-													"left": 464.692138671875,
-													"top": 208,
-													"width": 104.61572265625,
-													"height": 13,
-													"alpha": -1.570795771239341,
-													"distance": 18,
-													"text": "1 : startInterface()"
-												},
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAN6foYq4U3o=",
-													"_parent": {
-														"$ref": "AAAAAAGIAN6foYq2m9g="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAN6foYq1ilk="
-													},
-													"visible": false,
-													"font": "Arial;13;0",
-													"left": 517,
-													"top": 166,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 25
-												},
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAN6foYq5hCs=",
-													"_parent": {
-														"$ref": "AAAAAAGIAN6foYq2m9g="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAN6foYq1ilk="
-													},
-													"visible": false,
-													"font": "Arial;13;0",
-													"left": 517,
-													"top": 181,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10
-												}
-											],
-											"font": "Arial;13;0",
-											"left": 498,
-											"top": 198,
-											"width": 39,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAGIAN6foYqqojo="
-											},
-											"edgePosition": 1,
-											"nameLabel": {
-												"$ref": "AAAAAAGIAN6foYq3cQk="
-											},
-											"stereotypeLabel": {
-												"$ref": "AAAAAAGIAN6foYq4U3o="
-											},
-											"propertyLabel": {
-												"$ref": "AAAAAAGIAN6foYq5hCs="
-											}
-										},
-										{
 											"_type": "UMLConnectorView",
 											"_id": "AAAAAAGIOQTQ/FQdHUk=",
 											"_parent": {
@@ -2671,7 +2588,7 @@
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "2 : printStatisticsInfo()"
+													"text": "1 : printStatisticsInfo()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -3091,7 +3008,7 @@
 													"height": 13,
 													"alpha": -0.028294331180651597,
 													"distance": 106.04244433244644,
-													"text": "2.1.1 : getRecruitmentInfoList()"
+													"text": "1.1.1 : getRecruitmentInfoList()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -3177,25 +3094,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIANkNhGsGnaA="
 									},
-									"sequenceNumber": "2.1"
-								},
-								{
-									"_type": "UMLMessage",
-									"_id": "AAAAAAGIAN6foYq1ilk=",
-									"_parent": {
-										"$ref": "AAAAAAGIAM6riWTU0hQ="
-									},
-									"name": "startInterface()",
-									"source": {
-										"$ref": "AAAAAAGIANB4u2VM7oQ="
-									},
-									"target": {
-										"$ref": "AAAAAAGIAM+5Y2UtjDY="
-									},
-									"connector": {
-										"$ref": "AAAAAAGIAN6foIqnBFw="
-									},
-									"sequenceNumber": "1"
+									"sequenceNumber": "1.1"
 								},
 								{
 									"_type": "UMLMessage",
@@ -3213,7 +3112,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIOQTQ/FQanV8="
 									},
-									"sequenceNumber": "2"
+									"sequenceNumber": "1"
 								},
 								{
 									"_type": "UMLMessage",
@@ -3231,7 +3130,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIOQXdSGZJpto="
 									},
-									"sequenceNumber": "2.1.1"
+									"sequenceNumber": "1.1.1"
 								}
 							],
 							"participants": [
@@ -3663,7 +3562,7 @@
 													"font": "Arial;13;0",
 													"left": 88.72998046875,
 													"top": 93,
-													"width": 128.83544921875,
+													"width": 113.0404052734375,
 													"height": 13,
 													"text": "지원한 정보 통계 열람"
 												},
@@ -5402,7 +5301,7 @@
 													"height": 13,
 													"alpha": -0.09804526132365285,
 													"distance": 61.29437168288782,
-													"text": "2.1 : listAppliedInfo()"
+													"text": "1.1 : listAppliedInfo()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -5933,89 +5832,6 @@
 											}
 										},
 										{
-											"_type": "UMLCommMessageView",
-											"_id": "AAAAAAGIAOtWK6uykDc=",
-											"_parent": {
-												"$ref": "AAAAAAGIAN/q7Y//WU8="
-											},
-											"model": {
-												"$ref": "AAAAAAGIAOtWK6uxxAs="
-											},
-											"subViews": [
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAOtWK6uzicQ=",
-													"_parent": {
-														"$ref": "AAAAAAGIAOtWK6uykDc="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAOtWK6uxxAs="
-													},
-													"font": "Arial;13;0",
-													"left": 535.192138671875,
-													"top": 239,
-													"width": 104.61572265625,
-													"height": 13,
-													"alpha": -1.5707956125091824,
-													"distance": 14,
-													"text": "1 : startInterface()"
-												},
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAOtWLKu0VcI=",
-													"_parent": {
-														"$ref": "AAAAAAGIAOtWK6uykDc="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAOtWK6uxxAs="
-													},
-													"visible": false,
-													"font": "Arial;13;0",
-													"left": 587.5,
-													"top": 201,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 25
-												},
-												{
-													"_type": "NodeLabelView",
-													"_id": "AAAAAAGIAOtWLKu1QYQ=",
-													"_parent": {
-														"$ref": "AAAAAAGIAOtWK6uykDc="
-													},
-													"model": {
-														"$ref": "AAAAAAGIAOtWK6uxxAs="
-													},
-													"visible": false,
-													"font": "Arial;13;0",
-													"left": 587.5,
-													"top": 216,
-													"height": 13,
-													"alpha": 1.5707963267948966,
-													"distance": 10
-												}
-											],
-											"font": "Arial;13;0",
-											"left": 568,
-											"top": 233,
-											"width": 40,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAGIAOtWK6umP0c="
-											},
-											"edgePosition": 1,
-											"nameLabel": {
-												"$ref": "AAAAAAGIAOtWK6uzicQ="
-											},
-											"stereotypeLabel": {
-												"$ref": "AAAAAAGIAOtWLKu0VcI="
-											},
-											"propertyLabel": {
-												"$ref": "AAAAAAGIAOtWLKu1QYQ="
-											}
-										},
-										{
 											"_type": "UMLConnectorView",
 											"_id": "AAAAAAGIOQcj2nbYiwc=",
 											"_parent": {
@@ -6277,7 +6093,7 @@
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "2 : printStatisticsInfo()"
+													"text": "1 : printStatisticsInfo()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -6691,7 +6507,7 @@
 													"height": 13,
 													"alpha": -0.00990066560778871,
 													"distance": 101.00495037373169,
-													"text": "2.1.1 : getRecruitmentInfoList()"
+													"text": "1.1.1 : getRecruitmentInfoList()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -6776,25 +6592,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIAOmeMJpgQdw="
 									},
-									"sequenceNumber": "2.1"
-								},
-								{
-									"_type": "UMLMessage",
-									"_id": "AAAAAAGIAOtWK6uxxAs=",
-									"_parent": {
-										"$ref": "AAAAAAGIAN/q7Y/+mSU="
-									},
-									"name": "startInterface()",
-									"source": {
-										"$ref": "AAAAAAGIAOGPS5DiSVI="
-									},
-									"target": {
-										"$ref": "AAAAAAGIAOE0w5DGqUg="
-									},
-									"connector": {
-										"$ref": "AAAAAAGIAOtWKquj/eo="
-									},
-									"sequenceNumber": "1"
+									"sequenceNumber": "1.1"
 								},
 								{
 									"_type": "UMLMessage",
@@ -6812,7 +6610,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIOQcj2nbVJjc="
 									},
-									"sequenceNumber": "2"
+									"sequenceNumber": "1"
 								},
 								{
 									"_type": "UMLMessage",
@@ -6830,7 +6628,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIOQfuSILj1JA="
 									},
-									"sequenceNumber": "2.1.1"
+									"sequenceNumber": "1.1.1"
 								}
 							],
 							"participants": [
