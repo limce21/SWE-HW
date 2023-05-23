@@ -34,6 +34,8 @@ class RegisterRecruitmentInfo;
 class RegisterRecruitmentInfoUI;
 class InquireRecruitmentInfo;
 class InquireRecruitmentInfoUI;
+class CancelApplicationInfoUI;
+class CancelApplicationInfo;
 class Client;
 class ClientList;
 class GeneralClientList;
@@ -111,14 +113,14 @@ public:
 class GeneralClient : public Client
 {
 private:
-	string _rrn; //일반회원의 주민번호
-	vector<RecruitmentInfo*> appliedList;//해당 회원이 지원한 리스트
+	string rrn; //일반회원의 주민번호
+	vector<RecruitmentInfo*> appliedList;
 
 public:
 	
 	GeneralClient(int type, string name, string num, string id, string pw); //일반회원 객체의 생성자
 	void addApplication(RecruitmentInfo* ri);
-	vector<RecruitmentInfo*> getListAppliedInfo();
+	vector<RecruitmentInfo*> getListAppliedInfo();//여기부터 작업하기
 
 };
 
@@ -135,11 +137,11 @@ public:
 class CompanyClient : public Client
 {
 private:
-	string _bn; //회사회원의 사업자 번호
+	string bn; //회사회원의 사업자 번호
 	vector<RecruitmentInfo*> registeredList;
 public:
 	CompanyClient(int type, string name, string num, string id, string pw); //회사회원 객체의 생성자
-	RecruitmentInfo* addNewRecruitInfo(string _task, int numOfApplicant, string _finishDate); // 채용 정보 생성하기
+	RecruitmentInfo* addNewRecruitInfo(string _task, int expectedApplicantNum, string _finishDate); // 채용 정보 생성하기
 	string getbn(); // 사업자정보 반환하기
 	vector<RecruitmentInfo*> getListRegisteredInfo();
 
@@ -194,7 +196,7 @@ public:
 
 	void addGeneralClient(GeneralClient* C); //GeneralClientList의 attribute인 gCList에 새로 회원가입한 일반 회원 정보를 넣어줌
 	void destroy(string id); //해당 id값을 지닌 GeneralClient 객체를 gCList에서 지움
-	GeneralClient* findById(string id);//해당리스트에서 id를 기준으로 회원찾는것
+	GeneralClient* findById(string id);
 };
 
 
@@ -229,14 +231,12 @@ private:
 	string companyName;
 	string bn;
 	string task;
-	int numOfApplicant;//지원자수
-	int expectedApplicantNum;//모집인원
+	int numOfApplicant;
+	int expectedApplicantNum;
 	string finishDate;
 
 public:
 	RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate);
-	//RecruitmentInfo* getRecruitmentInfoDetails(RecruitmentInfo* ri);필요없는듯?
-	
 	string getName()const;//compare작성할때 읽기전용으로만 읽을 수 있음
 	string getBn();
 	string getTask();
@@ -244,7 +244,7 @@ public:
 	int getExpectedApplicantNum();
 	string getFinishDate();
 	void addApplicantToRecruitment();
-	
+	void subApplicantToRecruitment();
 };
 
 class RecruitmentInfoList {
@@ -252,8 +252,6 @@ private:
 	vector<RecruitmentInfo*> rCList; // GeneralClient 포인터 배열
 
 public:
-	
-	
 	void setRecruitmentInfo(vector<RecruitmentInfo*> riList);
 	//RecruitmentInfoList(vector<RecruitmentInfo*>riList);
 	vector<RecruitmentInfo*> getRIList();
@@ -261,7 +259,6 @@ public:
 	RecruitmentInfo* findByName(string companyName);
 	RecruitmentInfo* findByNum(string bn);
 	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);//자신의 리스트를 오름차순 정렬로 정렬하는 함수
-
 };
 
 /*
@@ -311,7 +308,6 @@ public:
 
 
 /*
-
 클래스 이름 : LogIn <Control 클래스> : 로그인과 관련된 control을 담당한다.
 클래스 멤버변수:
 클래스 멤버함수:
@@ -423,7 +419,6 @@ private:
 
 public:
 	SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client);  //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
-	
 
 };
 
@@ -468,7 +463,7 @@ private:
 
 public:
 	RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList);
-	void addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate); // recruitment info에 정보를 추가합니다
+	void addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate); // recruitment info에 정보를 추가합니다
 	RecruitmentInfoList* getRecruitmentInfoList();
 	RecruitmentInfo* getRegisteredList();
 };
@@ -490,8 +485,8 @@ private:
 
 public:
 	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
-	void startInterface(); // 인터페이스 시작
-	void result(string task, int numOfApplicant, string finishDate); // 사용자의 화면에 결과를 표시합니다
+	void startInterface(); // 입력값을 읽어들입니다.
+	void result(string task, int expectedApplicantNum, string finishDate); // 사용자의 화면에 결과를 표시합니다
 	void registerInput(); //파일에서 입력값을 받아들임
 };
 
@@ -526,7 +521,6 @@ public:
 	InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo);
 	void startInterface(vector<RecruitmentInfo*> riList); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
 };
-
 
 //-------------------------------
 // 채용정보검색
@@ -601,7 +595,7 @@ private:
 	GeneralClient* gClient;
 	vector<RecruitmentInfo*> gcAppliedList;
 public:
-	
+
 	InquireApplicationInfo(GeneralClient* gClient);
 
 };
@@ -613,6 +607,31 @@ public:
 	bool operator()(const RecruitmentInfo* a, const RecruitmentInfo* b);
 };
 
+class CancelApplicationInfoUI
+{
+private:
+	CancelApplicationInfo* cancelApplicationInfo;
+	string bn;
+public:
+	CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo);
+	void startInterface(RecruitmentInfoList* riList);
+	void bnInput();
+};
+
+class CancelApplicationInfo
+{
+private:
+	GeneralClient* gClient;//현재 취소하려는 일반회원
+	RecruitmentInfoList* riList;//현재 등록되어있는 채용공고목록]
+	vector<RecruitmentInfo*> gcRiList;//일반회원이 지원한 채용공고 목록
+	RecruitmentInfo* toCancelRecruitmentInfo;//본인이 지원한, 취소하려는, 채용 공고
+	CancelApplicationInfoUI* cancelApplicationInfoUI;
+
+
+public:
+	CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
+	void cancelApplication(string bn);
+};
 
 #endif // !1
 
