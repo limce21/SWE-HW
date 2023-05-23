@@ -81,11 +81,11 @@ class Client
 {
 private:
 	int type; //회원의 type-> 1. 회사회원 / 2. 일반회원
-	string _id;//회원의 id
-	string _pw;//회원의 pw 
-	string _name;//회원의 이름
+	string id;//회원의 id
+	string pw;//회원의 pw 
+	string name;//회원의 이름
 	//string _num;//회원이 가진 번호 -> 회사회원:사업자번호 / 일반회원: 주민번호
-	bool _isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
+	bool isLogIn; //회원의 login 상태 정보 -> true: 로그인 상태 / false: 로그아웃 상태
 
 public:
 	Client(int type, string name, string id, string pw);  //회원 객체의 생성자
@@ -118,7 +118,7 @@ public:
 	
 	GeneralClient(int type, string name, string num, string id, string pw); //일반회원 객체의 생성자
 	void addApplication(RecruitmentInfo* ri);
-	vector<RecruitmentInfo*> getListAppliedInfo();//여기부터 작업하기
+	vector<RecruitmentInfo*> getListAppliedInfo();
 
 };
 
@@ -234,16 +234,17 @@ private:
 	string finishDate;
 
 public:
-	RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate);
+	RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate);
 	//RecruitmentInfo* getRecruitmentInfoDetails(RecruitmentInfo* ri);필요없는듯?
-	string getName()const;
+	
+	string getName()const;//compare작성할때 읽기전용으로만 읽을 수 있음
 	string getBn();
 	string getTask();
 	int getApplicantNum();
 	int getExpectedApplicantNum();
 	string getFinishDate();
 	void addApplicantToRecruitment();
-	bool operator()(const RecruitmentInfo& a ,const RecruitmentInfo& b);
+	
 };
 
 class RecruitmentInfoList {
@@ -418,10 +419,11 @@ private:
 	CompanyClientList* ccList; //회사 회원들의 정보를 지닌 collection class의 instance
 	GeneralClientList* gcList; //일반 회원들의 정보를 지닌 collection class의 instance
 	Client* curLogInClient; //로그인 객체가 매개변수로 전달해준 현재 로그인 된 client계정을 저장할 공간
+	void destroy(Client* client); //로그인 되어있는 해당 회원을 탈퇴시킴
 
 public:
 	SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client);  //컨트롤 클래스의 생성자-> 바운더리 클래스의 레퍼런스를 attribute로 가짐
-	void destroy(Client* client); //로그인 되어있는 해당 회원을 탈퇴시킴
+	
 
 };
 
@@ -488,8 +490,9 @@ private:
 
 public:
 	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
-	void startInterface(); // 입력값을 읽어들입니다.
+	void startInterface(); // 인터페이스 시작
 	void result(string task, int numOfApplicant, string finishDate); // 사용자의 화면에 결과를 표시합니다
+	void registerInput(); //파일에서 입력값을 받아들임
 };
 
 /*
@@ -571,11 +574,11 @@ class ApplyForRecruitmentInfo {
 private:
 	GeneralClient* gClient; //지원하려고하는 일반 회원
 	RecruitmentInfoList* riList; //현재 등록된 채용정보
-	RecruitmentInfo* appliedRecruitmentInfo;//로그인한 일반회원이 지원한 채용목록
+	RecruitmentInfo* appliedRecruitmentInfo;//로그인한 일반회원이 지원한 채용목록	
+
 
 public:
 	ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
-	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);
 	void addApplicant(string bn);
 };
 
@@ -598,25 +601,16 @@ private:
 	GeneralClient* gClient;
 	vector<RecruitmentInfo*> gcAppliedList;
 public:
-	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);
+	
 	InquireApplicationInfo(GeneralClient* gClient);
 
 };
 
 
-class CompareRecruitmentInfo {
+class CompareRecruitmentInfo {//RecruitmentInfo pointer를 비교하는 클래스
 
 public:
-	bool operator()(const RecruitmentInfo* a, const RecruitmentInfo* b) {
-		string aName = a->getName();
-		string bName = b->getName();
-		if (aName != bName) {
-			return aName < bName;
-		}
-		else {
-			return true;
-		}
-	}
+	bool operator()(const RecruitmentInfo* a, const RecruitmentInfo* b);
 };
 
 
