@@ -1553,20 +1553,20 @@ void CancelApplicationInfo::cancelApplication(string bn)
 */
 ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* companyClient){
     this->companyClient = companyClient;
-    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
-    this->printStatisticsInfo(companyClientsRecruitmentInfo);
+    this->printStatisticsInfo(companyClient);
 }
 
 /*
    함수이름: ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo
    기능: 해당 회사 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            vector<RecruitmentInfo*> companyClientsRecruitmentInfo -> 회사 회원의 채용 정보 RecruitmentInfo 배열
+            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
    반환값: 없음
    작성날짜: 2023/05/23
    작성자: 임채은
 */
-void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo){
+void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *companyClient){
+    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
     map<string, int> taskByNumMap;
     int size = companyClientsRecruitmentInfo.size();
     int value = 0;
@@ -1604,20 +1604,20 @@ void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(vector<Recru
 */
 ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* generalClient){
     this->generalClient = generalClient;
-    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
-    this->printStatisticsInfo(generalClientsRecruitmentInfo);
+    this->printStatisticsInfo(generalClient);
 }
 
 /*
    함수이름: ViewStatisticsOfAppliedInfo::printStatisticsInfo
    기능: 해당 일반 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            vector<RecruitmentInfo*> generalClientsRecruitmentInfoo -> 일반 회원의 채용 정보 RecruitmentInfo 배열
+            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
    반환값: 없음
    작성날짜: 2023/05/24
    작성자: 임채은
 */
-void ViewStatisticsOfAppliedInfo::printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo){
+void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* generalClient){
+    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
     map<string, int> taskByNumMap;
     int size = generalClientsRecruitmentInfo.size();
     int value = 0;

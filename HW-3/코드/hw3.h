@@ -644,7 +644,7 @@ public:
 	CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
 	ViewstatisticsOfRegisteredRecruitmentInfo*pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
 클래스 멤버함수:
-	printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo) -> 모든 채용정보에 대해 업무별 지원자 수를 보여준다.
+	printStatisticsInfo(CompanyClient *companyClient) -> 모든 채용정보에 대해 업무별 지원자 수를 보여준다.
 작성날짜 : 2023/05/22
 작성자 : 임채은
 */
@@ -654,7 +654,7 @@ private:
 	ViewStatisticsOfRegisteredRecruitmentInfo* pUI;
 public:
 	ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient *companyClient);
-	void printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo);
+	void printStatisticsInfo(CompanyClient *companyClient);
 };
 
 /*
@@ -677,7 +677,7 @@ public:
 	GeneralClient *generalClient -> 일반 회원들의 정보를 지닌 GeneralClient 객체
 	ViewStatisticsOfAppliedInfo *pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
 클래스 멤버함수:
-	printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo) -> 모든 지원정보에 대해 업무별 지원 횟수를 보여준다.
+	printStatisticsInfo(GeneralClient *generalClient) -> 모든 지원정보에 대해 업무별 지원 횟수를 보여준다.
 작성날짜 : 2023/05/22
 작성자 : 임채은
 */
@@ -687,7 +687,7 @@ private:
 	ViewStatisticsOfAppliedInfo *pUI;
 public:
 	ViewStatisticsOfAppliedInfo(GeneralClient *generalClient);
-	void printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo); 
+	void printStatisticsInfo(GeneralClient *generalClient); 
 };
 
 /*
