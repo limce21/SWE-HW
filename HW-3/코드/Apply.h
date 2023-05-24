@@ -6,7 +6,31 @@
 //class 전방선언
 class SearchRecruitmentInfoUI;
 class SearchRecruitmentInfo;
+class CancelApplicationIfoUI;
+class CancelApplicationIfo;
 
+class CancelApplicationIfoUI
+{
+private:
+	CancelApplicationIfo* cancelApplicationIfo;
+	string bn;
+public:
+	CancelApplicationIfoUI(CancelApplicationIfo* cancelApplicationIfo);
+	void startInterface();
+};
+
+class CancelApplicationIfo
+{
+private:
+	GeneralClient* gClient;
+	RecruitmentInfoList* riList;
+	RecruitmentInfo* appliedRecruitmentInfo;
+
+
+public:
+	CancelApplicationIfo(GeneralClient* gClient, RecruitmentInfoList* riList);
+	void cancelApplication(string bn);
+};
 
 
 // 채용정보검색
@@ -16,7 +40,6 @@ private:
 public:
 	SearchRecruitmentInfoUI(SearchRecruitmentInfo* searchRecruitmentInfo);
 	void startInterface();
-
 
 };
 

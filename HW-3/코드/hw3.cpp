@@ -135,8 +135,8 @@ void System::doTask()
 
                         RegisterRecruitmentInfo* registerRecruitmentInfo = new RegisterRecruitmentInfo(tmpCompanyClient, rcList);
                         //Control 내부에서 방금 등록한 채용정보를 현재 세션으로 반영하는 작업이 필요함
-                        
-                        
+
+
                     }
                 }
                 else //로그인되어있는 사람이 없는 경우 
@@ -167,47 +167,55 @@ void System::doTask()
         }
         case 4: {
             switch (menu_level_2) {
-                case 1: {//채용 정보 검색
-                    fout << "4.1. 채용정보 검색\n";
-                    if (logIn != nullptr) {
-                        curLogInClient = logIn->getLogInClient();
-                        string tmpid = curLogInClient->getId();
-                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
-                        SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
-                    }
-                    else {
-                        cout << "일반회원으로 로그인하고 오십시오.\n";
-                    }
-                    break;
+            case 1: {//채용 정보 검색
+                fout << "4.1. 채용정보 검색\n";
+                if (logIn != nullptr) {
+                    SearchRecruitmentInfo* searchRecruitmentInfo = new SearchRecruitmentInfo(rcList);
+                }
+                else {
+                    cout << "일반회원으로 로그인하고 오십시오.\n";
+                }
+                break;
             }
-                case 2: {//채용 지원
-                    fout << "4.2. 채용 지원\n";
-                    if (logIn != nullptr) {
-                        curLogInClient = logIn->getLogInClient();
-                        string tmpid = curLogInClient->getId();
-                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
-                        ApplyForRecruitmentInfo* applyForRecruitmentInfo = new ApplyForRecruitmentInfo(tmpGeneralClient,rcList);
-                    }
-                    else {
-                        cout << "일반회원으로 로그인하고 오십시오.\n";
-                    }
-                    break;
-                case 3: {//지원 정보 조회
-                    fout << "4.3. 지원 정보 조회\n";
-                    if (logIn != nullptr) {
-                        curLogInClient = logIn->getLogInClient();
-                        string tmpid = curLogInClient->getId();
-                        GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
-                        InquireApplicationInfo* inquireApplicationInfo = new InquireApplicationInfo(tmpGeneralClient);
-                    }
-                    else {
-                        cout << "일반 회원으로 로그인하고 재시도 하십시오.\n";
-                    }
-                    break;
+            case 2: {//채용 지원
+                fout << "4.2. 채용 지원\\n";
+                if (logIn != nullptr) {
+                    curLogInClient = logIn->getLogInClient();
+                    string tmpid = curLogInClient->getId();
+                    GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                    ApplyForRecruitmentInfo* applyForRecruitmentInfo = new ApplyForRecruitmentInfo(tmpGeneralClient,rcList);
                 }
-                case 4: {// 지원 취소
+                else {
+                    cout << "일반회원으로 로그인하고 오십시오.\n";
+                }
+                break;
+            }
+            case 3: {//지원 정보 조회
+                fout << "4.3. 지원 정보 조회\n";
+                if (logIn != nullptr) {
+                    curLogInClient = logIn->getLogInClient();
+                    string tmpid = curLogInClient->getId();
+                    GeneralClient* tmpGeneralClient = gcList->findById(tmpid);
+                    InquireApplicationInfo* inquireApplicationInfo = new InquireApplicationInfo(tmpGeneralClient);
+                }
+                else {
+                    cout << "일반 회원으로 로그인하고 재시도 하십시오.\n";
+                }
+                break;
+            }
+            case 4: {// 지원 취소
+                fout << "4.4. 지원 취소\n";
+                if (logIn != nullptr) { //
+                    curLogInClient = logIn->getLogInClient(); //현재 로그인된 회원을 알아온다
+                    string tmpid = curLogInClient->getId();
+                    GeneralClient* tmpGeneralClient = gcList->findById(tmpid); 
+                    CancelApplicationInfo* cancelApplicationInfo = new CancelApplicationInfo(tmpGeneralClient, rcList);
+                }
+                else {
+                    cout << "지원 취소가 불가능합니다.\n";
+                }
+                break;
 
-                }
             }
             }
             break;
@@ -354,7 +362,7 @@ void Client::changeLogInStatus()
 */
 CompanyClient::CompanyClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
-    this->_bn = num;
+    this->bn = num;
 }
 
 
@@ -362,7 +370,7 @@ CompanyClient::CompanyClient(int type, string name, string num, string id, strin
 
 string CompanyClient::getbn()
 {
-    return this->_bn;
+    return this->bn;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -377,7 +385,7 @@ string CompanyClient::getbn()
 */
 GeneralClient::GeneralClient(int type, string name, string num, string id, string pw) :Client(type, name, id, pw)
 {
-    this->_rrn = num;
+    this->rrn = num;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -557,7 +565,7 @@ RecruitmentInfo* RecruitmentInfoList::findByNum(string bn) {
     }
 }
 
-string RecruitmentInfo::getName() const{
+string RecruitmentInfo::getName()const {
     return this->companyName;
 }
 
@@ -608,7 +616,7 @@ SignInUI::SignInUI(SignIn* refSignIn)
 
 /*
    함수이름: SignInUI::startInterface
-   기능: 회원 유형과 정보를 입력하라는 화면을 보여준다. 
+   기능: 회원 유형과 정보를 입력하라는 화면을 보여주고, 필요 정보를 입력받아 컨트롤 클래스에게 입력받은 정보를 보내 회원 등록을 요청한다.
    매개변수: 없음
    반환값: 없음
 
@@ -619,7 +627,6 @@ void SignInUI::startInterface()
 {
     cout << "회원 유형과 정보를 입력하세요" << endl;
     this->fillInfo();
-   
 
 
 
@@ -628,7 +635,7 @@ void SignInUI::startInterface()
 
 /*
    함수이름: SignInUI::fillInfo
-   기능: 회원 가입을 위한  필요 정보를 입력받아 컨트롤 클래스에게 입력받은 정보를 보내 회원 등록을 요청한다.
+   기능: 회원 가입을 위한 필요 정보를 입력받는 기능을 한다
    매개변수: 없음
    반환값: 없음
 
@@ -639,7 +646,6 @@ void SignInUI::fillInfo()
 {
     fin >> this->type >> this->name >> this->num >> this->id >> this->pw;
     this->pSignIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
-
 }
 
 
@@ -678,7 +684,7 @@ void SignIn::addNewClient(int clientType, string name, string num, string id, st
         this->gcList->addGeneralClient(gClient); //일반회원 리스트에 저장
     }
 
-    fout << "> " << clientType << ' ' << name << ' ' << num << ' ' << id << ' ' << pw << endl << endl; //파일에 성공 메세지 출력
+    fout << '>' << clientType << ' ' << name << ' ' << num << ' ' << id << ' ' << pw << endl << endl; //파일에 성공 메세지 출력
 }
 
 
@@ -739,7 +745,7 @@ void LogIn::tryLogIn(string id, string pw)
 
                 temp[i]->changeLogInStatus(); //해당 회원의 로그인 상태값을 true로 바꿔줌
                 this->curLogInClient = temp[i]; //로그인이 되었으므로 LogIn 컨트롤 클래스는 현재 로그인된 client의 정보를 갖고있는다
-                fout << "> " << temp[i]->getId() << ' ' << temp[i]->getPw() << endl << endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
+                fout << '>' << temp[i]->getId() << ' ' << temp[i]->getPw() << endl << endl; //로그인이 완료되면 완료되었다는 정보를 파일에 출력함
                 break; //로그인을 시켰으므로 for문 탈출
             }
 
@@ -795,7 +801,7 @@ LogInUI::LogInUI(LogIn* refLogIn)
 
 /*
    함수이름: LogInInUI::startInterface
-   기능: 회원 id와 pw를 입력하라는 화면을 보여준다. 
+   기능: 회원 id와 pw를 입력하라는 화면을 보여주고, 필요 정보를 입력받아 컨트롤 클래스에게 입력받은 정보를 보내 로그인을 요청한다.
    매개변수: 없음
    반환값: 없음
 
@@ -806,14 +812,13 @@ void LogInUI::startInterface()
 {
     cout << "아이디와 패스워드를 입력하세요" << endl;
     this->fillIDPW();
-    
 }
 
 
 
 /*
    함수이름: LogInUI::fillIDPW
-   기능: 로그인을 위한 필요 정보를 입력받아 컨트롤 클래스에게 입력받은 정보를 보내 로그인을 요청한다.
+   기능: 로그인을 위한 필요 정보를 입력받는 기능을 한다
    매개변수: 없음
    반환값: 없음
 
@@ -921,7 +926,7 @@ void LogOutUI::startInterface(string id, bool flag)
 {
     if (flag == true) //로그아웃이 된 경우
     {
-        fout << "> " << id << endl << endl;
+        fout << '>' << id << endl << endl;
         cout << "로그아웃 되었습니다." << endl;
     }
 
@@ -1036,7 +1041,7 @@ void SignOutUI::startInterface(string id, bool flag)
 {
     if (flag == true)
     {
-        fout << "> " << id << endl << endl;
+        fout << '>' << id << endl << endl;
         cout << "회원탈퇴 되었습니다." << endl;
     }
 
@@ -1098,11 +1103,11 @@ void RegisterRecruitmentInfoUI::startInterface()
 void RegisterRecruitmentInfoUI::registerInput()
 {
     string task;
-    int expecteApplicantNum;
+    int expectedApplicantNum;
     string finishDate;
-    fin >> task >> expecteApplicantNum >> finishDate;
-    registerRecruitmentInfo->addNewRecruitmentInfo(task, expecteApplicantNum, finishDate);
-    result(task, expecteApplicantNum, finishDate);
+    fin >> task >> expectedApplicantNum >> finishDate;
+    registerRecruitmentInfo->addNewRecruitmentInfo(task, expectedApplicantNum, finishDate);
+    result(task, expectedApplicantNum, finishDate);
 }
 
 /*
@@ -1111,12 +1116,12 @@ void RegisterRecruitmentInfoUI::registerInput()
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void RegisterRecruitmentInfoUI::result(string task, int expecteApplicantNum, string finishDate)
+void RegisterRecruitmentInfoUI::result(string task, int expectedApplicantNum, string finishDate)
 {
     fout << "> ";
     fout << task;
     fout << " ";
-    fout << expecteApplicantNum;
+    fout << expectedApplicantNum;
     fout << " " << finishDate << endl<<endl;
 
 }
@@ -1127,9 +1132,9 @@ void RegisterRecruitmentInfoUI::result(string task, int expecteApplicantNum, str
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int numOfApplicant, string finishDate)
+void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate)
 {
-    RecruitmentInfo *tmp = companyClient->addNewRecruitInfo(task, numOfApplicant, finishDate);
+    RecruitmentInfo *tmp = companyClient->addNewRecruitInfo(task, expectedApplicantNum, finishDate);
     this->recruitmentInfoList->addNewRecruitmentInfoList(tmp);
 }
 
@@ -1142,14 +1147,14 @@ void RecruitmentInfoList::addNewRecruitmentInfoList(RecruitmentInfo* ri) {
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int expecteApplicantNum, string finishDate)
+RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int expectedApplicantNum, string finishDate)
 {
     string name;
     string bn;
 
     name = this->getName();
     bn = this->getbn();
-    RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, task, expecteApplicantNum, finishDate);
+    RecruitmentInfo* newRecruitmentInfo = new RecruitmentInfo(name, bn, task, expectedApplicantNum, finishDate);
     this->registeredList.push_back(newRecruitmentInfo);
     return newRecruitmentInfo;
 
@@ -1161,12 +1166,12 @@ RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int expecteApplic
  작성날짜: 2023/05/22
  작성자: 김민정
 */
-RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int numOfApplicant, string finishDate)
+RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate)
 {
     this->companyName = companyName;
     this->bn = bn;
     this->task = task;
-    this->numOfApplicant = numOfApplicant;
+    this->expectedApplicantNum = expectedApplicantNum;
     this->finishDate = finishDate;
 }
 
@@ -1207,7 +1212,7 @@ void InquireRecruitmentInfoUI::startInterface(vector<RecruitmentInfo*> riList)
 {
     int size = riList.size();
     for (int i = 0; i < size; i++) {
-        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getApplicantNum() << " " << riList[i]->getFinishDate() << "\n\n";
+        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getExpectedApplicantNum() << " " << riList[i]->getFinishDate() << "\n\n";
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -1222,7 +1227,6 @@ CompanyClient* CompanyClientList::findById(string id) {
         }
     }
 }
-
 
 GeneralClient* GeneralClientList::findById(string id) {
     int size = gCList.size();
@@ -1272,11 +1276,10 @@ void RecruitmentInfo::addApplicantToRecruitment() {
     this->numOfApplicant += 1;
 }
 
-
-vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
-    return this->appliedList;
+//지원자수 한명 감소
+void RecruitmentInfo::subApplicantToRecruitment() {
+    this->numOfApplicant -= 1;
 }
-
 
 int RecruitmentInfo::getExpectedApplicantNum() {
     return this->expectedApplicantNum;
@@ -1285,7 +1288,6 @@ int RecruitmentInfo::getExpectedApplicantNum() {
 void RecruitmentInfoList::setRecruitmentInfo(vector<RecruitmentInfo*> riList) {
     this->rCList = riList;
 }
-
 
 //-----------------------------------------------
 
@@ -1305,7 +1307,7 @@ void SearchRecruitmentInfoUI::startInterface() {
 
     fout << "> " << this->searchRecruitmentInfo->getResult()->getName() << " " <<
         this->searchRecruitmentInfo->getResult()->getBn() << " " << this->searchRecruitmentInfo->getResult()->getTask() << " " <<
-        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum() << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n"<<"\n";
+        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum()<<" " << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n\n";
 
 
 
@@ -1362,10 +1364,10 @@ ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, Recruit
     this->gClient = gClient;
     this->riList = riList;//현재 등록된 채용정보 리스트
     vector<RecruitmentInfo*> tmp = riList->getRIList();
-    
+
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
-    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList();\
+    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList(); \
     tmpRiList->setRecruitmentInfo(tmp);
 
     ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
@@ -1379,7 +1381,7 @@ void ApplyForRecruitmentInfo::addApplicant(string bn) {
     appliedRecruitmentInfo = this->riList->findByNum(bn);
     this->gClient->addApplication(appliedRecruitmentInfo);
     this->appliedRecruitmentInfo->addApplicantToRecruitment();//이 채용정보에 지원자수 하나 추가해야함
-    fout << endl << "> " <<"지원완료: "<< this->appliedRecruitmentInfo->getName() << ' ' << this->appliedRecruitmentInfo->getBn() << ' ' << this->appliedRecruitmentInfo->getTask() << endl << endl;
+    fout << endl << "> " << "지원완료: " << this->appliedRecruitmentInfo->getName() << ' ' << this->appliedRecruitmentInfo->getBn() << ' ' << this->appliedRecruitmentInfo->getTask() << endl << endl;
 }
 
 // 채용지원
@@ -1389,9 +1391,8 @@ InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
     this->gClient = gClient;
     this->gcAppliedList = gClient->getListAppliedInfo();
 
-    vector<RecruitmentInfo*> tmp = gcAppliedList;
+    vector<RecruitmentInfo*> tmp = gcAppliedList;//해당 회원이 지원한 회원정보 리스트
 
-    int size = tmp.size();
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
     InquireApplicationInfoUI* inquireApplicationInfoUI = new InquireApplicationInfoUI();
@@ -1405,8 +1406,8 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
     int size = gcAppliedList.size();
 
     for (int i = 0; i < size; i++) {
-        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getApplicantNum()
-            << " " << gcAppliedList[i]->getFinishDate() << "\n";
+        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
+            << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
     }
 }
 
@@ -1415,9 +1416,98 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
     string aName = a->getName();
     string bName = b->getName();
     if (aName != bName) {
-        return aName > bName;
-    }
-    else {//사실 회사이름이 같은 경우는 없지만 compile을 위한 예외 처리
         return aName < bName;
     }
+    else {//사실 회사이름이 같은 경우는 없지만 compile을 위한 예외 처리
+        return aName > bName;
+
+    }
+}
+
+//
+
+CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
+{    
+    this->gClient = gClient;
+    this->riList = riList;
+
+    
+    vector<RecruitmentInfo*> tmp = riList->getRIList();
+
+    sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
+
+    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList();
+    tmpRiList->setRecruitmentInfo(tmp);
+
+    CancelApplicationInfoUI* cancelApplicationInfoUI = new CancelApplicationInfoUI(this);
+
+    cancelApplicationInfoUI->startInterface(tmpRiList);
+}
+
+
+
+CancelApplicationInfoUI::CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
+{
+    this->cancelApplicationInfo = cancelApplicationInfo;
+    this->bn = "";
+}
+
+bool compare(RecruitmentInfo* a, RecruitmentInfo* b) {
+    return a->getName() < b->getName(); 
+}
+
+void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* riList)
+{
+    vector<RecruitmentInfo*> tmp;
+    tmp = riList->getRIList();
+    int size = tmp.size();
+    for (int i = 0; i < size; i++) {
+        fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
+    }
+
+    this->bnInput();
+    //int size = this->cancelApplicationInfo->gcRiList.size();
+
+    
+    
+}
+
+void CancelApplicationInfoUI::bnInput()
+{
+    fin >> this->bn;
+    this->cancelApplicationInfo->cancelApplication(this->bn); 
+}
+
+vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
+    return this->appliedList;
+}
+
+
+void CancelApplicationInfo::cancelApplication(string bn)
+{
+    //컨트롤이 갖고 있는 일반회원의 지원 정보 리스트에서 bn값과 일치하는 채용 정보를 리스트에서 삭제한다
+    for (int i = 0; i < this->gcRiList.size(); i++)
+    {
+        if (gcRiList[i]->getBn() == bn)
+        {
+            //this->cCList.erase(cCList.begin() + i);
+            this->gcRiList.erase(gcRiList.begin() + i);
+        }
+    }
+    //컨트롤이 갖고 있는 전체 채용 정보리스트에서 bn값과 일치하는 채용 정보의 지원자 수를 감소시킨다.
+
+    int tmpSize = this->riList->getRIList().size();
+
+    for (int i = 0; i < tmpSize; i++)
+    {
+        if (riList[i].getRIList()[i]->getBn() == bn)
+        {
+            riList[i].getRIList()[i]->subApplicantToRecruitment();
+        }
+    }
+
+    cout << "정상적으로 삭제되었습니다" << endl;
+    
+   
+
 }
