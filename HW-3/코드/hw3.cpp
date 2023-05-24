@@ -242,7 +242,7 @@ void System::doTask()
                 }
                 else //로그인되어있는 사람이 없는 경우 
                 {
-                    cout << "채용 정보를 등록할 수 없습니다." << endl;
+                    cout << "통계 정보를 조회할 수 없습니다." << endl;
                 }
                 break;
             }
@@ -1091,7 +1091,10 @@ void SignOutUI::startInterface(string id, bool flag)
 
 /*
  함수이름: RegisterRecruitmentInfo::RegisterRecruitmentInfo
- 기능: RegisterRecruitmentInfo control 클래스의 생성자입니다
+ 기능: RegisterRecruitmentInfo control 클래스의 생성자입니다.
+ 매개변수: CompanyClient* companyClient
+           RecruitmentInfoList* recruitmentInfoList
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1105,7 +1108,10 @@ RegisterRecruitmentInfo::RegisterRecruitmentInfo(CompanyClient* companyClient, R
 
 /*
  함수이름: RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI
- 기능: RegisterRecruitmentInfo  boundary 클래스의 생성자입니다
+ 기능: RegisterRecruitmentInfoUI boundary 클래스의 생성자입니다.
+ 매개변수: RegisterRecruitmentInfo* registerRecruitmentInfo
+           CompanyClient* companyClient
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1118,24 +1124,26 @@ RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* re
 
 /*
  함수이름: RegisterRecruitmentInfoUI::startInterface
- 기능: RegisterRecruitmentInfoUI에서 입력값을 읽어들이고 RecruitmentInfo에 정보를 추가, 결과를 표시하도록 합니다.
+ 기능: RegisterRecruitmentInfoUI에서 registerInput함수를 호출하여 입력값을 받도록 합니다.
+ 매개변수: 없음
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
 void RegisterRecruitmentInfoUI::startInterface()
 {
-    cout << "채용 정보 등록을 위한 필드를 입력하세요" << endl;
-    //string task;
-    //int numOfApplicant;
-    //string finishDate;
-
-    //fin >> task >> numOfApplicant >> finishDate;
-    //registerRecruitmentInfo->addNewRecruitmentInfo(task, numOfApplicant, finishDate);
-    //result(task, numOfApplicant, finishDate);
-
+    cout << "채용 정보 등록을 위한 필드를 입력하세요" << endl;;
     this->registerInput();
 }
 
+/*
+ 함수이름: RegisterRecruitmentInfoUI::registerInput()
+ 기능: 업무, 인원수, 마감일의 입력값을 받고 registerRecruitmentInfo의 addNewRecruitmentInfo 함수를 호출하고 result 함수로 사용자에게 등록된 정보를 표시합니다.
+ 매개변수: 없음
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void RegisterRecruitmentInfoUI::registerInput()
 {
     string task;
@@ -1149,6 +1157,10 @@ void RegisterRecruitmentInfoUI::registerInput()
 /*
  함수이름: RegisterRecruitmentInfoUI::result
  기능: 사용자에게 입력한 정보를 표시합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1163,8 +1175,12 @@ void RegisterRecruitmentInfoUI::result(string task, int expectedApplicantNum, st
 }
 
 /*
- 함수이름: RegisterRecruitmentInfoUI::addNewRecruitmentInfo
- 기능: companyClient에게 RecruitmentInfo를 추가하도록 합니다.
+ 함수이름: RegisterRecruitmentInfo::addNewRecruitmentInfo
+ 기능: addNewRecruitInfo 함수를 호출해 companyClient의 포인터에 RecruitmentInfo를 추가하도록 합니다. addNewRecruitmentInfoList 함수를 호출해 recruitmentInfoList의 포인터에 RecruitmentInfo를 추가하도록 합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1174,12 +1190,24 @@ void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int expectedApp
     this->recruitmentInfoList->addNewRecruitmentInfoList(tmp);
 }
 
+/*
+ 함수이름: RecruitmentInfoList::addNewRecruitmentInfoList
+ 기능: RecruitmentInfoList의 포인터에 RecruitmentInfo를 추가합니다.
+ 매개변수: RecruitmentInfo* ri
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void RecruitmentInfoList::addNewRecruitmentInfoList(RecruitmentInfo* ri) {
     this->rCList.push_back(ri);
 }
 /*
  함수이름: CompanyClient::addNewRecruitInfo
- 기능: company client의 포인터가 RecruitmentInfo를 추가합니다
+ 기능: CompanyClient의 포인터에 RecruitmentInfo를 추가합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1199,6 +1227,12 @@ RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int expectedAppli
 /*
  함수이름: RecruitmentInfo::RecruitmentInfo
  기능: 새로운 RecruitmentInfo 객체를 생성합니다.
+ 매개변수: string companyName
+           string bn
+           string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1214,7 +1248,9 @@ RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int
 
 /*
  함수이름: InquireRecruitmentInfo::InquireRecruitmentInfo
- 기능: InquireRecruitmentInfo control 클래스의 생성자입니다
+ 기능: InquireRecruitmentInfo control 클래스의 생성자입니다.
+ 매개변수: CompanyClient* companyClient
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1229,8 +1265,10 @@ InquireRecruitmentInfo::InquireRecruitmentInfo(CompanyClient* companyClient)
 }
 
 /*
- 함수이름: InquireRecruitmentInfoUI::InquireRecruitmentInfo
- 기능: InquireRecruitmentInfoUI boundary 클래스의 생성자입니다
+ 함수이름: InquireRecruitmentInfoUI::InquireRecruitmentInfoUI
+ 기능: InquireRecruitmentInfoUI boundary 클래스의 생성자입니다.
+ 매개변수: InquireRecruitmentInfo* inquireRecruitmentInfo
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1241,7 +1279,9 @@ InquireRecruitmentInfoUI::InquireRecruitmentInfoUI(InquireRecruitmentInfo* inqui
 
 /*
  함수이름: InquireRecruitmentInfoUI::startInterface
- 기능: 사용자인 회사 회원의 RecruitmentInfo를 출력합니다.
+ 기능: 사용자인 회사 회원의 모든 RecruitmentInfo를 출력합니다.
+ 매개변수: vector<RecruitmentInfo*> riList
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1462,7 +1502,16 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
     }
 }
 
-//
+// 지원 취소
+
+/*
+ 함수이름: CancelApplicationInfo::CancelApplicationInfo
+ 기능: CancelApplicationInfo control class의 생성자입니다.
+ 매개변수: GeneralClient* gClient, RecruitmentInfoList* riList
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 
 CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
 {    
@@ -1483,15 +1532,28 @@ CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, Recruitment
     cancelApplicationInfoUI->startInterface(tmpRiList);
 }
 
-
-
+/*
+ 함수이름: CancelApplicationInfoUI::CancelApplicationInfoUI
+ 기능: CancelApplicationInfo boundary class의 생성자입니다.
+ 매개변수: CancelApplicationInfo* cancelApplicationInfo
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 CancelApplicationInfoUI::CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
 {
     this->cancelApplicationInfo = cancelApplicationInfo;
     
 }
 
-
+/*
+ 함수이름: CancelApplicationInfoUI::startInterface
+ 기능: 지원한 모든 채용정보의 회사이름, 사업자번호, 업무를 출력합니다.
+ 매개변수: RecruitmentInfoList* gcRiList
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
 {
     vector<RecruitmentInfo*> tmp;
@@ -1505,29 +1567,36 @@ void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
     fin >> tmpBn;
     
     cancelApplicationInfo->cancelApplication(tmpBn);
-
-    
-    
 }
 
 
-
+/*
+ 함수이름: GeneralClient::getListAppliedInfo
+ 기능: GeneralClient가 지원한 RecruitmentInfo의 리스트를 벡터로 반환합니다.
+ 매개변수: 없음
+ 반환값: vector<RecruitmentInfo*>
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
     return this->appliedList;
 }
 
 
 
-//bn에 해당하는 지원 내역을 삭제하는 함수
+/*
+ 함수이름: CancelApplicationInfo::cancelApplication
+ 기능:  subApplication 함수를 호출해 일반회원의 지원 정보 리스트에서 입력받은 사업자번호와 사업자번호가 일치하는 채용 정보를 리스트에서 삭제합니다. 그리고 subApplicantToRecruitment 함수를 호출해 전체 채용 정보리스트에서 입력받은 사업자번호와 사업자번호가 일치하는 채용 정보의 지원자 수를 감소시킨다
+ 매개변수: string bn
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void CancelApplicationInfo::cancelApplication(string bn)
 {
     this->bn = bn;
     
-
-    //컨트롤이 갖고 있는 일반회원의 지원 정보 리스트에서 bn값과 일치하는 채용 정보를 리스트에서 삭제한다
     gClient->subApplication(bn);
-
-    //컨트롤이 갖고 있는 전체 채용 정보리스트에서 bn값과 일치하는 채용 정보의 지원자 수를 감소시킨다.
 
     int tmpSize = this->riList->getRIList().size();
     
@@ -1546,6 +1615,14 @@ void CancelApplicationInfo::cancelApplication(string bn)
 
 }
 
+/*
+ 함수이름:  GeneralClient::subApplication
+ 기능:  일반회원의 지원 정보 리스트에서 매개변수 bn과 사업자번호가 일치하는 채용 정보를 리스트에서 삭제합니다.
+ 매개변수: string bn
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void GeneralClient::subApplication(string bn) {
     int size = appliedList.size();
     for (int i = 0; i < size; i++) {
