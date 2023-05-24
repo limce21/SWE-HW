@@ -119,13 +119,14 @@ class GeneralClient : public Client
 {
 private:
 	string rrn; //일반회원의 주민번호
-	vector<RecruitmentInfo*> appliedList;
+	vector<RecruitmentInfo*> appliedList;//해당 일반회원이 지원한 채용공고 목록
 
 public:
 	
 	GeneralClient(int type, string name, string num, string id, string pw); //일반회원 객체의 생성자
 	void addApplication(RecruitmentInfo* ri);
 	vector<RecruitmentInfo*> getListAppliedInfo();//여기부터 작업하기
+	void subApplication(string bn);
 
 };
 
@@ -259,11 +260,10 @@ private:
 public:
 	void setRecruitmentInfo(vector<RecruitmentInfo*> riList);
 	//RecruitmentInfoList(vector<RecruitmentInfo*>riList);
-	vector<RecruitmentInfo*> getRIList();
+	vector<RecruitmentInfo*> getRIList()const;
 	void addNewRecruitmentInfoList(RecruitmentInfo* ri);
 	RecruitmentInfo* findByName(string companyName);
 	RecruitmentInfo* findByNum(string bn);
-	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);//자신의 리스트를 오름차순 정렬로 정렬하는 함수
 };
 
 /*
@@ -616,11 +616,10 @@ class CancelApplicationInfoUI
 {
 private:
 	CancelApplicationInfo* cancelApplicationInfo;
-	string bn;
+	
 public:
 	CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo);
 	void startInterface(RecruitmentInfoList* riList);
-	void bnInput();
 };
 
 class CancelApplicationInfo
@@ -631,6 +630,7 @@ private:
 	vector<RecruitmentInfo*> gcRiList;//일반회원이 지원한 채용공고 목록
 	RecruitmentInfo* toCancelRecruitmentInfo;//본인이 지원한, 취소하려는, 채용 공고
 	CancelApplicationInfoUI* cancelApplicationInfoUI;
+	string bn;//일반회원이 취소하려는 bn
 
 
 public:

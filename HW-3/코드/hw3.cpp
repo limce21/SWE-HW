@@ -178,7 +178,7 @@ void System::doTask()
                 break;
             }
             case 2: {//채용 지원
-                fout << "4.2. 채용 지원\\n";
+                fout << "4.2. 채용 지원\n";
                 if (logIn != nullptr) {
                     curLogInClient = logIn->getLogInClient();
                     string tmpid = curLogInClient->getId();
@@ -1201,6 +1201,7 @@ RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int
     this->task = task;
     this->expectedApplicantNum = expectedApplicantNum;
     this->finishDate = finishDate;
+    this->numOfApplicant = 0;
 }
 
 /*
@@ -1290,7 +1291,7 @@ RecruitmentInfo* RegisterRecruitmentInfo::getRegisteredList() {
 }
 
 
-vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() {
+vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() const{
     return this->rCList;
 }
 
@@ -1376,6 +1377,7 @@ void ApplyForRecruitmentInfoUI::startInterface(RecruitmentInfoList* riList) {
     vector<RecruitmentInfo*> tmp;
     tmp = riList->getRIList();
     int size = tmp.size();
+    fout << "> 조회된 채용공고\n\n";
     for (int i = 0; i < size; i++) {
         fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
@@ -1457,10 +1459,11 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
 CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
 {    
     this->gClient = gClient;
+    this->gcRiList = gClient->getListAppliedInfo();
     this->riList = riList;
 
-    
-    vector<RecruitmentInfo*> tmp = riList->getRIList();
+    //본인이 지원한 채용공고목록을 조회한다.
+    vector<RecruitmentInfo*> tmp = gcRiList;
 
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
@@ -1477,66 +1480,72 @@ CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, Recruitment
 CancelApplicationInfoUI::CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
 {
     this->cancelApplicationInfo = cancelApplicationInfo;
-    this->bn = "";
+    
 }
 
-bool compare(RecruitmentInfo* a, RecruitmentInfo* b) {
-    return a->getName() < b->getName(); 
-}
 
-void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* riList)
+void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
 {
     vector<RecruitmentInfo*> tmp;
-    tmp = riList->getRIList();
+    tmp = gcRiList->getRIList();
     int size = tmp.size();
     for (int i = 0; i < size; i++) {
         fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
 
-    this->bnInput();
-    //int size = this->cancelApplicationInfo->gcRiList.size();
+    string tmpBn;
+    fin >> tmpBn;
+    
+    cancelApplicationInfo->cancelApplication(tmpBn);
 
     
     
 }
 
-void CancelApplicationInfoUI::bnInput()
-{
-    fin >> this->bn;
-    this->cancelApplicationInfo->cancelApplication(this->bn); 
-}
+
 
 vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
     return this->appliedList;
 }
 
 
+
+//bn에 해당하는 지원 내역을 삭제하는 함수
 void CancelApplicationInfo::cancelApplication(string bn)
 {
+    this->bn = bn;
+    
+
     //컨트롤이 갖고 있는 일반회원의 지원 정보 리스트에서 bn값과 일치하는 채용 정보를 리스트에서 삭제한다
-    for (int i = 0; i < this->gcRiList.size(); i++)
-    {
-        if (gcRiList[i]->getBn() == bn)
-        {
-            //this->cCList.erase(cCList.begin() + i);
-            this->gcRiList.erase(gcRiList.begin() + i);
-        }
-    }
+    gClient->subApplication(bn);
+
     //컨트롤이 갖고 있는 전체 채용 정보리스트에서 bn값과 일치하는 채용 정보의 지원자 수를 감소시킨다.
 
     int tmpSize = this->riList->getRIList().size();
-
+    
     for (int i = 0; i < tmpSize; i++)
     {
-        if (riList[i].getRIList()[i]->getBn() == bn)
+        if (riList->getRIList()[i]->getBn() == bn)
         {
-            riList[i].getRIList()[i]->subApplicantToRecruitment();
+            riList->getRIList()[i]->subApplicantToRecruitment();
+            
         }
     }
 
     cout << "정상적으로 삭제되었습니다" << endl;
     
    
+
+}
+
+void GeneralClient::subApplication(string bn) {
+    int size = appliedList.size();
+    for (int i = 0; i < size; i++) {
+        if (appliedList[i]->getBn() == bn) {
+            fout << "> 취소한 공고: " << appliedList[i]->getName() << " " << appliedList[i]->getBn() << " " << appliedList[i]->getTask() << "\n\n";
+            appliedList.erase(appliedList.begin() + i);
+        }
+    }
 
 }
 
