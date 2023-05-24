@@ -147,7 +147,7 @@ void System::doTask()
             }
             case 2: // "3.2. 채용 정보 조회“ 메뉴 부분
             {
-                fout << "3.2. 채용 정보 조회" << endl;
+                fout << "3.2. 등록된 채용 정보 조회" << endl;
                 if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
                 {
                     curLogInClient = logIn->getLogInClient();
@@ -395,7 +395,15 @@ CompanyClient::CompanyClient(int type, string name, string num, string id, strin
 
 
 
+/*
+   함수이름: CompanyClient::getbn()
+   기능:  회사회원의 사업자 번호를 반환한다
+   매개변수: -
+   반환값: bn -> 사업자 번호
 
+   작성날짜: 2023/05/21
+   작성자: 박시홍
+*/
 string CompanyClient::getbn()
 {
     return this->bn;
@@ -557,7 +565,7 @@ void GeneralClientList::addGeneralClient(GeneralClient* c)
 매개변수 : id->삭제할 회원의 id값
 반환값 : 없음
 
-작성날짜 : 2023 / 05 / 31
+작성날짜 : 2023 / 05 / 21
 작성자 : 박시홍
 */
 void GeneralClientList::destroy(string id)
@@ -570,7 +578,7 @@ void GeneralClientList::destroy(string id)
         }
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 string RecruitmentInfo::getBn() {
     return this->bn;
 }
@@ -607,7 +615,7 @@ string RecruitmentInfo::getName()const {
             CompanyClientList*ccList -> 회사 회원들의 정보를 지닌 collection class의 instance
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 SignIn::SignIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList)
@@ -616,24 +624,24 @@ SignIn::SignIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* c
     this->cList = list; //컨트롤 클래스의 멤버 변수로 회원들의 배열 저장
     this->gcList = gcList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->ccList = ccList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
-    this->pSignInUI = signInUI; //바운더리 클래스의 레퍼런스 값 저장
-    pSignInUI->startInterface(); //컨트롤 클래스가 생긴 동시에 startInterface 호출을 바운더리 클래스에게 명령
+    this->signInUI = signInUI; //바운더리 클래스의 레퍼런스 값 저장
+    signInUI->startInterface(); //컨트롤 클래스가 생긴 동시에 startInterface 호출을 바운더리 클래스에게 명령
 }
 
 /*
    함수이름: 바운더리 클래스 SignInUI의 생성자
    기능: 회원가입 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
-            SignIn* refSignIn -> 회원 가입과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+            SignIn* signIn -> 회원 가입과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
 
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
-SignInUI::SignInUI(SignIn* refSignIn)
+SignInUI::SignInUI(SignIn* signIn)
 {
-    this->pSignIn = refSignIn;
+    this->signIn = signIn;
     this->id = "";
     this->name = "";
     this->num = "";
@@ -648,7 +656,7 @@ SignInUI::SignInUI(SignIn* refSignIn)
    매개변수: 없음
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void SignInUI::startInterface()
@@ -667,13 +675,13 @@ void SignInUI::startInterface()
    매개변수: 없음
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void SignInUI::fillInfo()
 {
     fin >> this->type >> this->name >> this->num >> this->id >> this->pw;
-    this->pSignIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
+    this->signIn->addNewClient(this->type, this->name, this->num, this->id, this->pw);
 }
 
 
@@ -688,7 +696,7 @@ void SignInUI::fillInfo()
              pw ->회원이 입력한 pw
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void SignIn::addNewClient(int clientType, string name, string num, string id, string pw)
@@ -729,7 +737,7 @@ void SignIn::addNewClient(int clientType, string name, string num, string id, st
             CompanyClientList*ccList -> 회사 회원들의 정보를 지닌 collection class의 instance
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 LogIn::LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList)
@@ -738,9 +746,9 @@ LogIn::LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccL
     this->cList = list; //컨트롤 클래스의 멤버 변수로 회원들의 배열 저장
     this->gcList = gcList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->ccList = ccList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
-    this->pLogInUI = logInUI; //바운더리 클래스의 레퍼런스 값 저장
+    this->logInUI = logInUI; //바운더리 클래스의 레퍼런스 값 저장
     this->curLogInClient = nullptr;  //처음 LogIn클래스가 생성될 때 로그인된 계정은 nullptr값임
-    pLogInUI->startInterface();  //컨트롤 클래스가 생긴 동시에 startInterface 호출을 바운더리 클래스에게 명령
+    logInUI->startInterface();  //컨트롤 클래스가 생긴 동시에 startInterface 호출을 바운더리 클래스에게 명령
 }
 
 
@@ -753,7 +761,7 @@ LogIn::LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccL
              pw ->회원이 입력한 pw
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void LogIn::tryLogIn(string id, string pw)
@@ -800,7 +808,7 @@ void LogIn::tryLogIn(string id, string pw)
    매개변수: 없음
    반환값: curLogInClient
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 Client* LogIn::getLogInClient()
@@ -812,16 +820,16 @@ Client* LogIn::getLogInClient()
    함수이름: 바운더리 클래스 LogInUI의 생성자
    기능: 로그인 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
-            LogIn* refLogIn -> 로그인과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+            LogIn* logIn -> 로그인과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
 
    반환값: 없음
 
    작성날짜: 2023/05/31
    작성자: 박시홍
 */
-LogInUI::LogInUI(LogIn* refLogIn)
+LogInUI::LogInUI(LogIn* logIn)
 {
-    this->pLogIn = refLogIn;
+    this->logIn = logIn;
     this->id = "";
     this->pw = "";
 
@@ -833,7 +841,7 @@ LogInUI::LogInUI(LogIn* refLogIn)
    매개변수: 없음
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void LogInUI::startInterface()
@@ -850,13 +858,13 @@ void LogInUI::startInterface()
    매개변수: 없음
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void LogInUI::fillIDPW()
 {
     fin >> this->id >> this->pw;
-    this->pLogIn->tryLogIn(this->id, this->pw);
+    this->logIn->tryLogIn(this->id, this->pw);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -870,7 +878,7 @@ void LogInUI::fillIDPW()
             Client* client -> 로그인된 계정의 정보를 지닌 Client 객체
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client)
@@ -880,7 +888,7 @@ LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* c
     this->gcList = gcList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->ccList = ccList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->curLogInClient = client; //로그인된 Client객체를 저장
-    this->pLogOutUI = logOutUI;   //바운더리 클래스의 레퍼런스 값 저장
+    this->logOutUI = logOutUI;   //바운더리 클래스의 레퍼런스 값 저장
     this->changeLogInStatus(curLogInClient); //현재 로그인된 계정의 정보를 바탕으로 로그아웃 기능 수행 명령
 
 }
@@ -890,16 +898,16 @@ LogOut::LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* c
    함수이름: 바운더리 클래스 LogOutUI의 생성자
    기능: 로그아웃 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
-            LogOut* refLogOut -> 로그아웃과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+            LogOut* logOut -> 로그아웃과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
 
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
-LogOutUI::LogOutUI(LogOut* refLogOut)
+LogOutUI::LogOutUI(LogOut* logOut)
 {
-    this->pLogOut = refLogOut;
+    this->logOut = logOut;
 
 }
 
@@ -911,7 +919,7 @@ LogOutUI::LogOutUI(LogOut* refLogOut)
              Client* client -> 로그인된 계정
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void LogOut::changeLogInStatus(Client* client)
@@ -935,7 +943,7 @@ void LogOut::changeLogInStatus(Client* client)
     }
 
 
-    this->pLogOutUI->startInterface(id, isPossible); //바운더리 클래스에 로그아웃 성공값과 로그아웃한 계정의 id값을 매개변수로 보내준다
+    this->logOutUI->startInterface(id, isPossible); //바운더리 클래스에 로그아웃 성공값과 로그아웃한 계정의 id값을 매개변수로 보내준다
 
 
 }
@@ -947,7 +955,7 @@ void LogOut::changeLogInStatus(Client* client)
             flag -> 로그아웃 됨: true / 로그아웃 불가능 -> false
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void LogOutUI::startInterface(string id, bool flag)
@@ -975,7 +983,7 @@ void LogOutUI::startInterface(string id, bool flag)
             Client* client -> 로그인된 계정의 정보를 지닌 Client 객체
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 SignOut::SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client)
@@ -985,7 +993,7 @@ SignOut::SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList*
     this->gcList = gcList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->ccList = ccList; //컨트롤 클래스의 멤버 변수로 일반회원들의 배열 저장
     this->curLogInClient = client; //로그인된 Client객체를 저장
-    this->pSignOutUI = signOutUI; //바운더리 클래스의 레퍼런스 값 저장
+    this->signOutUI = signOutUI; //바운더리 클래스의 레퍼런스 값 저장
     this->destroy(curLogInClient); //현제 로그인된 계정 정보를 바탕으로 회원탈퇴 기능 수행
 
 }
@@ -995,16 +1003,16 @@ SignOut::SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList*
    함수이름: 바운더리 클래스 SignOutUI의 생성자
    기능: 회원탈퇴 관련 기능을 수행하기 위한 바운더리 클래스의 생성자로서 기능함
    매개변수:
-            SignOut* refSignOut -> 로그아웃과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
+            SignOut* signOut -> 로그아웃과 관련된 컨트롤 클래스의 레퍼런스를 attribute로 가짐
 
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
-SignOutUI::SignOutUI(SignOut* refSignOut)
+SignOutUI::SignOutUI(SignOut* signOut)
 {
-    this->pSignOut = refSignOut;
+    this->signOut = signOut;
 
 }
 
@@ -1017,7 +1025,7 @@ SignOutUI::SignOutUI(SignOut* refSignOut)
              Client* client -> 로그인 된 계정
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void SignOut::destroy(Client* client)
@@ -1051,7 +1059,7 @@ void SignOut::destroy(Client* client)
     }
 
 
-    this->pSignOutUI->startInterface(id, isPossible); //바운더리 클래스에 회원탈퇴 성공값과 회원탈퇴한 계정의 id값을 매개변수로 보내준다
+    this->signOutUI->startInterface(id, isPossible); //바운더리 클래스에 회원탈퇴 성공값과 회원탈퇴한 계정의 id값을 매개변수로 보내준다
 }
 
 
@@ -1062,7 +1070,7 @@ void SignOut::destroy(Client* client)
             flag -> 회원탈퇴 됨: true / 회원탈퇴 불가능 -> false
    반환값: 없음
 
-   작성날짜: 2023/05/31
+   작성날짜: 2023/05/21
    작성자: 박시홍
 */
 void SignOutUI::startInterface(string id, bool flag)
@@ -1544,6 +1552,7 @@ void GeneralClient::subApplication(string bn) {
         if (appliedList[i]->getBn() == bn) {
             fout << "> 취소한 공고: " << appliedList[i]->getName() << " " << appliedList[i]->getBn() << " " << appliedList[i]->getTask() << "\n\n";
             appliedList.erase(appliedList.begin() + i);
+            break;
         }
     }
 
