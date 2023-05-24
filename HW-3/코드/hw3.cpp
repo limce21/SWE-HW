@@ -1103,11 +1103,11 @@ void RegisterRecruitmentInfoUI::startInterface()
 void RegisterRecruitmentInfoUI::registerInput()
 {
     string task;
-    int expecteApplicantNum;
+    int expectedApplicantNum;
     string finishDate;
-    fin >> task >> expecteApplicantNum >> finishDate;
-    registerRecruitmentInfo->addNewRecruitmentInfo(task, expecteApplicantNum, finishDate);
-    result(task, expecteApplicantNum, finishDate);
+    fin >> task >> expectedApplicantNum >> finishDate;
+    registerRecruitmentInfo->addNewRecruitmentInfo(task, expectedApplicantNum, finishDate);
+    result(task, expectedApplicantNum, finishDate);
 }
 
 /*
@@ -1212,7 +1212,7 @@ void InquireRecruitmentInfoUI::startInterface(vector<RecruitmentInfo*> riList)
 {
     int size = riList.size();
     for (int i = 0; i < size; i++) {
-        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getApplicantNum() << " " << riList[i]->getFinishDate() << "\n\n";
+        fout <<"> "<< riList[i]->getTask() << " " << riList[i]->getExpectedApplicantNum() << " " << riList[i]->getFinishDate() << "\n\n";
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -1307,7 +1307,7 @@ void SearchRecruitmentInfoUI::startInterface() {
 
     fout << "> " << this->searchRecruitmentInfo->getResult()->getName() << " " <<
         this->searchRecruitmentInfo->getResult()->getBn() << " " << this->searchRecruitmentInfo->getResult()->getTask() << " " <<
-        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum() << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n";
+        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum()<<" " << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n\n";
 
 
 
@@ -1391,9 +1391,8 @@ InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
     this->gClient = gClient;
     this->gcAppliedList = gClient->getListAppliedInfo();
 
-    vector<RecruitmentInfo*> tmp = gcAppliedList;
+    vector<RecruitmentInfo*> tmp = gcAppliedList;//해당 회원이 지원한 회원정보 리스트
 
-    int size = tmp.size();
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
     InquireApplicationInfoUI* inquireApplicationInfoUI = new InquireApplicationInfoUI();
@@ -1407,7 +1406,7 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
     int size = gcAppliedList.size();
 
     for (int i = 0; i < size; i++) {
-        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getApplicantNum()
+        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
             << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
     }
 }
@@ -1417,17 +1416,21 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
     string aName = a->getName();
     string bName = b->getName();
     if (aName != bName) {
-        return aName > bName;
-    }
-    else {//사실 회사이름이 같은 경우는 없지만 compile을 위한 예외 처리
         return aName < bName;
     }
+    else {//사실 회사이름이 같은 경우는 없지만 compile을 위한 예외 처리
+        return aName > bName;
+
+    }
+}
+
+//
 
 CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
-{
-    
+{    
     this->gClient = gClient;
     this->riList = riList;
+
     
     vector<RecruitmentInfo*> tmp = riList->getRIList();
 
@@ -1459,7 +1462,7 @@ void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* riList)
     tmp = riList->getRIList();
     int size = tmp.size();
     for (int i = 0; i < size; i++) {
-        cout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
+        fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
 
     this->bnInput();
