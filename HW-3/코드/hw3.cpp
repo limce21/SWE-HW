@@ -178,7 +178,7 @@ void System::doTask()
                 break;
             }
             case 2: {//채용 지원
-                fout << "4.2. 채용 지원\\n";
+                fout << "4.2. 채용 지원\n";
                 if (logIn != nullptr) {
                     curLogInClient = logIn->getLogInClient();
                     string tmpid = curLogInClient->getId();
@@ -220,7 +220,35 @@ void System::doTask()
             }
             break;
         }
-
+        case 5: {
+            switch (menu_level_2)
+            {
+            case 1: // "5.1 지원 정보 통계" 메뉴 부분
+            {
+                fout << "5.1 지원 정보 통계" << endl;
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                {
+                    curLogInClient = logIn->getLogInClient();
+                    string clientId = curLogInClient->getId();
+                    int clientType = curLogInClient->getType();
+                    if (clientType == 1) { //회사 회원의 통계 정보
+                        CompanyClient* tmpCompanyClient = ccList->findById(clientId);
+                        ViewStatisticsOfRegisteredRecruitmentInfo *viewStatisticsOfRegisteredRecruitmentInfo = new ViewStatisticsOfRegisteredRecruitmentInfo(tmpCompanyClient);
+                    }
+                    if (clientType == 2) { //일반 회원의 통계 정보
+                        GeneralClient* tmpGeneralClient = gcList->findById(clientId);
+                        ViewStatisticsOfAppliedInfo *viewStatisticsOfAppliedInfo = new ViewStatisticsOfAppliedInfo(tmpGeneralClient);
+                    }
+                }
+                else //로그인되어있는 사람이 없는 경우 
+                {
+                    cout << "채용 정보를 등록할 수 없습니다." << endl;
+                }
+                break;
+            }
+            }
+            break;
+        }
         case 6: {
             switch (menu_level_2)
             {
@@ -1173,6 +1201,7 @@ RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int
     this->task = task;
     this->expectedApplicantNum = expectedApplicantNum;
     this->finishDate = finishDate;
+    this->numOfApplicant = 0;
 }
 
 /*
@@ -1262,7 +1291,7 @@ RecruitmentInfo* RegisterRecruitmentInfo::getRegisteredList() {
 }
 
 
-vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() {
+vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() const{
     return this->rCList;
 }
 
@@ -1348,6 +1377,7 @@ void ApplyForRecruitmentInfoUI::startInterface(RecruitmentInfoList* riList) {
     vector<RecruitmentInfo*> tmp;
     tmp = riList->getRIList();
     int size = tmp.size();
+    fout << "> 조회된 채용공고\n\n";
     for (int i = 0; i < size; i++) {
         fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
@@ -1429,10 +1459,11 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
 CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
 {    
     this->gClient = gClient;
+    this->gcRiList = gClient->getListAppliedInfo();
     this->riList = riList;
 
-    
-    vector<RecruitmentInfo*> tmp = riList->getRIList();
+    //본인이 지원한 채용공고목록을 조회한다.
+    vector<RecruitmentInfo*> tmp = gcRiList;
 
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
@@ -1449,60 +1480,55 @@ CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, Recruitment
 CancelApplicationInfoUI::CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
 {
     this->cancelApplicationInfo = cancelApplicationInfo;
-    this->bn = "";
+    
 }
 
-bool compare(RecruitmentInfo* a, RecruitmentInfo* b) {
-    return a->getName() < b->getName(); 
-}
 
-void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* riList)
+void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
 {
     vector<RecruitmentInfo*> tmp;
-    tmp = riList->getRIList();
+    tmp = gcRiList->getRIList();
     int size = tmp.size();
     for (int i = 0; i < size; i++) {
         fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
 
-    this->bnInput();
-    //int size = this->cancelApplicationInfo->gcRiList.size();
+    string tmpBn;
+    fin >> tmpBn;
+    
+    cancelApplicationInfo->cancelApplication(tmpBn);
 
     
     
 }
 
-void CancelApplicationInfoUI::bnInput()
-{
-    fin >> this->bn;
-    this->cancelApplicationInfo->cancelApplication(this->bn); 
-}
+
 
 vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
     return this->appliedList;
 }
 
 
+
+//bn에 해당하는 지원 내역을 삭제하는 함수
 void CancelApplicationInfo::cancelApplication(string bn)
 {
+    this->bn = bn;
+    
+
     //컨트롤이 갖고 있는 일반회원의 지원 정보 리스트에서 bn값과 일치하는 채용 정보를 리스트에서 삭제한다
-    for (int i = 0; i < this->gcRiList.size(); i++)
-    {
-        if (gcRiList[i]->getBn() == bn)
-        {
-            //this->cCList.erase(cCList.begin() + i);
-            this->gcRiList.erase(gcRiList.begin() + i);
-        }
-    }
+    gClient->subApplication(bn);
+
     //컨트롤이 갖고 있는 전체 채용 정보리스트에서 bn값과 일치하는 채용 정보의 지원자 수를 감소시킨다.
 
     int tmpSize = this->riList->getRIList().size();
-
+    
     for (int i = 0; i < tmpSize; i++)
     {
-        if (riList[i].getRIList()[i]->getBn() == bn)
+        if (riList->getRIList()[i]->getBn() == bn)
         {
-            riList[i].getRIList()[i]->subApplicantToRecruitment();
+            riList->getRIList()[i]->subApplicantToRecruitment();
+            
         }
     }
 
@@ -1510,4 +1536,118 @@ void CancelApplicationInfo::cancelApplication(string bn)
     
    
 
+}
+
+void GeneralClient::subApplication(string bn) {
+    int size = appliedList.size();
+    for (int i = 0; i < size; i++) {
+        if (appliedList[i]->getBn() == bn) {
+            fout << "> 취소한 공고: " << appliedList[i]->getName() << " " << appliedList[i]->getBn() << " " << appliedList[i]->getTask() << "\n\n";
+            appliedList.erase(appliedList.begin() + i);
+        }
+    }
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: 컨트롤 클래스 ViewStatisticsOfRegisteredRecruitmentInfo의 생성자
+   기능: 채용관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
+   매개변수:
+            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+   반환값: 없음
+
+   작성날짜: 2023/05/23
+   작성자: 임채은
+*/
+ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* companyClient){
+    this->companyClient = companyClient;
+    this->printStatisticsInfo(companyClient);
+}
+
+/*
+   함수이름: ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo
+   기능: 해당 회사 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
+   매개변수:
+            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+   반환값: 없음
+   작성날짜: 2023/05/23
+   작성자: 임채은
+*/
+void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *companyClient){
+    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
+    map<string, int> taskByNumMap;
+    int size = companyClientsRecruitmentInfo.size();
+    int value = 0;
+    if (size > 0) {
+        for (int i = 0; i < size; i++)
+        {
+            if (taskByNumMap.find(companyClientsRecruitmentInfo[i]->getTask()) != taskByNumMap.end()) {
+                value = taskByNumMap.find(companyClientsRecruitmentInfo[i]->getTask())->second + companyClientsRecruitmentInfo[i]->getApplicantNum();
+            }
+            else {
+                value = companyClientsRecruitmentInfo[i]->getApplicantNum();
+            }
+            taskByNumMap[companyClientsRecruitmentInfo[i]->getTask()] = value;
+        }
+        for (auto iter = taskByNumMap.begin(); iter != taskByNumMap.end(); iter++){
+            fout << "> " << iter->first << " " << iter->second << endl
+                << endl;
+            ;
+        }
+    } else {
+        cout << "등록한 채용 정보가 없습니다." << endl;
+        fout << endl;
+    }
+}
+
+/*
+   함수이름: 컨트롤 클래스 ViewStatisticsOfAppliedtInfo의 생성자
+   기능: 지원 관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
+   매개변수:
+            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+   반환값: 없음
+
+   작성날짜: 2023/05/24
+   작성자: 임채은
+*/
+ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* generalClient){
+    this->generalClient = generalClient;
+    this->printStatisticsInfo(generalClient);
+}
+
+/*
+   함수이름: ViewStatisticsOfAppliedInfo::printStatisticsInfo
+   기능: 해당 일반 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
+   매개변수:
+            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+   반환값: 없음
+   작성날짜: 2023/05/24
+   작성자: 임채은
+*/
+void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* generalClient){
+    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
+    map<string, int> taskByNumMap;
+    int size = generalClientsRecruitmentInfo.size();
+    int value = 0;
+    if (size > 0) {
+        for (int i = 0; i < size; i++)
+        {
+            if (taskByNumMap.find(generalClientsRecruitmentInfo[i]->getTask()) != taskByNumMap.end()) {
+                value = taskByNumMap.find(generalClientsRecruitmentInfo[i]->getTask())->second + 1;
+            }
+            else {
+                value = 1;
+            }
+            taskByNumMap[generalClientsRecruitmentInfo[i]->getTask()] = value;
+        }
+        for (auto iter = taskByNumMap.begin(); iter != taskByNumMap.end(); iter++){
+            fout << "> " << iter->first << " " << iter->second << endl
+                << endl;
+            ;
+        }
+    } else {
+        cout << "지원한 채용 정보가 없습니다." << endl;
+        fout << endl;
+    }
 }

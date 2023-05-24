@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stdlib.h>
+#include <map>
 
 using namespace std;
 
@@ -36,6 +37,10 @@ class InquireRecruitmentInfo;
 class InquireRecruitmentInfoUI;
 class CancelApplicationInfoUI;
 class CancelApplicationInfo;
+class ViewStatisticsOfRegisteredRecruitmentInfo;
+class ViewStatisticsOfRegisteredRecruitmentInfoUI;
+class ViewStatisticsOfAppliedInfo;
+class ViewStatisticsOfAppliedInfoUI;
 class Client;
 class ClientList;
 class GeneralClientList;
@@ -114,13 +119,14 @@ class GeneralClient : public Client
 {
 private:
 	string rrn; //일반회원의 주민번호
-	vector<RecruitmentInfo*> appliedList;
+	vector<RecruitmentInfo*> appliedList;//해당 일반회원이 지원한 채용공고 목록
 
 public:
 	
 	GeneralClient(int type, string name, string num, string id, string pw); //일반회원 객체의 생성자
 	void addApplication(RecruitmentInfo* ri);
 	vector<RecruitmentInfo*> getListAppliedInfo();//여기부터 작업하기
+	void subApplication(string bn);
 
 };
 
@@ -254,11 +260,10 @@ private:
 public:
 	void setRecruitmentInfo(vector<RecruitmentInfo*> riList);
 	//RecruitmentInfoList(vector<RecruitmentInfo*>riList);
-	vector<RecruitmentInfo*> getRIList();
+	vector<RecruitmentInfo*> getRIList()const;
 	void addNewRecruitmentInfoList(RecruitmentInfo* ri);
 	RecruitmentInfo* findByName(string companyName);
 	RecruitmentInfo* findByNum(string bn);
-	bool compare(const RecruitmentInfo* a, const RecruitmentInfo* b);//자신의 리스트를 오름차순 정렬로 정렬하는 함수
 };
 
 /*
@@ -611,11 +616,10 @@ class CancelApplicationInfoUI
 {
 private:
 	CancelApplicationInfo* cancelApplicationInfo;
-	string bn;
+	
 public:
 	CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo);
 	void startInterface(RecruitmentInfoList* riList);
-	void bnInput();
 };
 
 class CancelApplicationInfo
@@ -626,11 +630,78 @@ private:
 	vector<RecruitmentInfo*> gcRiList;//일반회원이 지원한 채용공고 목록
 	RecruitmentInfo* toCancelRecruitmentInfo;//본인이 지원한, 취소하려는, 채용 공고
 	CancelApplicationInfoUI* cancelApplicationInfoUI;
+	string bn;//일반회원이 취소하려는 bn
 
 
 public:
 	CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
 	void cancelApplication(string bn);
+};
+
+/*
+클래스 이름 : ViewStatisticsOfRegisteredRecruitmentInfo <Control 클래스>: 회사회원 통계를 담당합니다.
+클래스 멤버변수: 
+	CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+	ViewstatisticsOfRegisteredRecruitmentInfo*pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+	printStatisticsInfo(CompanyClient *companyClient) -> 모든 채용정보에 대해 업무별 지원자 수를 보여준다.
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfRegisteredRecruitmentInfo{
+private:
+	CompanyClient* companyClient;
+	ViewStatisticsOfRegisteredRecruitmentInfo* pUI;
+public:
+	ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient *companyClient);
+	void printStatisticsInfo(CompanyClient *companyClient);
+};
+
+/*
+클래스 이름 : ViewStatisticsOfRegisteredRecruitmentInfo <Boundary 클래스>: 회사회원 통계를 담당합니다.
+클래스 멤버변수:
+	ViewstatisticsOfRegisteredRecruitmentInfo*pUI -> 컨트롤 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfRegisteredRecruitmentInfoUI{
+private:
+	ViewStatisticsOfRegisteredRecruitmentInfo* pControl;
+public:
+};
+
+/*
+클래스 이름 : ViewStatisticsOfAppliedInfo <Control 클래스>: 일반회원 통계를 담당합니다.
+클래스 멤버변수:
+	GeneralClient *generalClient -> 일반 회원들의 정보를 지닌 GeneralClient 객체
+	ViewStatisticsOfAppliedInfo *pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+	printStatisticsInfo(GeneralClient *generalClient) -> 모든 지원정보에 대해 업무별 지원 횟수를 보여준다.
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfAppliedInfo{
+private:
+	GeneralClient *generalClient;
+	ViewStatisticsOfAppliedInfo *pUI;
+public:
+	ViewStatisticsOfAppliedInfo(GeneralClient *generalClient);
+	void printStatisticsInfo(GeneralClient *generalClient); 
+};
+
+/*
+클래스 이름 : ViewStatisticsOfAppliedInfo <Boundary 클래스>: 일반회원 통계를 담당합니다.
+클래스 멤버변수: 
+	ViewStatisticsOfAppliedInfo* pControl -> 컨트롤 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfAppliedInfoUI{
+private:
+	ViewStatisticsOfAppliedInfo* pControl;
+public:
 };
 
 #endif // !1
