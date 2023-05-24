@@ -220,7 +220,35 @@ void System::doTask()
             }
             break;
         }
-
+        case 5: {
+            switch (menu_level_2)
+            {
+            case 1: // "5.1 지원 정보 통계" 메뉴 부분
+            {
+                fout << "5.1 지원 정보 통계" << endl;
+                if (logIn != nullptr) //한명이라도 로그인이 되어있는 경우에만 실행
+                {
+                    curLogInClient = logIn->getLogInClient();
+                    string clientId = curLogInClient->getId();
+                    int clientType = curLogInClient->getType();
+                    if (clientType == 1) { //회사 회원의 통계 정보
+                        CompanyClient* tmpCompanyClient = ccList->findById(clientId);
+                        ViewStatisticsOfRegisteredRecruitmentInfo *viewStatisticsOfRegisteredRecruitmentInfo = new ViewStatisticsOfRegisteredRecruitmentInfo(tmpCompanyClient);
+                    }
+                    if (clientType == 2) { //일반 회원의 통계 정보
+                        GeneralClient* tmpGeneralClient = gcList->findById(clientId);
+                        ViewStatisticsOfAppliedInfo *viewStatisticsOfAppliedInfo = new ViewStatisticsOfAppliedInfo(tmpGeneralClient);
+                    }
+                }
+                else //로그인되어있는 사람이 없는 경우 
+                {
+                    cout << "채용 정보를 등록할 수 없습니다." << endl;
+                }
+                break;
+            }
+            }
+            break;
+        }
         case 6: {
             switch (menu_level_2)
             {
@@ -1510,4 +1538,107 @@ void CancelApplicationInfo::cancelApplication(string bn)
     
    
 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+   함수이름: 컨트롤 클래스 ViewStatisticsOfRegisteredRecruitmentInfo의 생성자
+   기능: 채용관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
+   매개변수:
+            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+   반환값: 없음
+
+   작성날짜: 2023/05/23
+   작성자: 임채은
+*/
+ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* companyClient){
+    this->companyClient = companyClient;
+    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
+    this->printStatisticsInfo(companyClientsRecruitmentInfo);
+}
+
+/*
+   함수이름: ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo
+   기능: 해당 회사 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
+   매개변수:
+            vector<RecruitmentInfo*> companyClientsRecruitmentInfo -> 회사 회원의 채용 정보 RecruitmentInfo 배열
+   반환값: 없음
+   작성날짜: 2023/05/23
+   작성자: 임채은
+*/
+void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo){
+    map<string, int> taskByNumMap;
+    int size = companyClientsRecruitmentInfo.size();
+    int value = 0;
+    if (size > 0) {
+        for (int i = 0; i < size; i++)
+        {
+            if (taskByNumMap.find(companyClientsRecruitmentInfo[i]->getTask()) != taskByNumMap.end()) {
+                value = taskByNumMap.find(companyClientsRecruitmentInfo[i]->getTask())->second + companyClientsRecruitmentInfo[i]->getApplicantNum();
+            }
+            else {
+                value = companyClientsRecruitmentInfo[i]->getApplicantNum();
+            }
+            taskByNumMap[companyClientsRecruitmentInfo[i]->getTask()] = value;
+        }
+        for (auto iter = taskByNumMap.begin(); iter != taskByNumMap.end(); iter++){
+            fout << "> " << iter->first << " " << iter->second << endl
+                << endl;
+            ;
+        }
+    } else {
+        cout << "등록한 채용 정보가 없습니다." << endl;
+        fout << endl;
+    }
+}
+
+/*
+   함수이름: 컨트롤 클래스 ViewStatisticsOfAppliedtInfo의 생성자
+   기능: 지원 관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
+   매개변수:
+            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+   반환값: 없음
+
+   작성날짜: 2023/05/24
+   작성자: 임채은
+*/
+ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* generalClient){
+    this->generalClient = generalClient;
+    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
+    this->printStatisticsInfo(generalClientsRecruitmentInfo);
+}
+
+/*
+   함수이름: ViewStatisticsOfAppliedInfo::printStatisticsInfo
+   기능: 해당 일반 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
+   매개변수:
+            vector<RecruitmentInfo*> generalClientsRecruitmentInfoo -> 일반 회원의 채용 정보 RecruitmentInfo 배열
+   반환값: 없음
+   작성날짜: 2023/05/24
+   작성자: 임채은
+*/
+void ViewStatisticsOfAppliedInfo::printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo){
+    map<string, int> taskByNumMap;
+    int size = generalClientsRecruitmentInfo.size();
+    int value = 0;
+    if (size > 0) {
+        for (int i = 0; i < size; i++)
+        {
+            if (taskByNumMap.find(generalClientsRecruitmentInfo[i]->getTask()) != taskByNumMap.end()) {
+                value = taskByNumMap.find(generalClientsRecruitmentInfo[i]->getTask())->second + 1;
+            }
+            else {
+                value = 1;
+            }
+            taskByNumMap[generalClientsRecruitmentInfo[i]->getTask()] = value;
+        }
+        for (auto iter = taskByNumMap.begin(); iter != taskByNumMap.end(); iter++){
+            fout << "> " << iter->first << " " << iter->second << endl
+                << endl;
+            ;
+        }
+    } else {
+        cout << "지원한 채용 정보가 없습니다." << endl;
+        fout << endl;
+    }
 }

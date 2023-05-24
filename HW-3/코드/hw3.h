@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stdlib.h>
+#include <map>
 
 using namespace std;
 
@@ -36,6 +37,10 @@ class InquireRecruitmentInfo;
 class InquireRecruitmentInfoUI;
 class CancelApplicationInfoUI;
 class CancelApplicationInfo;
+class ViewStatisticsOfRegisteredRecruitmentInfo;
+class ViewStatisticsOfRegisteredRecruitmentInfoUI;
+class ViewStatisticsOfAppliedInfo;
+class ViewStatisticsOfAppliedInfoUI;
 class Client;
 class ClientList;
 class GeneralClientList;
@@ -631,6 +636,72 @@ private:
 public:
 	CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
 	void cancelApplication(string bn);
+};
+
+/*
+클래스 이름 : ViewStatisticsOfRegisteredRecruitmentInfo <Control 클래스>: 회사회원 통계를 담당합니다.
+클래스 멤버변수: 
+	CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+	ViewstatisticsOfRegisteredRecruitmentInfo*pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+	printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo) -> 모든 채용정보에 대해 업무별 지원자 수를 보여준다.
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfRegisteredRecruitmentInfo{
+private:
+	CompanyClient* companyClient;
+	ViewStatisticsOfRegisteredRecruitmentInfo* pUI;
+public:
+	ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient *companyClient);
+	void printStatisticsInfo(vector<RecruitmentInfo*> companyClientsRecruitmentInfo);
+};
+
+/*
+클래스 이름 : ViewStatisticsOfRegisteredRecruitmentInfo <Boundary 클래스>: 회사회원 통계를 담당합니다.
+클래스 멤버변수:
+	ViewstatisticsOfRegisteredRecruitmentInfo*pUI -> 컨트롤 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfRegisteredRecruitmentInfoUI{
+private:
+	ViewStatisticsOfRegisteredRecruitmentInfo* pControl;
+public:
+};
+
+/*
+클래스 이름 : ViewStatisticsOfAppliedInfo <Control 클래스>: 일반회원 통계를 담당합니다.
+클래스 멤버변수:
+	GeneralClient *generalClient -> 일반 회원들의 정보를 지닌 GeneralClient 객체
+	ViewStatisticsOfAppliedInfo *pUI -> 바운더리 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+	printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo) -> 모든 지원정보에 대해 업무별 지원 횟수를 보여준다.
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfAppliedInfo{
+private:
+	GeneralClient *generalClient;
+	ViewStatisticsOfAppliedInfo *pUI;
+public:
+	ViewStatisticsOfAppliedInfo(GeneralClient *generalClient);
+	void printStatisticsInfo(vector<RecruitmentInfo*> generalClientsRecruitmentInfo); 
+};
+
+/*
+클래스 이름 : ViewStatisticsOfAppliedInfo <Boundary 클래스>: 일반회원 통계를 담당합니다.
+클래스 멤버변수: 
+	ViewStatisticsOfAppliedInfo* pControl -> 컨트롤 클래스의 레퍼런스를 저장할 공간
+클래스 멤버함수:
+작성날짜 : 2023/05/22
+작성자 : 임채은
+*/
+class ViewStatisticsOfAppliedInfoUI{
+private:
+	ViewStatisticsOfAppliedInfo* pControl;
+public:
 };
 
 #endif // !1
