@@ -1563,28 +1563,28 @@ void GeneralClient::subApplication(string bn) {
    함수이름: 컨트롤 클래스 ViewStatisticsOfRegisteredRecruitmentInfo의 생성자
    기능: 채용관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
    매개변수:
-            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+            CompanyClient*cClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
    반환값: 없음
 
    작성날짜: 2023/05/23
    작성자: 임채은
 */
-ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* companyClient){
-    this->companyClient = companyClient;
-    this->printStatisticsInfo(companyClient);
+ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* cClient){
+    this->cClient = cClient;
+    this->printStatisticsInfo(cClient);
 }
 
 /*
    함수이름: ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo
    기능: 해당 회사 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+            CompanyClient*cClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
    반환값: 없음
    작성날짜: 2023/05/23
    작성자: 임채은
 */
-void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *companyClient){
-    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
+void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *cClient){
+    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->cClient->getListRegisteredInfo();
     map<string, int> taskByNumMap;
     int size = companyClientsRecruitmentInfo.size();
     int value = 0;
@@ -1614,28 +1614,28 @@ void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClien
    함수이름: 컨트롤 클래스 ViewStatisticsOfAppliedtInfo의 생성자
    기능: 지원 관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
    매개변수:
-            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+            GeneralClient*gClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
    반환값: 없음
 
    작성날짜: 2023/05/24
    작성자: 임채은
 */
-ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* generalClient){
-    this->generalClient = generalClient;
-    this->printStatisticsInfo(generalClient);
+ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* gClient){
+    this->gClient = gClient;
+    this->printStatisticsInfo(gClient);
 }
 
 /*
    함수이름: ViewStatisticsOfAppliedInfo::printStatisticsInfo
    기능: 해당 일반 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+            GeneralClient*gClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
    반환값: 없음
    작성날짜: 2023/05/24
    작성자: 임채은
 */
-void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* generalClient){
-    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
+void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* gClient){
+    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->gClient->getListAppliedInfo();
     map<string, int> taskByNumMap;
     int size = generalClientsRecruitmentInfo.size();
     int value = 0;
