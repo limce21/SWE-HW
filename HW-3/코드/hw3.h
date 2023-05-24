@@ -248,9 +248,17 @@ public:
 
 
 /*
-클래스 이름 : RecruitmentInfo 클래스
-클래스 멤버변수:
-클래스 멤버함수:
+클래스 이름 : RecruitmentInfo <Entity 클래스>
+클래스 멤버변수: string companyName / string bn / string task / int numOfApplicant / int expectedApplicantNum / string finishDate
+클래스 멤버함수: RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate)
+				 string getName()const//compare > 작성할때 읽기전용으로만 읽을 수 있음
+				 string getBn()
+				 string getTask()
+				 int getApplicantNum()
+				 int getExpectedApplicantNum()
+				 string getFinishDate()
+				 void addApplicantToRecruitment()
+				 void subApplicantToRecruitment()
 작성날짜 : 2023/05/22
 작성자 : 김민정
 */
@@ -265,7 +273,7 @@ private:
 
 public:
 	RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate);
-	string getName()const;//compare작성할때 읽기전용으로만 읽을 수 있음
+	string getName()const;
 	string getBn();
 	string getTask();
 	int getApplicantNum();
@@ -275,13 +283,23 @@ public:
 	void subApplicantToRecruitment();
 };
 
+/*
+클래스 이름 : RecruitmentInfoList <Collection 클래스> : 모든 RecruitmentInfo에 대한 포인터들 저장
+클래스 멤버변수: vector<RecruitmentInfo*> rCList > GeneralClient 포인터 배열
+클래스 멤버함수: void setRecruitmentInfo(vector<RecruitmentInfo*> riList)
+				 vector<RecruitmentInfo*> getRIList()const
+				 void addNewRecruitmentInfoList(RecruitmentInfo* ri)
+				 RecruitmentInfo* findByName(string companyName)
+				 RecruitmentInfo* findByNum(string bn)
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
 class RecruitmentInfoList {
 private:
-	vector<RecruitmentInfo*> rCList; // GeneralClient 포인터 배열
+	vector<RecruitmentInfo*> rCList;
 
 public:
 	void setRecruitmentInfo(vector<RecruitmentInfo*> riList);
-	//RecruitmentInfoList(vector<RecruitmentInfo*>riList);
 	vector<RecruitmentInfo*> getRIList()const;
 	void addNewRecruitmentInfoList(RecruitmentInfo* ri);
 	RecruitmentInfo* findByName(string companyName);
@@ -503,32 +521,41 @@ public:
 
 /*
 클래스 이름 : RegisterRecruitmentInfo <Control 클래스>: 채용 등록을 담당합니다.
-클래스 멤버변수:
-클래스 멤버함수:
+클래스 멤버변수: RegisterRecruitmentInfoUI* registerRecruitmentInfoUI > 바운더리 클래스의 레퍼런스를 저장합니다.
+				 CompanyClient* companyClient > 회사 회원
+				 RecruitmentInfo* registeredList
+				 RecruitmentInfoList* recruitmentInfoList
+클래스 멤버함수: RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList)
+				 void addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate) > recruitment info에 정보를 추가합니다.
+				 RecruitmentInfoList* getRecruitmentInfoList()
+				 RecruitmentInfo* getRegisteredList()
 작성날짜 : 2023/05/22
 작성자 : 김민정
 */
 class RegisterRecruitmentInfo
 {
 private:
-	RegisterRecruitmentInfoUI* registerRecruitmentInfoUI; // 바운더리 클래스의 레퍼런스를 저장합니다.
-	CompanyClient* companyClient; // 회사 회원
+	RegisterRecruitmentInfoUI* registerRecruitmentInfoUI;
+	CompanyClient* companyClient;
 	RecruitmentInfo* registeredList;
 	RecruitmentInfoList* recruitmentInfoList;
 
 public:
 	RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList);
-	void addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate); // recruitment info에 정보를 추가합니다
+	void addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate);
 	RecruitmentInfoList* getRecruitmentInfoList();
 	RecruitmentInfo* getRegisteredList();
 };
 
-//this->re.push_back()
 
 /*
 클래스 이름 : RegisterRecruitmentInfoUI <Boundary 클래스>: 채용 등록을 담당합니다.
-클래스 멤버변수:
-클래스 멤버함수:
+클래스 멤버변수: RegisterRecruitmentInfo* registerRecruitmentInfo
+				 CompanyClient* companyClient
+클래스 멤버함수: RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient)
+				 void startInterface() > 입력값을 읽어들입니다.
+				 void result(string task, int expectedApplicantNum, string finishDate) > 사용자의 화면에 결과를 표시합니다.
+				 void registerInput() > 파일에서 입력값을 받아들입니다.
 작성날짜 : 2023/05/21
 작성자 : 김민정
 */
@@ -540,15 +567,15 @@ private:
 
 public:
 	RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient);
-	void startInterface(); // 입력값을 읽어들입니다.
-	void result(string task, int expectedApplicantNum, string finishDate); // 사용자의 화면에 결과를 표시합니다
-	void registerInput(); //파일에서 입력값을 받아들임
+	void startInterface(); 
+	void result(string task, int expectedApplicantNum, string finishDate); 
+	void registerInput(); 
 };
 
 /*
 클래스 이름 : InquireRecruitmentInfo <Control 클래스>: 채용 조회를 담당합니다.
-클래스 멤버변수:
-클래스 멤버함수:
+클래스 멤버변수:CompanyClient* companyClient
+클래스 멤버함수:InquireRecruitmentInfo(CompanyClient* companyClient)
 작성날짜 : 2023/05/22
 작성자 : 김민정
 */
@@ -562,9 +589,10 @@ public:
 };
 
 /*
-클래스 이름 : InquireRecruitmentInfo <Boundary 클래스>: 채용 조회를 담당합니다.
-클래스 멤버변수:
-클래스 멤버함수:
+클래스 이름 : InquireRecruitmentInfoUI <Boundary 클래스>: 채용 조회를 담당합니다.
+클래스 멤버변수: InquireRecruitmentInfo* inquireRecruitmentInfo > 바운더리 클래스의 레퍼런스를 저장할 공간입니다.
+클래스 멤버함수: InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo)
+				 void startInterface(vector<RecruitmentInfo*> riList) > 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
 작성날짜 : 2023/05/22
 작성자 : 김민정
 */
@@ -574,7 +602,7 @@ private:
 	InquireRecruitmentInfo* inquireRecruitmentInfo;
 public:
 	InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo);
-	void startInterface(vector<RecruitmentInfo*> riList); // 사용자인 회사 회원의 RecruitmentInfo를 보여줍니다.
+	void startInterface(vector<RecruitmentInfo*> riList);
 };
 
 //-------------------------------
@@ -662,6 +690,14 @@ public:
 	bool operator()(const RecruitmentInfo* a, const RecruitmentInfo* b);
 };
 
+/*
+클래스 이름 : CancelApplicationInfoUI <Boundary 클래스>: 지원 취소를 담당합니다.
+클래스 멤버변수: CancelApplicationInfo* cancelApplicationInfo > 바운더리 클래스의 레퍼런스를 저장할 공간입니다.
+클래스 멤버함수: CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
+				 void startInterface(RecruitmentInfoList* riList)
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
 class CancelApplicationInfoUI
 {
 private:
@@ -672,6 +708,19 @@ public:
 	void startInterface(RecruitmentInfoList* riList);
 };
 
+/*
+클래스 이름 : CancelApplicationInfo <Control 클래스>: 지원 취소를 담당합니다.
+클래스 멤버변수: GeneralClient* gClient > 현재 취소하려는 일반회원입니다.
+				 RecruitmentInfoList* riList > 현재 등록되어있는 채용공고목록입니다.
+				 vector<RecruitmentInfo*> gcRiList > 일반회원이 지원한 채용공고 목록입니다.
+				 RecruitmentInfo* toCancelRecruitmentInfo > 본인이 지원한 취소를 원하는 채용 공고입니다.
+				 CancelApplicationInfoUI* cancelApplicationInfoUI > 컨트롤 클래스의 레퍼런스를 저장할 공간입니다.
+				 string bn > 일반회원이 취소하려는 채용 공고의 사업자번호입니다.
+클래스 멤버함수: CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
+				 void cancelApplication(string bn)
+작성날짜 : 2023/05/22
+작성자 : 김민정
+*/
 class CancelApplicationInfo
 {
 private:
