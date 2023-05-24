@@ -1,0 +1,52 @@
+[ChaenLim]  fix: 통계 print 메서드 매개변수 수정 07d5902
+[ChaenLim]  feat: 통계 관리 코드 구현 8b8943c
+[IWANNAGOHOME]  Merge pull request #41 from Youthhing/main 27985bc
+[Youth]  fix: 정렬 기능 수정  및 getApplicantNum오류 수정 d3443ed
+[Youth]  Merge pull request #4 from limce21/main 4f0e80e
+[Youth]  Merge pull request #40 from IWANNAGOHOMEE/main fbb2764
+[Youth]  Merge pull request #3 from limce21/main ac1d758
+[IWANNAGOHOME]  feat: 채용, 지원 Merge ed10665
+[IWANNAGOHOME]  feat: 지원 취소 4a63207
+[IWANNAGOHOME]  Merge https://github.com/IWANNAGOHOMEE/SWE-HW 964f69a
+[IWANNAGOHOME]  feat: 지원 취소 1779352
+[IWANNAGOHOME]  Merge pull request #38 from Fresh-hongsi/main 603e6dd
+[Fresh-hongsi]  feat: 지원 관련 출력부 수정 & 회원관리 communication diagram 완성 9a3d498
+[Shihong Park]  Merge pull request #19 from limce21/main 9defcad
+[IWANNAGOHOME]  Merge pull request #37 from Youthhing/main a856d7b
+[Youth]  Merge branch 'main' of https://github.com/Youthhing/SWE-HW 1917422
+[Youth]  fix: 4.1,4.2,4.3기능 추가 및 정렬 구현 ce77d5a
+[ChaenLim]  Merge pull request #36 from Youthhing/main 99a51f9
+[Youth]  Merge branch 'limce21:main' into main ba36f02
+[Youth]  fix: 4.1, 4.2 기능 hw3에 합침 a73f171
+[Youth]  Merge pull request #35 from limce21/chaeeun 0ee180e
+[ChaenLim]  fix: 통계관리 diagram 수정 d72ef87
+[IWANNAGOHOME]  Merge pull request #34 from Youthhing/main 1868cd9
+[Youth]  feat: 4.1, 4.2 기능추가, fix: doTask 3.1수정 cfbf94a
+[Shihong Park]  Merge pull request #18 from limce21/main 21636f1
+[Youth]  Merge pull request #33 from Fresh-hongsi/main 3db9354
+[Youth]  Merge pull request #32 from Fresh-hongsi/main be3415d
+[Fresh-hongsi]  feat: 회원관리 관련 주석 추가 fa72f1e
+[Shihong Park]  Merge pull request #17 from limce21/main cdd0b83
+[ChaenLim]  Merge pull request #31 from IWANNAGOHOMEE/main 8ce941a
+[IWANNAGOHOME]  feat: 채용정보 등록, 조회 b136693
+[ChaenLim]  Merge pull request #30 from IWANNAGOHOMEE/main 897336d
+[IWANNAGOHOME]  fix: 언더바 삭제 a1e1929
+[Shihong Park]  Merge pull request #16 from limce21/main b62d986
+[ChaenLim]  Merge pull request #29 from Youthhing/main 312c4c6
+[Youth]  fix: 3.1오류 수정 0099f0e
+[ChaenLim]  Merge pull request #28 from Fresh-hongsi/main 09d454f
+[Fresh-hongsi]  feat: 회원관리 코드 주석 추가 및 예외처리 de8d6fe
+[ChaenLim]  Merge pull request #27 from Fresh-hongsi/main 44fbe2c
+[Fresh-hongsi]  feat: 회원관리 코드 초안 작성 및 통계관리 detail class diagram 수정 58308de
+[Shihong Park]  Merge pull request #15 from limce21/main 5897c76
+[Shihong Park]  Merge pull request #26 from Youthhing/main fea3528
+[Youth]  docs: DetailClassDiagram for use case 12,14,15 7a35065
+[Youth]  fix: useCase12,14,15수정 및 반환형, 파라미터 추가 092f2c6
+[Youth]  Merge branch 'main' of https://github.com/Youthhing/SWE-HW 743e48e
+[Youth]  fix: communicationDiagram 수정. 지원부분 12,14,15useCase 함수 반환형, 파라미터 추가 281c30a
+[IWANNAGOHOME]  Merge pull request #25 from Fresh-hongsi/main ede94f4
+[Fresh-hongsi]  fix: 입사지원에 대한 use case description 및 requirement list 수정 c258b66
+[Shihong Park]  Merge pull request #14 from limce21/main 11bb3fb
+[IWANNAGOHOME]  Merge pull request #24 from Fresh-hongsi/main 67cb662
+[Shihong Park]  Merge pull request #13 from limce21/main 6650eaf
+[Fresh-hongsi]  docs: 보고서 양식 초안 추가 및 useCaseDiagram 추가 c0ecdcc
