@@ -3982,7 +3982,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1973,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -3995,7 +3995,7 @@
 											"font": "Arial;13;1",
 											"left": 717,
 											"top": 1988,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "Control::InquireApplicationInfo"
 										},
@@ -4030,7 +4030,7 @@
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 1968,
-									"width": 308.822265625,
+									"width": 318.46435546875,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBMFeaUl89LY="
@@ -4067,7 +4067,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 2011,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "-gClient: GeneralClient*",
 											"horizontalAlignment": 0
@@ -4084,7 +4084,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 2026,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "-gcAppliedList: RecruitmentInfo[*]",
 											"horizontalAlignment": 0
@@ -4101,7 +4101,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 2041,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "-inquireApplicationInfoUI: InquireApplicationInfoUI *",
 											"horizontalAlignment": 0
@@ -4110,7 +4110,7 @@
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 2006,
-									"width": 308.822265625,
+									"width": 318.46435546875,
 									"height": 53
 								},
 								{
@@ -4135,7 +4135,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 2064,
-											"width": 298.822265625,
+											"width": 308.46435546875,
 											"height": 13,
 											"text": "+InquireApplicationInfo(gClient: GeneralClient*)",
 											"horizontalAlignment": 0
@@ -4144,7 +4144,7 @@
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 2059,
-									"width": 308.822265625,
+									"width": 318.46435546875,
 									"height": 23
 								},
 								{
@@ -4184,7 +4184,7 @@
 							"containerChangeable": true,
 							"left": 712,
 							"top": 1968,
-							"width": 308.822265625,
+							"width": 318.46435546875,
 							"height": 114,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBMFeaUl7Z3c="
@@ -4886,30 +4886,13 @@
 											"height": 13,
 											"text": "-bn: string",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGIUv9rbwSrRX0=",
-											"_parent": {
-												"$ref": "AAAAAAGIBMFeakmytH8="
-											},
-											"model": {
-												"$ref": "AAAAAAGIUv9rWwSomdg="
-											},
-											"font": "Arial;13;0",
-											"left": 45,
-											"top": 1801,
-											"width": 479.984375,
-											"height": 13,
-											"text": "-applyForRecruitmentInfo: ApplyForRecruitmentInfo*",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 40,
 									"top": 1766,
 									"width": 489.984375,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4932,7 +4915,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 45,
-											"top": 1824,
+											"top": 1809,
 											"width": 479.984375,
 											"height": 13,
 											"text": "+ApplyForRecruitmentInfoUI(applyForRecruitmentInfo: ApplyForRecruitmentInfo*)",
@@ -4949,7 +4932,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 45,
-											"top": 1839,
+											"top": 1824,
 											"width": 479.984375,
 											"height": 13,
 											"text": "+startInterface(riList: RecruitmentInfoList*): void",
@@ -4966,7 +4949,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 45,
-											"top": 1854,
+											"top": 1839,
 											"width": 479.984375,
 											"height": 13,
 											"text": "+fillComName(): void",
@@ -4975,7 +4958,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 40,
-									"top": 1819,
+									"top": 1804,
 									"width": 489.984375,
 									"height": 53
 								},
@@ -12007,16 +11990,6 @@
 							"name": "bn",
 							"visibility": "private",
 							"type": "string"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGIUv9rWwSomdg=",
-							"_parent": {
-								"$ref": "AAAAAAGIBIgwlbbToxk="
-							},
-							"name": "applyForRecruitmentInfo",
-							"visibility": "private",
-							"type": "ApplyForRecruitmentInfo*"
 						}
 					],
 					"operations": [
