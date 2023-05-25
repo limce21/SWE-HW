@@ -61,9 +61,9 @@
 														"$ref": "AAAAAAGIAPCzZIA31bo="
 													},
 													"font": "Arial;13;0",
-													"left": 72.72998046875,
+													"left": 72.45703125,
 													"top": 37,
-													"width": 82.61181640625,
+													"width": 83.5703125,
 													"height": 13,
 													"text": "지원정보 조회"
 												},
@@ -76,7 +76,7 @@
 													"font": "Arial;13;1",
 													"left": 53,
 													"top": 37,
-													"width": 14.72998046875,
+													"width": 14.45703125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -2500,7 +2500,7 @@
 														"$ref": "AAAAAAGIAQAnF68yes8="
 													},
 													"font": "Arial;13;0",
-													"left": 48.72998046875,
+													"left": 48.45703125,
 													"top": 13,
 													"width": 53,
 													"height": 13,
@@ -2515,7 +2515,7 @@
 													"font": "Arial;13;1",
 													"left": 29,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 14.45703125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -10935,7 +10935,7 @@
 													"height": 13,
 													"alpha": -0.05837515659962675,
 													"distance": 154.26276284314372,
-													"text": "3.1.1 : void addApplication(RecruitmentInfo *ri)"
+													"text": "3.1.1 : addApplication()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -11254,7 +11254,7 @@
 													"height": 13,
 													"alpha": 0.670121945583078,
 													"distance": 67.62396025078685,
-													"text": "3.1.2 : void addApplicantToRecruitment(int companyId)"
+													"text": "3.1.2 : addApplicantToRecruitment()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -12032,7 +12032,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIATdcKoF7tzk="
 									},
-									"name": "void addApplication",
+									"name": "addApplication()",
 									"source": {
 										"$ref": "AAAAAAGIATiY1oJHEOU="
 									},
@@ -12042,8 +12042,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIAXdF+GtJ8zQ="
 									},
-									"sequenceNumber": "3.1.1",
-									"arguments": "RecruitmentInfo *ri"
+									"sequenceNumber": "3.1.1"
 								},
 								{
 									"_type": "UMLMessage",
@@ -12051,7 +12050,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIATdcKoF7tzk="
 									},
-									"name": "void addApplicantToRecruitment",
+									"name": "addApplicantToRecruitment()",
 									"source": {
 										"$ref": "AAAAAAGIATiY1oJHEOU="
 									},
@@ -12061,8 +12060,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIBM4M+E4hPug="
 									},
-									"sequenceNumber": "3.1.2",
-									"arguments": "int companyId"
+									"sequenceNumber": "3.1.2"
 								},
 								{
 									"_type": "UMLMessage",
@@ -12622,7 +12620,7 @@
 														"$ref": "AAAAAAGIAUcJYMSqvDo="
 													},
 													"font": "Arial;13;0",
-													"left": 32.45703125,
+													"left": 32.72998046875,
 													"top": 5,
 													"width": 79,
 													"height": 13,
@@ -12637,7 +12635,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 5,
-													"width": 14.45703125,
+													"width": 14.72998046875,
 													"height": 13,
 													"text": "sd"
 												}
@@ -14979,7 +14977,7 @@
 													"height": 13,
 													"alpha": -2.9748851231170934,
 													"distance": 210.92415698539605,
-													"text": "2.1.1 : RecruitmentInfo findByName(string companyName)"
+													"text": "2.1.1 : findByName()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -15337,7 +15335,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIAUcJYMSoEqk="
 									},
-									"name": "RecruitmentInfo findByName",
+									"name": "findByName()",
 									"source": {
 										"$ref": "AAAAAAGIAUg1OsjR/7w="
 									},
@@ -15347,8 +15345,7 @@
 									"connector": {
 										"$ref": "AAAAAAGIAUqQdt04Y9U="
 									},
-									"sequenceNumber": "2.1.1",
-									"arguments": "string companyName"
+									"sequenceNumber": "2.1.1"
 								}
 							],
 							"participants": [
