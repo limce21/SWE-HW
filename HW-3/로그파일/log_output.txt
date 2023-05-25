@@ -1,3 +1,49 @@
+[ChaenLim]  fix: detailed design class 다이어그램 관계 수정 a2b4786
+[ChaenLim]  Merge pull request #55 from Fresh-hongsi/main 884d7a3
+[Fresh-hongsi]  fix: design class diagram 오타 수정 09db3a2
+[Shihong Park]  Merge pull request #26 from limce21/main 1d27c0f
+[Shihong Park]  Merge pull request #54 from Youthhing/main a871d6e
+[Youth]  fix:: 4.3출력코드 수정 de11dd1
+[Youth]  fix: detail diagram 4.1,4.2변수추가 651786b
+[Youth]  fix: 4.1,4.2 UI,control 참조변수 추가 103c76c
+[Youth]  Merge branch 'main' of https://github.com/Youthhing/SWE-HW fed076d
+[Youth]  test: output 결과 확인 330e63e
+[Youth]  Merge pull request #6 from limce21/main f3560dd
+[IWANNAGOHOME]  Merge pull request #53 from Fresh-hongsi/main 4d75625
+[Fresh-hongsi]  fix: 지원정보 조회 출력값 오류 수정 / 보고서 communication diagram 까지 최신화 완료, input/output 테스트 케이스 추가 02ebe17
+[Fresh-hongsi]  fix: design class diagram 표기법 수정 및 input/output 예상 테스트 케이스 추가 bc5e3ac
+[Shihong Park]  Merge pull request #25 from limce21/main 2b578fa
+[Shihong Park]  Merge pull request #52 from IWANNAGOHOMEE/main 4574470
+[IWANNAGOHOME]  fix: detailed design class diagram 표기 수정 b2acb33
+[Shihong Park]  Merge pull request #24 from limce21/main 89d675b
+[Shihong Park]  Merge pull request #51 from Youthhing/main 30c6b13
+[Youth]  fix: 채용지원, 정보검색 communication diagram 파라미터 제거 489da67
+[Youth]  Merge pull request #5 from limce21/main 23dd29c
+[ChaenLim]  Merge pull request #50 from Fresh-hongsi/main 32f3efa
+[Fresh-hongsi]  fix: 오타 수정 및 누락 함수 추가 in 지원 취소 8f11dd5
+[Shihong Park]  Merge pull request #23 from limce21/main 6d1bb94
+[ChaenLim]  Merge pull request #49 from IWANNAGOHOMEE/main 763e372
+[IWANNAGOHOME]  fix: communication diagram 지원취소 추가 b4cc2d2
+[IWANNAGOHOME]  Merge pull request #48 from limce21/chaeeun 4899053
+[ChaenLim]  fix: type -> task 오타 수정 8140dfa
+[Shihong Park]  Merge pull request #22 from limce21/main 2e703cf
+[IWANNAGOHOME]  Merge pull request #47 from Youthhing/main fa84f07
+[Youth]  docs: communcation diagram 지원부분 업로드 fdb6d4b
+[Youth]  fix: Detailed class diagram 일부 수정 d95b2a9
+[Youth]  fix: 유승 주석 추가 78a531a
+[Youth]  Merge pull request #46 from IWANNAGOHOMEE/main f54472c
+[IWANNAGOHOME]  fix: 주석 수정 및 문서 업로드 7998133
+[IWANNAGOHOME]  Merge pull request #45 from limce21/chaeeun 8863ace
+[ChaenLim]  feat: 통계관리 커뮤니케이션 다이어그램 업로드 및 로그파일 추가 353fba2
+[ChaenLim]  feat: Detailed Class Diagram 추가 7ab5cf0
+[ChaenLim]  fix: 변수명 수정 및 주석 9a1a782
+[ChaenLim]  Merge pull request #44 from Fresh-hongsi/main 0a6aa2a
+[Fresh-hongsi]  size 에러 수정 / 변수 이름 수정 / 회원관리 파트 주석 추가 27e9c41
+[Shihong Park]  Merge pull request #21 from limce21/main c590dcc
+[IWANNAGOHOME]  Merge pull request #43 from Youthhing/main af221de
+[Youth]  fix: 4.4지원취소 수정 0e94aae
+[Youth]  Merge pull request #42 from limce21/chaeeun f7fe22a
+[Shihong Park]  Merge pull request #20 from limce21/main 5aa820e
 [ChaenLim]  fix: 통계 print 메서드 매개변수 수정 07d5902
 [ChaenLim]  feat: 통계 관리 코드 구현 8b8943c
 [IWANNAGOHOME]  Merge pull request #41 from Youthhing/main 27985bc
@@ -50,3 +96,5 @@
 [IWANNAGOHOME]  Merge pull request #24 from Fresh-hongsi/main 67cb662
 [Shihong Park]  Merge pull request #13 from limce21/main 6650eaf
 [Fresh-hongsi]  docs: 보고서 양식 초안 추가 및 useCaseDiagram 추가 c0ecdcc
+[IWANNAGOHOME]  Merge pull request #23 from Fresh-hongsi/main af8199b
+[Fresh-hongsi]  fix: analysis class 다이어그램 수정 920f3f3
