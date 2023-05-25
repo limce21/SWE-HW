@@ -1,0 +1,300 @@
+1.1. 회원가입
+>2 yoonsik 970513 yoon15 sik18
+
+1.1. 회원가입
+>1 hyundai 1234 hyun77 dai17
+
+2.1. 로그인
+>hyun77 dai17
+
+3.1. 채용 정보 등록
+> FrontEnd 15 2023/09/20
+
+2.2. 로그아웃
+>hyun77
+
+1.1. 회원가입
+>1 samsung 31242 sam12 sumg14
+
+1.1. 회원가입
+>2 shihong 970426 shi11 hong13
+
+2.1. 로그인
+>sam12 sumg14
+
+3.1. 채용 정보 등록
+> accounting 10 2023/05/26
+
+3.2. 등록된 채용 정보 조회
+> accounting 10 2023/05/26
+
+3.2. 등록된 채용 정보 조회
+> accounting 10 2023/05/26
+
+2.2. 로그아웃
+>sam12
+
+1.1. 회원가입
+>1 kakaoDev 10351 kakao19 dev189
+
+2.1. 로그인
+>shi11 hong13
+
+2.2. 로그아웃
+>shi11
+
+1.1. 회원가입
+>2 youthing 990102 youth913 thing17
+
+1.1. 회원가입
+>1 lgDisplay 0131 lgD112 display91
+
+2.1. 로그인
+>kakao19 dev189
+
+3.1. 채용 정보 등록
+> FrontEnd 20 2023/07/21
+
+3.2. 등록된 채용 정보 조회
+> FrontEnd 20 2023/07/21
+
+2.2. 로그아웃
+>kakao19
+
+2.1. 로그인
+>lgD112 display91
+
+3.1. 채용 정보 등록
+> manager 30 2023/06/21
+
+2.2. 로그아웃
+>lgD112
+
+2.1. 로그인
+>shi11 hong13
+
+4.1. 채용정보 검색
+> kakaoDev 10351 FrontEnd 20 2023/07/21
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: kakaoDev 10351 FrontEnd
+
+4.1. 채용정보 검색
+> lgDisplay 0131 manager 30 2023/06/21
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: lgDisplay 0131 manager
+
+2.2. 로그아웃
+>shi11
+
+2.1. 로그인
+>youth913 thing17
+
+4.1. 채용정보 검색
+> lgDisplay 0131 manager 30 2023/06/21
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: lgDisplay 0131 manager
+
+4.1. 채용정보 검색
+> samsung 31242 accounting 10 2023/05/26
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: samsung 31242 accounting
+
+2.2. 로그아웃
+>youth913
+
+2.1. 로그인
+>yoon15 sik18
+
+4.1. 채용정보 검색
+> samsung 31242 accounting 10 2023/05/26
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: samsung 31242 accounting
+
+4.1. 채용정보 검색
+> lgDisplay 0131 manager 30 2023/06/21
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: lgDisplay 0131 manager
+
+4.1. 채용정보 검색
+> hyundai 1234 FrontEnd 15 2023/09/20
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: hyundai 1234 FrontEnd
+
+4.1. 채용정보 검색
+> kakaoDev 10351 FrontEnd 20 2023/07/21
+
+4.2. 채용 지원
+> 조회된 채용공고
+
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+
+> 지원완료: kakaoDev 10351 FrontEnd
+
+4.3. 지원 정보 조회
+> hyundai 1234FrontEnd 15 2023/09/20
+
+> kakaoDev 10351FrontEnd 20 2023/07/21
+
+> lgDisplay 0131manager 30 2023/06/21
+
+> samsung 31242accounting 10 2023/05/26
+
+4.4. 지원 취소
+> hyundai 1234 FrontEnd
+
+> kakaoDev 10351 FrontEnd
+
+> lgDisplay 0131 manager
+
+> samsung 31242 accounting
+
+> 취소한 공고: lgDisplay 0131 manager
+
+4.3. 지원 정보 조회
+> hyundai 1234FrontEnd 15 2023/09/20
+
+> kakaoDev 10351FrontEnd 20 2023/07/21
+
+> samsung 31242accounting 10 2023/05/26
+
+5.1 지원 정보 통계
+> FrontEnd 2
+
+> accounting 1
+
+4.3. 지원 정보 조회
+> hyundai 1234FrontEnd 15 2023/09/20
+
+> kakaoDev 10351FrontEnd 20 2023/07/21
+
+> samsung 31242accounting 10 2023/05/26
+
+2.2. 로그아웃
+>yoon15
+
+2.1. 로그인
+>shi11 hong13
+
+4.3. 지원 정보 조회
+> kakaoDev 10351FrontEnd 20 2023/07/21
+
+> lgDisplay 0131manager 30 2023/06/21
+
+5.1 지원 정보 통계
+> FrontEnd 1
+
+> manager 1
+
+1.2. 회원탈퇴
+>shi11
+
+2.1. 로그인
+>lgD112 display91
+
+5.1 지원 정보 통계
+> manager 2
+
+2.2. 로그아웃
+>lgD112
+
+1.1. 회원가입
+>1 sk 1421 sk1 d12
+
+2.1. 로그인
+>sk1 d12
+
+5.1 지원 정보 통계
+
+6.1.종료
+
