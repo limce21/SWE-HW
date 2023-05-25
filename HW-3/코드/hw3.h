@@ -645,6 +645,7 @@ private:
 	RecruitmentInfoList* riList;
 	string companyName;
 	RecruitmentInfo* result;
+	SearchRecruitmentInfoUI* searchRecruitmentInfoUI;
 public:
 	SearchRecruitmentInfo(RecruitmentInfoList* riList);
 	RecruitmentInfo* getResult();
@@ -689,6 +690,7 @@ private:
 	GeneralClient* gClient;
 	RecruitmentInfoList* riList;
 	RecruitmentInfo* appliedRecruitmentInfo;
+	ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI;
 
 public:
 	ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList);
@@ -706,9 +708,10 @@ public:
 
 class InquireApplicationInfoUI {
 private:
-
+	
 public:
-	void startInterface(vector<RecruitmentInfo*> gcAppliedList);
+	
+ 	void startInterface(vector<RecruitmentInfo*> gcAppliedList);
 };
 
 /*
@@ -726,6 +729,7 @@ class InquireApplicationInfo {
 private:
 	GeneralClient* gClient;
 	vector<RecruitmentInfo*> gcAppliedList;
+	InquireApplicationInfoUI* inquireApplicationInfoUI;
 public:
 	InquireApplicationInfo(GeneralClient* gClient);
 };

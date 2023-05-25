@@ -1580,7 +1580,7 @@ SearchRecruitmentInfo::SearchRecruitmentInfo(RecruitmentInfoList* riList) {
     this->riList = riList;
     this->companyName = "";
 
-    SearchRecruitmentInfoUI* searchRecruitmentInfoUI = new SearchRecruitmentInfoUI(this);
+    this->searchRecruitmentInfoUI = new SearchRecruitmentInfoUI(this);
     searchRecruitmentInfoUI->startInterface();
 }
 
@@ -1676,7 +1676,7 @@ ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, Recruit
     RecruitmentInfoList* tmpRiList = new RecruitmentInfoList(); 
     tmpRiList->setRecruitmentInfo(tmp);
 
-    ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
+    this->applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
 
     applyForRecruitmentInfoUI->startInterface(tmpRiList);
 }
@@ -1698,6 +1698,7 @@ void ApplyForRecruitmentInfo::addApplicant(string bn) {
 }
 
 
+
 /*
     함수이름: InquireApplicationInfo::InquireApplicationInfo
     기능: Control Class InquireApplicationInfo의 생성자
@@ -1714,10 +1715,10 @@ InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
 
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
-    InquireApplicationInfoUI* inquireApplicationInfoUI = new InquireApplicationInfoUI();
-    inquireApplicationInfoUI->startInterface(tmp);
+    this->inquireApplicationInfoUI = new InquireApplicationInfoUI();
+    this->inquireApplicationInfoUI = inquireApplicationInfoUI;
+    this->inquireApplicationInfoUI->startInterface(tmp);
 }
-
 
 
 /*
@@ -1732,7 +1733,7 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
     int size = gcAppliedList.size();
 
     for (int i = 0; i < size; i++) {
-        fout << "> " << gcAppliedList[i]->getName() << " " << gcAppliedList[i]->getBn()<<" "<<gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
+        fout << "> " << gcAppliedList[i]->getName() << " " <<gcAppliedList[i]->getBn()<<" " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
             << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
     }
 }
