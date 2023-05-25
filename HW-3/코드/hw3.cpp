@@ -1733,7 +1733,7 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
     int size = gcAppliedList.size();
 
     for (int i = 0; i < size; i++) {
-        fout << "> " << gcAppliedList[i]->getName() << " " <<gcAppliedList[i]->getBn()<< gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
+        fout << "> " << gcAppliedList[i]->getName() << " " <<gcAppliedList[i]->getBn()<<" " << gcAppliedList[i]->getTask() << " " << gcAppliedList[i]->getExpectedApplicantNum()
             << " " << gcAppliedList[i]->getFinishDate() << "\n\n";
     }
 }
