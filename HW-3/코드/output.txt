@@ -222,13 +222,13 @@
 > 지원완료: kakaoDev 10351 FrontEnd
 
 4.3. 지원 정보 조회
-> hyundai FrontEnd 15 2023/09/20
+> hyundai 1234 FrontEnd 15 2023/09/20
 
-> kakaoDev FrontEnd 20 2023/07/21
+> kakaoDev 10351 FrontEnd 20 2023/07/21
 
-> lgDisplay manager 30 2023/06/21
+> lgDisplay 0131 manager 30 2023/06/21
 
-> samsung accounting 10 2023/05/26
+> samsung 31242 accounting 10 2023/05/26
 
 4.4. 지원 취소
 > hyundai 1234 FrontEnd
@@ -242,11 +242,11 @@
 > 취소한 공고: lgDisplay 0131 manager
 
 4.3. 지원 정보 조회
-> hyundai FrontEnd 15 2023/09/20
+> hyundai 1234 FrontEnd 15 2023/09/20
 
-> kakaoDev FrontEnd 20 2023/07/21
+> kakaoDev 10351 FrontEnd 20 2023/07/21
 
-> samsung accounting 10 2023/05/26
+> samsung 31242 accounting 10 2023/05/26
 
 5.1 지원 정보 통계
 > FrontEnd 2
@@ -254,11 +254,11 @@
 > accounting 1
 
 4.3. 지원 정보 조회
-> hyundai FrontEnd 15 2023/09/20
+> hyundai 1234 FrontEnd 15 2023/09/20
 
-> kakaoDev FrontEnd 20 2023/07/21
+> kakaoDev 10351 FrontEnd 20 2023/07/21
 
-> samsung accounting 10 2023/05/26
+> samsung 31242 accounting 10 2023/05/26
 
 2.2. 로그아웃
 >yoon15
@@ -267,9 +267,9 @@
 >shi11 hong13
 
 4.3. 지원 정보 조회
-> kakaoDev FrontEnd 20 2023/07/21
+> kakaoDev 10351 FrontEnd 20 2023/07/21
 
-> lgDisplay manager 30 2023/06/21
+> lgDisplay 0131 manager 30 2023/06/21
 
 5.1 지원 정보 통계
 > FrontEnd 1
