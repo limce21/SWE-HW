@@ -3642,7 +3642,7 @@
 											"top": 1419.5,
 											"width": 62,
 											"height": 13,
-											"text": "입사 지원"
+											"text": "채용 지원"
 										},
 										{
 											"_type": "LabelView",
@@ -6950,9 +6950,9 @@
 												"$ref": "AAAAAAGIKU+PiN7wa8c="
 											},
 											"font": "Arial;13;1",
-											"left": 697,
+											"left": 697.5,
 											"top": 1547.5,
-											"width": 84,
+											"width": 86,
 											"height": 13,
 											"text": "지원 정보 조회"
 										},
@@ -6964,7 +6964,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"width": 73.67724609375,
+											"width": 77.9365234375,
 											"height": 13,
 											"text": "(from Model)"
 										},
@@ -6981,9 +6981,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 692,
+									"left": 692.5,
 									"top": 1540.5,
-									"width": 95.2236328125,
+									"width": 96,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIKU+PiN7x0bg="
@@ -7073,7 +7073,7 @@
 							"containerChangeable": true,
 							"left": 672,
 							"top": 1536,
-							"width": 134,
+							"width": 137,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIKU+PiN7wa8c="
@@ -7855,7 +7855,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGHakFmSQu2q5I="
 					},
-					"name": "입사 지원"
+					"name": "채용 지원"
 				},
 				{
 					"_type": "UMLUseCase",
