@@ -242,7 +242,7 @@ void System::doTask()
                 }
                 else //로그인되어있는 사람이 없는 경우 
                 {
-                    cout << "채용 정보를 등록할 수 없습니다." << endl;
+                    cout << "통계 정보를 조회할 수 없습니다." << endl;
                 }
                 break;
             }
@@ -348,7 +348,14 @@ bool Client::getLogInStatus()
 
 
 
-// 채용 정보 등록 시 getName
+/*
+    함수이름: Client::getName
+    기능: 해당 회원의 이름을 반환한다.
+    매개변수: 없음
+    반환값: 해당 회원의 이름 this->name
+    작성날짜: 2023/05/21
+    작성자: 박시홍
+*/
 string Client::getName()
 {
     return this->name;
@@ -579,10 +586,26 @@ void GeneralClientList::destroy(string id)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+    함수이름: RecruitmentInfo::getBn
+    기능: 채용목록의 사업자 번호를 반환
+    매개변수: 없음
+    반환값: 사업자번호
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 string RecruitmentInfo::getBn() {
     return this->bn;
 }
 
+/*
+    함수이름: RecruitmentInfo::findByName
+    기능: 채용목록에서 companyName을 갖는 채용공고를 반환
+    매개변수: string companyName: 찾을 회사이름
+    반환값: 매개변수와 일치하는 회사이름을 갖는 채용공고
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 RecruitmentInfo* RecruitmentInfoList::findByName(string companyName) {
     int size = rCList.size();
     for (int i = 0; i < size; i++) {
@@ -592,6 +615,14 @@ RecruitmentInfo* RecruitmentInfoList::findByName(string companyName) {
     }
 }
 
+/*
+    함수이름: RecruitmentInfoList::findByNum
+    기능: RecruitmentInfoList에서 사업자 번호를 갖는 RecruitmentInfo를 반환
+    매개변수: string bn: 찾아야할 사업자 번호
+    반환값: RecruitmentInfo* bn을 가진 채용정보의 포인터
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 RecruitmentInfo* RecruitmentInfoList::findByNum(string bn) {
     int size = rCList.size();
     for (int i = 0; i < size; i++) {
@@ -601,6 +632,15 @@ RecruitmentInfo* RecruitmentInfoList::findByNum(string bn) {
     }
 }
 
+
+/*
+    함수이름: RecruitmentInfo::getName const
+    기능: 채용목록의 회사 이름을 반환(읽기전용)
+    매개변수: 없음
+    반환값: 회사이름
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 string RecruitmentInfo::getName()const {
     return this->companyName;
 }
@@ -663,8 +703,6 @@ void SignInUI::startInterface()
 {
     cout << "회원 유형과 정보를 입력하세요" << endl;
     this->fillInfo();
-
-
 
 }
 
@@ -1091,7 +1129,10 @@ void SignOutUI::startInterface(string id, bool flag)
 
 /*
  함수이름: RegisterRecruitmentInfo::RegisterRecruitmentInfo
- 기능: RegisterRecruitmentInfo control 클래스의 생성자입니다
+ 기능: RegisterRecruitmentInfo control 클래스의 생성자입니다.
+ 매개변수: CompanyClient* companyClient
+           RecruitmentInfoList* recruitmentInfoList
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1105,7 +1146,10 @@ RegisterRecruitmentInfo::RegisterRecruitmentInfo(CompanyClient* companyClient, R
 
 /*
  함수이름: RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI
- 기능: RegisterRecruitmentInfo  boundary 클래스의 생성자입니다
+ 기능: RegisterRecruitmentInfoUI boundary 클래스의 생성자입니다.
+ 매개변수: RegisterRecruitmentInfo* registerRecruitmentInfo
+           CompanyClient* companyClient
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1118,24 +1162,26 @@ RegisterRecruitmentInfoUI::RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* re
 
 /*
  함수이름: RegisterRecruitmentInfoUI::startInterface
- 기능: RegisterRecruitmentInfoUI에서 입력값을 읽어들이고 RecruitmentInfo에 정보를 추가, 결과를 표시하도록 합니다.
+ 기능: RegisterRecruitmentInfoUI에서 registerInput함수를 호출하여 입력값을 받도록 합니다.
+ 매개변수: 없음
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
 void RegisterRecruitmentInfoUI::startInterface()
 {
-    cout << "채용 정보 등록을 위한 필드를 입력하세요" << endl;
-    //string task;
-    //int numOfApplicant;
-    //string finishDate;
-
-    //fin >> task >> numOfApplicant >> finishDate;
-    //registerRecruitmentInfo->addNewRecruitmentInfo(task, numOfApplicant, finishDate);
-    //result(task, numOfApplicant, finishDate);
-
+    cout << "채용 정보 등록을 위한 필드를 입력하세요" << endl;;
     this->registerInput();
 }
 
+/*
+ 함수이름: RegisterRecruitmentInfoUI::registerInput()
+ 기능: 업무, 인원수, 마감일의 입력값을 받고 registerRecruitmentInfo의 addNewRecruitmentInfo 함수를 호출하고 result 함수로 사용자에게 등록된 정보를 표시합니다.
+ 매개변수: 없음
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void RegisterRecruitmentInfoUI::registerInput()
 {
     string task;
@@ -1149,6 +1195,10 @@ void RegisterRecruitmentInfoUI::registerInput()
 /*
  함수이름: RegisterRecruitmentInfoUI::result
  기능: 사용자에게 입력한 정보를 표시합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1163,8 +1213,12 @@ void RegisterRecruitmentInfoUI::result(string task, int expectedApplicantNum, st
 }
 
 /*
- 함수이름: RegisterRecruitmentInfoUI::addNewRecruitmentInfo
- 기능: companyClient에게 RecruitmentInfo를 추가하도록 합니다.
+ 함수이름: RegisterRecruitmentInfo::addNewRecruitmentInfo
+ 기능: addNewRecruitInfo 함수를 호출해 companyClient의 포인터에 RecruitmentInfo를 추가하도록 합니다. addNewRecruitmentInfoList 함수를 호출해 recruitmentInfoList의 포인터에 RecruitmentInfo를 추가하도록 합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1174,12 +1228,24 @@ void RegisterRecruitmentInfo::addNewRecruitmentInfo(string task, int expectedApp
     this->recruitmentInfoList->addNewRecruitmentInfoList(tmp);
 }
 
+/*
+ 함수이름: RecruitmentInfoList::addNewRecruitmentInfoList
+ 기능: RecruitmentInfoList의 포인터에 RecruitmentInfo를 추가합니다.
+ 매개변수: RecruitmentInfo* ri
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void RecruitmentInfoList::addNewRecruitmentInfoList(RecruitmentInfo* ri) {
     this->rCList.push_back(ri);
 }
 /*
  함수이름: CompanyClient::addNewRecruitInfo
- 기능: company client의 포인터가 RecruitmentInfo를 추가합니다
+ 기능: CompanyClient의 포인터에 RecruitmentInfo를 추가합니다.
+ 매개변수: string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1199,6 +1265,12 @@ RecruitmentInfo* CompanyClient::addNewRecruitInfo(string task, int expectedAppli
 /*
  함수이름: RecruitmentInfo::RecruitmentInfo
  기능: 새로운 RecruitmentInfo 객체를 생성합니다.
+ 매개변수: string companyName
+           string bn
+           string task
+           int expectedApplicantNum
+           string finishDate
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1214,7 +1286,9 @@ RecruitmentInfo::RecruitmentInfo(string companyName, string bn, string task, int
 
 /*
  함수이름: InquireRecruitmentInfo::InquireRecruitmentInfo
- 기능: InquireRecruitmentInfo control 클래스의 생성자입니다
+ 기능: InquireRecruitmentInfo control 클래스의 생성자입니다.
+ 매개변수: CompanyClient* companyClient
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1229,8 +1303,10 @@ InquireRecruitmentInfo::InquireRecruitmentInfo(CompanyClient* companyClient)
 }
 
 /*
- 함수이름: InquireRecruitmentInfoUI::InquireRecruitmentInfo
- 기능: InquireRecruitmentInfoUI boundary 클래스의 생성자입니다
+ 함수이름: InquireRecruitmentInfoUI::InquireRecruitmentInfoUI
+ 기능: InquireRecruitmentInfoUI boundary 클래스의 생성자입니다.
+ 매개변수: InquireRecruitmentInfo* inquireRecruitmentInfo
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1241,7 +1317,9 @@ InquireRecruitmentInfoUI::InquireRecruitmentInfoUI(InquireRecruitmentInfo* inqui
 
 /*
  함수이름: InquireRecruitmentInfoUI::startInterface
- 기능: 사용자인 회사 회원의 RecruitmentInfo를 출력합니다.
+ 기능: 사용자인 회사 회원의 모든 RecruitmentInfo를 출력합니다.
+ 매개변수: vector<RecruitmentInfo*> riList
+ 반환값: 없음
  작성날짜: 2023/05/22
  작성자: 김민정
 */
@@ -1254,7 +1332,14 @@ void InquireRecruitmentInfoUI::startInterface(vector<RecruitmentInfo*> riList)
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 
-
+/*
+    함수이름: CompanyClientList::findById
+    기능: 회원의 id를 기준으로 회사회원 리스트에서 회사회원 정보를 반환
+    매개변수: string id: 찾을 회사회원의 id
+    반환값: 해당 id를 가진 회사회원
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 CompanyClient* CompanyClientList::findById(string id) {
     int size = cCList.size();
 
@@ -1265,6 +1350,14 @@ CompanyClient* CompanyClientList::findById(string id) {
     }
 }
 
+/*
+    함수이름: GeneralClientList::findById
+    기능: 등록된 일반회원 리스트에서 id를 갖는 일반회원을 찾는다.
+    매개변수: string id : 찾을 회원의 id
+    반환값: 해당id를 갖는 GeneralClient
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 GeneralClient* GeneralClientList::findById(string id) {
     int size = gCList.size();
 
@@ -1275,85 +1368,214 @@ GeneralClient* GeneralClientList::findById(string id) {
     }
 }
 
+/*
+    함수이름: CompanyClient::getListRegisteredInfo
+    기능: 회사회원이 등록한 채용정보를 반환
+    매개변수: 없음
+    반환값: 해당 회사회원이 등록한 채용공고목록
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 vector<RecruitmentInfo*> CompanyClient::getListRegisteredInfo() {
     return registeredList;
 }
 
-
+/*
+    함수이름: RecruitmentInfo::getTask
+    기능: 채용정보의 업무를 반환
+    매개변수: 없음
+    반환값: 채용정보의 업무
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 string RecruitmentInfo::getTask() {
     return this->task;
 }
+
+/*
+    함수이름: RecruitmentInfo::getApplicantNum
+    기능: 채용정보의 현재 지원자 수를 반환
+    매개변수: 없음
+    반환값: 채용정보의 현재 지원자수
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 int RecruitmentInfo::getApplicantNum() {
     return this->numOfApplicant;
 }
+/*
+    함수이름: RecruitmentInfo::getFinishDate
+    기능: 채용정보의 마감일을 반환
+    매개변수: 없음
+    반환값: 채용정보의 마감일
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 string RecruitmentInfo::getFinishDate() {
     return this->finishDate;
 }
+
+/*
+    함수이름: RegisterRecruitmentInfo::getRecruitmentInfoList
+    기능: 해당 클래스의 private 변수인 recruitmentInfoList를 반환
+    매개변수: 없음
+    반환값: 해당 클래스의 채용정보리스트
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 
 RecruitmentInfoList* RegisterRecruitmentInfo::getRecruitmentInfoList() {
     return this->recruitmentInfoList;
 }
 
+/*
+    함수이름: RegisterRecruitmentInfo::getRegisteredList
+    기능: 해당 클래스의 private 변수인 registeredList를 반환
+    매개변수: 없음
+    반환값: 해당 클래스의 등록된 채용정보리스트
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 RecruitmentInfo* RegisterRecruitmentInfo::getRegisteredList() {
     return this->registeredList;
 }
 
-
+/*
+    함수 이름: RecruitmentInfoList::getRIList const
+    기능: RecruitmentInfoLIst의 private 변수인 vector<RecruitmentInfo*> rCList를 반환함
+    매개변수: 없음
+    반환값: RecruitmentInfoLIst의 private 변수인 vector<RecruitmentInfo*> rCList
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 vector<RecruitmentInfo*> RecruitmentInfoList::getRIList() const{
     return this->rCList;
 }
 
-
+/*
+    함수이름: GeneralClient::addApplication
+    기능: 일반회원의 지원목록에 새로운 채용공고 추가
+    매개변수: RecruitmentInfo *ri: 지원할 채용공고
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 void GeneralClient::addApplication(RecruitmentInfo* ri) {
     this->appliedList.push_back(ri);
 }
 
-//지원자수 한명 추가
+/*
+    함수이름: RecruitmentInfo::addApplicantToRecruitment
+    기능: 해당 채용정보에 지원자수 1명 추가
+    매개변수: 없음
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 void RecruitmentInfo::addApplicantToRecruitment() {
     this->numOfApplicant += 1;
 }
 
-//지원자수 한명 감소
+/*
+    함수이름: RecruitmentInfo::subApplicantToRecruitment
+    기능: 해당 채용정보에 지원자수 1명 감소
+    매개변수: 없음
+    반환값: 없음
+    작성날짜: 2023/05/24
+    작성자: 신유승
+*/
 void RecruitmentInfo::subApplicantToRecruitment() {
     this->numOfApplicant -= 1;
 }
 
+/*
+    함수이름: RecruitmentInfo::getExpectedApplicantNum
+    기능: 해당 채용정보의 모집인원을 반환
+    매개변수: 없음
+    반환값: 모집인원
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 int RecruitmentInfo::getExpectedApplicantNum() {
     return this->expectedApplicantNum;
 }
 
+/*
+    함수이름: RecruitmentInfoList::setRecruitmentInfo
+    기능: RecruitmentInfoList의 private 변수 rCList를 초기화
+    매개변수: 초기화할 vector
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 void RecruitmentInfoList::setRecruitmentInfo(vector<RecruitmentInfo*> riList) {
     this->rCList = riList;
 }
 
-//-----------------------------------------------
 
+/*
+   함수이름: SearchRecruitmentInfoUI::SearchRecruitmentInfoUI
+   기능: 채용정보 검색 Boundary 클래스의 생성자
+   매개변수: SearchRecruitmentInfo *searchRecruitmentInfo: 해당 use case의 Control class 참조값을 매개변수로 받음
+   반환값: 없음
+   작성날짜: 2023/05/22
+   작성자: 신유승
+*/
 SearchRecruitmentInfoUI::SearchRecruitmentInfoUI(SearchRecruitmentInfo* searchRecruitmentInfo) {
     this->searchRecruitmentInfo = searchRecruitmentInfo;
 }
 
+/*
+    함수이름: SearchRecruitmentInfoUI::fillInput
+    기능: 사용자에게 검색할 회사이름을 입력받는 함수
+    매개변수: 없음
+    반환값: 없음:
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 
+void SearchRecruitmentInfoUI::fillInput() {
+    string tmpCompanyName;
+    fin >> tmpCompanyName;
+    this->companyName = tmpCompanyName;
+}
+/*
+    함수이름: SearchRecruitmentInfoUI::startInterface
+    기능: 채용정보 검색화면을 띄우기 위한 인터페이스
+    매개변수: 없음
+    반환값: 없음
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 void SearchRecruitmentInfoUI::startInterface() {
     //입력창을 띄우고 
 
-    string companyName;
-    fin >> companyName;
-
+    this->fillInput();
+    string companyName = this->companyName;
 
     this->searchRecruitmentInfo->searchRecruitmentInfoListByComName(companyName);
-
-    fout << "> " << this->searchRecruitmentInfo->getResult()->getName() << " " <<
-        this->searchRecruitmentInfo->getResult()->getBn() << " " << this->searchRecruitmentInfo->getResult()->getTask() << " " <<
-        this->searchRecruitmentInfo->getResult()->getExpectedApplicantNum()<<" " << this->searchRecruitmentInfo->getResult()->getFinishDate() << "\n\n";
-
-
-
-
 }
+
+/*
+    함수이름: SearchRecruitmentInfo::getResult
+    기능: Control클래스가 가지고 있는 검색 결과인 private 변수 result를 반환하는 함수
+    매개변수: 없음
+    반환값: RecruitmentInfo* 검색결과의 Reference
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 RecruitmentInfo* SearchRecruitmentInfo::getResult() {
     return this->result;
 }
 
+/*
+   함수이름: SearchRecruitmentInfo::SearchRecruitmentInfo
+   기능: 채용정보 검색 Control클래스의 생성자
+   매개변수: RecruitmentInfoList *riList: 현재 세션에 등록된 채용정보 목록
+   반환값: 없음
+   작성날짜: 2023/05/22
+   작성자: 신유승
+*/
 SearchRecruitmentInfo::SearchRecruitmentInfo(RecruitmentInfoList* riList) {
     this->riList = riList;
     this->companyName = "";
@@ -1362,24 +1584,62 @@ SearchRecruitmentInfo::SearchRecruitmentInfo(RecruitmentInfoList* riList) {
     searchRecruitmentInfoUI->startInterface();
 }
 
+/*
+    함수이름: SearchRecruitmentInfo::searchRecruitmentInfoListByComName
+    기능: 등록된 채용공고에서 companyName을 기준으로 RecruitmentInfo를 찾고 그 결과를 출력하는 함수
+    매개변수: companyName: 회원이 입력한 회사이름
+    반환값: 없음
+    작성날짜: 2023/05/22
+    작성자: 신유승
+*/
 void SearchRecruitmentInfo::searchRecruitmentInfoListByComName(string companyName) {
     this->companyName = companyName;
     this->result = this->riList->findByName(companyName);
+    fout << "> " << this->getResult()->getName() << " " <<
+        this->getResult()->getBn() << " " << this->getResult()->getTask() << " " <<this->getResult()->getExpectedApplicantNum() << " " << 
+        this->getResult()->getFinishDate() << "\n\n";
 
 }
 
 
-//채용 지원
+/*
+    함수이름: ApplyForRecruitmentInfoUI::ApplyForRecruitmentInfoUI
+    기능：Boundary class ApplyForRecruitmentInfoUI의 생성자
+    매개변수: ApplyForRecruitmentInfo* applyForRecruitmentInfo : control 클래스의 참조값
+    반환형: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 
 ApplyForRecruitmentInfoUI::ApplyForRecruitmentInfoUI(ApplyForRecruitmentInfo* applyForRecruitmentInfo) {
     this->applyForRecruitmentInfo = applyForRecruitmentInfo;
 }
 
-void ApplyForRecruitmentInfoUI::applyForRecruitmentInfoByNum(string bn) {
-    this->applyForRecruitmentInfo->addApplicant(bn);
+
+/*
+    함수이름: ApplyForRecruitmentInfoUI::fillComName
+    기능: 일반회원이 지원할 회사의 사업자 번호를 입력받는다.
+    매개변수: 없음
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
+void ApplyForRecruitmentInfoUI::fillComName() {
+    string tmpBn;
+    fin >> tmpBn;
+    this->bn = tmpBn;
+    this->applyForRecruitmentInfo->addApplicant(tmpBn);
+    
 }
 
-
+/*
+    함수이름: ApplyForRecruitmentInfoUI::startInterface
+    기능: 화면에 현재 등록된 채용공고 목록을 보여준다.
+    매개변수: RecruitmentInfoList *riList : 정렬된 채용공고목록
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성일: 신유승
+*/
 void ApplyForRecruitmentInfoUI::startInterface(RecruitmentInfoList* riList) {
 
     vector<RecruitmentInfo*> tmp;
@@ -1390,22 +1650,30 @@ void ApplyForRecruitmentInfoUI::startInterface(RecruitmentInfoList* riList) {
         fout << "> " << tmp[i]->getName() << " " << tmp[i]->getBn() << " " << tmp[i]->getTask() << "\n\n";
     }
 
-    string tmpBn;
-    fin >> tmpBn;
-    this->applyForRecruitmentInfoByNum(tmpBn);
+    this->fillComName();
+    
 
 }
 
-
+/*
+    함수이름: ApplyForRecruitmentInfo::ApplyForRecruitmentInfo
+    기능: Control Class ApplyForRecruitmentInfo의 생성자
+    매개변수: 
+        GeneralClient* gClient: 현재 로그인한, 지원하고자하는 일반회원 
+        RecruitmentInfoList* riList: 현재 세션에 등록된 채용정보 목록
+    반환값: 없음
+    작성일자: 2023/05/25
+    작성자: 신유승
+*/
 
 ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList) {
     this->gClient = gClient;
-    this->riList = riList;//현재 등록된 채용정보 리스트
+    this->riList = riList;
     vector<RecruitmentInfo*> tmp = riList->getRIList();
 
     sort(tmp.begin(), tmp.end(), CompareRecruitmentInfo());
 
-    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList(); \
+    RecruitmentInfoList* tmpRiList = new RecruitmentInfoList(); 
     tmpRiList->setRecruitmentInfo(tmp);
 
     ApplyForRecruitmentInfoUI* applyForRecruitmentInfoUI = new ApplyForRecruitmentInfoUI(this);
@@ -1414,7 +1682,14 @@ ApplyForRecruitmentInfo::ApplyForRecruitmentInfo(GeneralClient* gClient, Recruit
 }
 
 
-//
+/*
+    함수이름: ApplyForRecruitmentInfo::addApplicant
+    기능: 일반 회원이 지원한 채용공고에 지원자를 추가하고 일반회원의 지원목록에 해당 채용공고를 추가함
+    매개변수: bn: 일반회원이 지원할 회사의 사업자 번호
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 void ApplyForRecruitmentInfo::addApplicant(string bn) {
     appliedRecruitmentInfo = this->riList->findByNum(bn);
     this->gClient->addApplication(appliedRecruitmentInfo);
@@ -1422,9 +1697,15 @@ void ApplyForRecruitmentInfo::addApplicant(string bn) {
     fout << endl << "> " << "지원완료: " << this->appliedRecruitmentInfo->getName() << ' ' << this->appliedRecruitmentInfo->getBn() << ' ' << this->appliedRecruitmentInfo->getTask() << endl << endl;
 }
 
-// 채용지원
 
-// 지원정보조회
+/*
+    함수이름: InquireApplicationInfo::InquireApplicationInfo
+    기능: Control Class InquireApplicationInfo의 생성자
+    매개변수: GeneralClient *gClient: 지원정보를 조회할 일반회원
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
     this->gClient = gClient;
     this->gcAppliedList = gClient->getListAppliedInfo();
@@ -1439,7 +1720,14 @@ InquireApplicationInfo::InquireApplicationInfo(GeneralClient* gClient) {
 
 
 
-
+/*
+    함수이름: InquireApplicationInfoUI::startInterface
+    기능: 일반회원이 지원한 지원정보 목록을 보여준다.
+    매개변수: vector<RecruitmentInfo*> gcAppliedList: 일반회원이 지원한 정렬된 지원정보 목록
+    반환값: 없음
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcAppliedList) {
     int size = gcAppliedList.size();
 
@@ -1450,6 +1738,14 @@ void InquireApplicationInfoUI::startInterface(vector<RecruitmentInfo*> gcApplied
 }
 
 
+/*
+    함수이름: CompareRecruitmentInfo::operator()
+    기능: RecruitmentInfo의 포인터인 두 매개변수를 비교하고 참 거짓을 반환함-> sort용 비교함수
+    매개변수: const RecruitmentInfo* a, const RecruitmentInfo* b : 두 RecruitmentInfo 포인터
+    반환값: boolean 값, a의 채용공고 회사이름< b채용공고 회사이름일때 참을 반환
+    작성날짜: 2023/05/23
+    작성자: 신유승
+*/
 bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const RecruitmentInfo* b) {
     string aName = a->getName();
     string bName = b->getName();
@@ -1462,7 +1758,16 @@ bool CompareRecruitmentInfo::operator()(const RecruitmentInfo* a, const Recruitm
     }
 }
 
-//
+// 지원 취소
+
+/*
+ 함수이름: CancelApplicationInfo::CancelApplicationInfo
+ 기능: CancelApplicationInfo control class의 생성자입니다.
+ 매개변수: GeneralClient* gClient, RecruitmentInfoList* riList
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 
 CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)
 {    
@@ -1483,15 +1788,28 @@ CancelApplicationInfo::CancelApplicationInfo(GeneralClient* gClient, Recruitment
     cancelApplicationInfoUI->startInterface(tmpRiList);
 }
 
-
-
+/*
+ 함수이름: CancelApplicationInfoUI::CancelApplicationInfoUI
+ 기능: CancelApplicationInfo boundary class의 생성자입니다.
+ 매개변수: CancelApplicationInfo* cancelApplicationInfo
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 CancelApplicationInfoUI::CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)
 {
     this->cancelApplicationInfo = cancelApplicationInfo;
     
 }
 
-
+/*
+ 함수이름: CancelApplicationInfoUI::startInterface
+ 기능: 지원한 모든 채용정보의 회사이름, 사업자번호, 업무를 출력합니다.
+ 매개변수: RecruitmentInfoList* gcRiList
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
 {
     vector<RecruitmentInfo*> tmp;
@@ -1505,29 +1823,36 @@ void CancelApplicationInfoUI::startInterface(RecruitmentInfoList* gcRiList)
     fin >> tmpBn;
     
     cancelApplicationInfo->cancelApplication(tmpBn);
-
-    
-    
 }
 
 
-
+/*
+ 함수이름: GeneralClient::getListAppliedInfo
+ 기능: GeneralClient가 지원한 RecruitmentInfo의 리스트를 벡터로 반환합니다.
+ 매개변수: 없음
+ 반환값: vector<RecruitmentInfo*>
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 vector<RecruitmentInfo*> GeneralClient::getListAppliedInfo() {
     return this->appliedList;
 }
 
 
 
-//bn에 해당하는 지원 내역을 삭제하는 함수
+/*
+ 함수이름: CancelApplicationInfo::cancelApplication
+ 기능:  subApplication 함수를 호출해 일반회원의 지원 정보 리스트에서 입력받은 사업자번호와 사업자번호가 일치하는 채용 정보를 리스트에서 삭제합니다. 그리고 subApplicantToRecruitment 함수를 호출해 전체 채용 정보리스트에서 입력받은 사업자번호와 사업자번호가 일치하는 채용 정보의 지원자 수를 감소시킨다
+ 매개변수: string bn
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void CancelApplicationInfo::cancelApplication(string bn)
 {
     this->bn = bn;
     
-
-    //컨트롤이 갖고 있는 일반회원의 지원 정보 리스트에서 bn값과 일치하는 채용 정보를 리스트에서 삭제한다
     gClient->subApplication(bn);
-
-    //컨트롤이 갖고 있는 전체 채용 정보리스트에서 bn값과 일치하는 채용 정보의 지원자 수를 감소시킨다.
 
     int tmpSize = this->riList->getRIList().size();
     
@@ -1546,6 +1871,14 @@ void CancelApplicationInfo::cancelApplication(string bn)
 
 }
 
+/*
+ 함수이름:  GeneralClient::subApplication
+ 기능:  일반회원의 지원 정보 리스트에서 매개변수 bn과 사업자번호가 일치하는 채용 정보를 리스트에서 삭제합니다.
+ 매개변수: string bn
+ 반환값: 없음
+ 작성날짜: 2023/05/22
+ 작성자: 김민정
+*/
 void GeneralClient::subApplication(string bn) {
     int size = appliedList.size();
     for (int i = 0; i < size; i++) {
@@ -1563,28 +1896,28 @@ void GeneralClient::subApplication(string bn) {
    함수이름: 컨트롤 클래스 ViewStatisticsOfRegisteredRecruitmentInfo의 생성자
    기능: 채용관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
    매개변수:
-            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+            CompanyClient*cClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
    반환값: 없음
 
    작성날짜: 2023/05/23
    작성자: 임채은
 */
-ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* companyClient){
-    this->companyClient = companyClient;
-    this->printStatisticsInfo(companyClient);
+ViewStatisticsOfRegisteredRecruitmentInfo::ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient* cClient){
+    this->cClient = cClient;
+    this->printStatisticsInfo(cClient);
 }
 
 /*
    함수이름: ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo
    기능: 해당 회사 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            CompanyClient*companyClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
+            CompanyClient*cClient -> 회사 회원들의 정보를 지닌 CompanyClient 객체
    반환값: 없음
    작성날짜: 2023/05/23
    작성자: 임채은
 */
-void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *companyClient){
-    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->companyClient->getListRegisteredInfo();
+void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClient *cClient){
+    vector<RecruitmentInfo*> companyClientsRecruitmentInfo = this->cClient->getListRegisteredInfo();
     map<string, int> taskByNumMap;
     int size = companyClientsRecruitmentInfo.size();
     int value = 0;
@@ -1614,28 +1947,28 @@ void ViewStatisticsOfRegisteredRecruitmentInfo::printStatisticsInfo(CompanyClien
    함수이름: 컨트롤 클래스 ViewStatisticsOfAppliedtInfo의 생성자
    기능: 지원 관련 통계 조회 기능을 수행하기 위한 컨트롤 클래스의 생성자로서 기능함
    매개변수:
-            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+            GeneralClient*gClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
    반환값: 없음
 
    작성날짜: 2023/05/24
    작성자: 임채은
 */
-ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* generalClient){
-    this->generalClient = generalClient;
-    this->printStatisticsInfo(generalClient);
+ViewStatisticsOfAppliedInfo::ViewStatisticsOfAppliedInfo(GeneralClient* gClient){
+    this->gClient = gClient;
+    this->printStatisticsInfo(gClient);
 }
 
 /*
    함수이름: ViewStatisticsOfAppliedInfo::printStatisticsInfo
    기능: 해당 일반 회원의 채용 정보를 업무별로 수를 계산한 뒤 이를 출력한다.
    매개변수:
-            GeneralClient*generalClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
+            GeneralClient*gClient -> 일반 회원의 정보를 지닌 GeneralClient 객체
    반환값: 없음
    작성날짜: 2023/05/24
    작성자: 임채은
 */
-void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* generalClient){
-    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->generalClient->getListAppliedInfo();
+void ViewStatisticsOfAppliedInfo::printStatisticsInfo(GeneralClient* gClient){
+    vector<RecruitmentInfo*> generalClientsRecruitmentInfo = this->gClient->getListAppliedInfo();
     map<string, int> taskByNumMap;
     int size = generalClientsRecruitmentInfo.size();
     int value = 0;
