@@ -57,7 +57,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 29,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "«boundary»"
 										},
@@ -70,7 +70,7 @@
 											"font": "Arial;13;1",
 											"left": 37,
 											"top": 44,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "User Interface::SignInUI"
 										},
@@ -105,7 +105,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 24,
-									"width": 175.1279296875,
+									"width": 177.2861328125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBERsJe0NBxY="
@@ -142,7 +142,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 67,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-signIn: SignIn",
 											"horizontalAlignment": 0
@@ -159,7 +159,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 82,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-type: int",
 											"horizontalAlignment": 0
@@ -176,7 +176,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 97,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-name: string",
 											"horizontalAlignment": 0
@@ -193,7 +193,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 112,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-nun: string",
 											"horizontalAlignment": 0
@@ -210,7 +210,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 127,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-id: string",
 											"horizontalAlignment": 0
@@ -227,7 +227,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 142,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "-pw: string",
 											"horizontalAlignment": 0
@@ -236,7 +236,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 62,
-									"width": 175.1279296875,
+									"width": 177.2861328125,
 									"height": 98
 								},
 								{
@@ -261,9 +261,9 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 165,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
-											"text": "+SignInUI(SignIn* refSignIn)",
+											"text": "+SignInUI(refSignIn: SignIn*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -278,7 +278,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 180,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "+startInterface(): void",
 											"horizontalAlignment": 0
@@ -295,7 +295,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 195,
-											"width": 165.1279296875,
+											"width": 167.2861328125,
 											"height": 13,
 											"text": "+fillInfo(): void",
 											"horizontalAlignment": 0
@@ -304,7 +304,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 160,
-									"width": 175.1279296875,
+									"width": 177.2861328125,
 									"height": 53
 								},
 								{
@@ -344,7 +344,7 @@
 							"containerChangeable": true,
 							"left": 32,
 							"top": 24,
-							"width": 175.1279296875,
+							"width": 177.2861328125,
 							"height": 189,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBERsJe0MZOI="
@@ -391,7 +391,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 29,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -404,7 +404,7 @@
 											"font": "Arial;13;1",
 											"left": 365,
 											"top": 44,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "Control::SignIn"
 										},
@@ -439,7 +439,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 24,
-									"width": 455.90380859375,
+									"width": 459.76953125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBEXTg+07zPc="
@@ -476,7 +476,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 67,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "-signInUI: SignInUI",
 											"horizontalAlignment": 0
@@ -493,7 +493,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 82,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "-cList: ClientList",
 											"horizontalAlignment": 0
@@ -510,7 +510,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 97,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "-ccList: CompanyClientList",
 											"horizontalAlignment": 0
@@ -527,7 +527,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 112,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
 											"text": "-gcList: GeneralClientList",
 											"horizontalAlignment": 0
@@ -536,7 +536,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 62,
-									"width": 455.90380859375,
+									"width": 459.76953125,
 									"height": 68
 								},
 								{
@@ -561,9 +561,9 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 135,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
-											"text": "+SignIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList)",
+											"text": "+SignIn(list: ClientList*, gcList: GeneralClientList*, ccList: CompanyClientList*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -578,16 +578,16 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 150,
-											"width": 445.90380859375,
+											"width": 449.76953125,
 											"height": 13,
-											"text": "+addNewClient(int type, string name, string num, string id, string pw): void",
+											"text": "+addNewClient(type: int, name: string, num: string, id: string, pw: string): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 130,
-									"width": 455.90380859375,
+									"width": 459.76953125,
 									"height": 38
 								},
 								{
@@ -627,7 +627,7 @@
 							"containerChangeable": true,
 							"left": 360,
 							"top": 24,
-							"width": 455.90380859375,
+							"width": 459.76953125,
 							"height": 144,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBEXTg+06viw="
@@ -674,7 +674,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 261,
-											"width": 236.3740234375,
+											"width": 242.42333984375,
 											"height": 13,
 											"text": "«boundary»"
 										},
@@ -687,7 +687,7 @@
 											"font": "Arial;13;1",
 											"left": 37,
 											"top": 276,
-											"width": 236.3740234375,
+											"width": 242.42333984375,
 											"height": 13,
 											"text": "User Interface::SignOutUI"
 										},
@@ -722,7 +722,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 256,
-									"width": 246.3740234375,
+									"width": 252.42333984375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBFRb2fANBCg="
@@ -759,7 +759,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 299,
-											"width": 236.3740234375,
+											"width": 242.42333984375,
 											"height": 13,
 											"text": "+signOut: SignOut",
 											"horizontalAlignment": 0
@@ -768,7 +768,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 294,
-									"width": 246.3740234375,
+									"width": 252.42333984375,
 									"height": 23
 								},
 								{
@@ -793,9 +793,9 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 322,
-											"width": 236.3740234375,
+											"width": 242.42333984375,
 											"height": 13,
-											"text": "+SignOutUI(SignOut* refSignOut)",
+											"text": "+SignOutUI(refSignOut: SignOut*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -810,16 +810,16 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 337,
-											"width": 236.3740234375,
+											"width": 242.42333984375,
 											"height": 13,
-											"text": "+startInterface(string id, bool flag): void",
+											"text": "+startInterface(id: string, flag: bool): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 317,
-									"width": 246.3740234375,
+									"width": 252.42333984375,
 									"height": 38
 								},
 								{
@@ -859,7 +859,7 @@
 							"containerChangeable": true,
 							"left": 32,
 							"top": 256,
-							"width": 246.3740234375,
+							"width": 252.42333984375,
 							"height": 99,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBFRb2fAM4K0="
@@ -906,7 +906,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 261,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -919,7 +919,7 @@
 											"font": "Arial;13;1",
 											"left": 365,
 											"top": 276,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "Control::SignOut"
 										},
@@ -954,7 +954,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 256,
-									"width": 544.625,
+									"width": 552.97216796875,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBFTmYvA7PCs="
@@ -991,7 +991,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 299,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "-signOutUI: SignOutUI",
 											"horizontalAlignment": 0
@@ -1008,7 +1008,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 314,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "-cList: ClientList",
 											"horizontalAlignment": 0
@@ -1025,7 +1025,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 329,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "-ccList: CompanyClientList",
 											"horizontalAlignment": 0
@@ -1042,7 +1042,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 344,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "-gcList: GeneralClientList",
 											"horizontalAlignment": 0
@@ -1059,7 +1059,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 359,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
 											"text": "-curLogInClient: Client",
 											"horizontalAlignment": 0
@@ -1068,7 +1068,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 294,
-									"width": 544.625,
+									"width": 552.97216796875,
 									"height": 83
 								},
 								{
@@ -1093,9 +1093,9 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 382,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
-											"text": "+SignOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client)",
+											"text": "+SignOut(list: ClientList*, gcList: GeneralClientList*, ccList: CompanyClientList*, client: Client*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1110,16 +1110,16 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 397,
-											"width": 534.625,
+											"width": 542.97216796875,
 											"height": 13,
-											"text": "-destroy(Client* client): void",
+											"text": "-destroy(client: Client*): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 377,
-									"width": 544.625,
+									"width": 552.97216796875,
 									"height": 38
 								},
 								{
@@ -1159,7 +1159,7 @@
 							"containerChangeable": true,
 							"left": 360,
 							"top": 256,
-							"width": 544.625,
+							"width": 552.97216796875,
 							"height": 159,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBFTmYvA6v48="
@@ -1206,7 +1206,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 661,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -1219,7 +1219,7 @@
 											"font": "Arial;13;1",
 											"left": 2581,
 											"top": 676,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "Client"
 										},
@@ -1254,7 +1254,7 @@
 									"font": "Arial;13;0",
 									"left": 2576,
 									"top": 656,
-									"width": 302.830078125,
+									"width": 302.97607421875,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBFacqvCDD44="
@@ -1291,7 +1291,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 699,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "-type: int",
 											"horizontalAlignment": 0
@@ -1308,7 +1308,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 714,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "-id: string",
 											"horizontalAlignment": 0
@@ -1325,7 +1325,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 729,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "-pw: string",
 											"horizontalAlignment": 0
@@ -1342,7 +1342,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 744,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "-name: string",
 											"horizontalAlignment": 0
@@ -1359,7 +1359,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 759,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "-isLogIn: bool",
 											"horizontalAlignment": 0
@@ -1368,7 +1368,7 @@
 									"font": "Arial;13;0",
 									"left": 2576,
 									"top": 694,
-									"width": 302.830078125,
+									"width": 302.97607421875,
 									"height": 83
 								},
 								{
@@ -1393,9 +1393,9 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 782,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
-											"text": "+Client(int type, string name, string id, string pw)",
+											"text": "+Client(type: int, name: string, id: string, pw: string)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1410,7 +1410,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 797,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+getId(): string",
 											"horizontalAlignment": 0
@@ -1427,7 +1427,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 812,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+getPw(): string",
 											"horizontalAlignment": 0
@@ -1444,7 +1444,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 827,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+getType(): int",
 											"horizontalAlignment": 0
@@ -1461,7 +1461,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 842,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+getName(): string",
 											"horizontalAlignment": 0
@@ -1478,7 +1478,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 857,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+getLogInStatus(): bool",
 											"horizontalAlignment": 0
@@ -1495,7 +1495,7 @@
 											"font": "Arial;13;0",
 											"left": 2581,
 											"top": 872,
-											"width": 292.830078125,
+											"width": 292.97607421875,
 											"height": 13,
 											"text": "+changeLogInStatus(): void",
 											"horizontalAlignment": 0
@@ -1504,7 +1504,7 @@
 									"font": "Arial;13;0",
 									"left": 2576,
 									"top": 777,
-									"width": 302.830078125,
+									"width": 302.97607421875,
 									"height": 113
 								},
 								{
@@ -1544,7 +1544,7 @@
 							"containerChangeable": true,
 							"left": 2576,
 							"top": 656,
-							"width": 302.830078125,
+							"width": 302.97607421875,
 							"height": 234,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBFacqvCCKXI="
@@ -1591,7 +1591,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 517,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -1604,7 +1604,7 @@
 											"font": "Arial;13;1",
 											"left": 365,
 											"top": 532,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "Control::LogIn"
 										},
@@ -1639,7 +1639,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 512,
-									"width": 447.24560546875,
+									"width": 455.4404296875,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBFfO/PC5oSs="
@@ -1676,7 +1676,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 555,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "-logInUI: LogInUI",
 											"horizontalAlignment": 0
@@ -1693,7 +1693,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 570,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "-cList: ClientList",
 											"horizontalAlignment": 0
@@ -1710,7 +1710,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 585,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "-ccList: CompanyClientList",
 											"horizontalAlignment": 0
@@ -1727,7 +1727,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 600,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "-gcList: GeneralClientList",
 											"horizontalAlignment": 0
@@ -1744,7 +1744,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 615,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "-curLogInClient: Client",
 											"horizontalAlignment": 0
@@ -1753,7 +1753,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 550,
-									"width": 447.24560546875,
+									"width": 455.4404296875,
 									"height": 83
 								},
 								{
@@ -1778,9 +1778,9 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 638,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
-											"text": "+LogIn(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList)",
+											"text": "+LogIn(list: ClientList*, gcList: GeneralClientList*, ccList: CompanyClientList*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1795,9 +1795,9 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 653,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
-											"text": "+tryLogIn(string id, string pw): void",
+											"text": "+tryLogIn(id: string, pw: string): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1812,7 +1812,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 668,
-											"width": 437.24560546875,
+											"width": 445.4404296875,
 											"height": 13,
 											"text": "+getLogInClient(): Client",
 											"horizontalAlignment": 0
@@ -1821,7 +1821,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 633,
-									"width": 447.24560546875,
+									"width": 455.4404296875,
 									"height": 53
 								},
 								{
@@ -1861,7 +1861,7 @@
 							"containerChangeable": true,
 							"left": 360,
 							"top": 512,
-							"width": 447.24560546875,
+							"width": 455.4404296875,
 							"height": 174,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBFfO/PC4yMk="
@@ -1908,7 +1908,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 533,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "«boundary»"
 										},
@@ -1921,7 +1921,7 @@
 											"font": "Arial;13;1",
 											"left": 37,
 											"top": 548,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "User Interface::LogInUI"
 										},
@@ -1954,7 +1954,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 528,
-									"width": 163.892578125,
+									"width": 164.298828125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBFs7QfDqM1E="
@@ -1991,7 +1991,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 571,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "-logIn: LogIn",
 											"horizontalAlignment": 0
@@ -2008,7 +2008,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 586,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "-id: string",
 											"horizontalAlignment": 0
@@ -2025,7 +2025,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 601,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "-pw: string",
 											"horizontalAlignment": 0
@@ -2034,7 +2034,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 566,
-									"width": 163.892578125,
+									"width": 164.298828125,
 									"height": 53
 								},
 								{
@@ -2059,9 +2059,9 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 624,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
-											"text": "+LogInUI(LogIn* refLogIn)",
+											"text": "+LogInUI(refLogIn: LogIn*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2076,7 +2076,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 639,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "+startInterface(): void",
 											"horizontalAlignment": 0
@@ -2093,7 +2093,7 @@
 											"font": "Arial;13;0",
 											"left": 37,
 											"top": 654,
-											"width": 153.892578125,
+											"width": 154.298828125,
 											"height": 13,
 											"text": "+fillIDPW(): void",
 											"horizontalAlignment": 0
@@ -2102,7 +2102,7 @@
 									"font": "Arial;13;0",
 									"left": 32,
 									"top": 619,
-									"width": 163.892578125,
+									"width": 164.298828125,
 									"height": 53
 								},
 								{
@@ -2142,7 +2142,7 @@
 							"containerChangeable": true,
 							"left": 32,
 							"top": 528,
-							"width": 163.892578125,
+							"width": 164.298828125,
 							"height": 144,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBFs7QfDpWU0="
@@ -2310,7 +2310,7 @@
 											"top": 866,
 											"width": 236.3740234375,
 											"height": 13,
-											"text": "+LogOutUI(LogOut* refSignOut)",
+											"text": "+LogOutUI(refSignOut: LogOut*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2327,7 +2327,7 @@
 											"top": 881,
 											"width": 236.3740234375,
 											"height": 13,
-											"text": "+startInterface(string id, bool flag): void",
+											"text": "+startInterface(id: string, flag: bool): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2421,7 +2421,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 797,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -2434,7 +2434,7 @@
 											"font": "Arial;13;1",
 											"left": 365,
 											"top": 812,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "Control::LogOut"
 										},
@@ -2469,7 +2469,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 792,
-									"width": 540.8798828125,
+									"width": 548.64306640625,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBGEl5PGiMdo="
@@ -2506,7 +2506,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 835,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "-logInUI: LogInUI",
 											"horizontalAlignment": 0
@@ -2523,7 +2523,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 850,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "-cList: ClientList",
 											"horizontalAlignment": 0
@@ -2540,7 +2540,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 865,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "-ccList: CompanyClientList",
 											"horizontalAlignment": 0
@@ -2557,7 +2557,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 880,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "-gcList: GeneralClientList",
 											"horizontalAlignment": 0
@@ -2574,7 +2574,7 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 895,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
 											"text": "-curLogInClient: Client",
 											"horizontalAlignment": 0
@@ -2583,7 +2583,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 830,
-									"width": 540.8798828125,
+									"width": 548.64306640625,
 									"height": 83
 								},
 								{
@@ -2608,9 +2608,9 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 918,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
-											"text": "+LogOut(ClientList* list, GeneralClientList* gcList, CompanyClientList* ccList, Client* client)",
+											"text": "+LogOut(list: ClientList*, gcList: GeneralClientList*, ccList: CompanyClientList*, client: Client*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2625,16 +2625,16 @@
 											"font": "Arial;13;0",
 											"left": 365,
 											"top": 933,
-											"width": 530.8798828125,
+											"width": 538.64306640625,
 											"height": 13,
-											"text": "-changeLogInStatus(Client* client): void",
+											"text": "-changeLogInStatus(client: Client*): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 913,
-									"width": 540.8798828125,
+									"width": 548.64306640625,
 									"height": 38
 								},
 								{
@@ -2674,7 +2674,7 @@
 							"containerChangeable": true,
 							"left": 360,
 							"top": 792,
-							"width": 540.8798828125,
+							"width": 548.64306640625,
 							"height": 159,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBGEl5PGhlh4="
@@ -2860,7 +2860,7 @@
 											"top": 1378,
 											"width": 443.5107421875,
 											"height": 13,
-											"text": "+InquireRecruitmentInfoUI(InquireRecruitmentInfo* inquireRecruitmentInfo)",
+											"text": "+InquireRecruitmentInfoUI(inquireRecruitmentInfo: InquireRecruitmentInfo*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2877,7 +2877,7 @@
 											"top": 1393,
 											"width": 443.5107421875,
 											"height": 13,
-											"text": "+startInterface(RecruitmentInfo[*] riList): void",
+											"text": "+startInterface(riList: RecruitmentInfo[*]): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3092,7 +3092,7 @@
 											"top": 1370,
 											"width": 338.47607421875,
 											"height": 13,
-											"text": "+InquireRecruitmentInfo(CompanyClient* companyClient)",
+											"text": "+InquireRecruitmentInfo(companyClient: CompanyClient*)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3324,7 +3324,7 @@
 											"top": 1121,
 											"width": 653.2880859375,
 											"height": 13,
-											"text": "+RegisterRecruitmentInfoUI(RegisterRecruitmentInfo* registerRecruitmentInfo, CompanyClient* companyClient)",
+											"text": "+RegisterRecruitmentInfoUI(registerRecruitmentInfo: RegisterRecruitmentInfo*, companyClient: CompanyClient*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3358,7 +3358,7 @@
 											"top": 1151,
 											"width": 653.2880859375,
 											"height": 13,
-											"text": "+result(string task, int expectedApplicantNum, string finishDate): void",
+											"text": "+result(task: string, expectedApplicantNum: int, finishDate: string): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3423,7 +3423,7 @@
 							"left": 32,
 							"top": 1040,
 							"width": 663.2880859375,
-							"height": 144,
+							"height": 145,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBMBPm0bcvlQ="
 							},
@@ -3641,7 +3641,7 @@
 											"top": 1151,
 											"width": 585.5966796875,
 											"height": 13,
-											"text": "+RegisterRecruitmentInfo(CompanyClient* companyClient, RecruitmentInfoList* recruitmentInfoList)",
+											"text": "+RegisterRecruitmentInfo(companyClient: CompanyClient*, recruitmentInfoList: RecruitmentInfoList*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3658,7 +3658,7 @@
 											"top": 1166,
 											"width": 585.5966796875,
 											"height": 13,
-											"text": "+addNewRecruitmentInfo(string task, int expectedApplicantNum, string finishDate): void",
+											"text": "+addNewRecruitmentInfo(task: string, expectedApplicantNum: int, finishDate: string): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3888,7 +3888,7 @@
 											"top": 2029,
 											"width": 285.21923828125,
 											"height": 13,
-											"text": "+startInterface(RecruitmentInfo[*] gcAppliedList)",
+											"text": "+startInterface(gcAppliedList: RecruitmentInfo[*])",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4120,7 +4120,7 @@
 											"top": 2049,
 											"width": 277.58935546875,
 											"height": 13,
-											"text": "+InquireApplicationInfo(GeneralClient* gClient)",
+											"text": "+InquireApplicationInfo(gClient: GeneralClient*)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4335,7 +4335,7 @@
 											"top": 2178,
 											"width": 422.3095703125,
 											"height": 13,
-											"text": "+CancelApplicationInfoUI(CancelApplicationInfo* cancelApplicationInfo)",
+											"text": "+CancelApplicationInfoUI(cancelApplicationInfo: CancelApplicationInfo*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4352,7 +4352,7 @@
 											"top": 2193,
 											"width": 422.3095703125,
 											"height": 13,
-											"text": "+startInterface(RecruitmentInfoList* riList): void",
+											"text": "+startInterface(riList: RecruitmentInfoList*): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4652,7 +4652,7 @@
 											"top": 2253,
 											"width": 433.6337890625,
 											"height": 13,
-											"text": "+CancelApplicationInfo(GeneralClient* gClient, RecruitmentInfoList* riList)",
+											"text": "+CancelApplicationInfo(gClient: GeneralClient*, riList: RecruitmentInfoList*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4669,7 +4669,7 @@
 											"top": 2268,
 											"width": 433.6337890625,
 											"height": 13,
-											"text": "+cancelApplication(string bn): void",
+											"text": "+cancelApplication(bn: string): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4901,7 +4901,7 @@
 											"top": 1809,
 											"width": 477.140625,
 											"height": 13,
-											"text": "+ApplyForRecruitmentInfoUI(ApplyForRecruitmentInfo* applyForRecruitmentInfo)",
+											"text": "+ApplyForRecruitmentInfoUI(applyForRecruitmentInfo): ApplyForRecruitmentInfo*",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4918,7 +4918,7 @@
 											"top": 1824,
 											"width": 477.140625,
 											"height": 13,
-											"text": "+startInterface(RecruitmentInfoList* riList): void",
+											"text": "+startInterface(riList: RecruitmentInfoList*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5029,7 +5029,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1733,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
 											"text": "«control»"
 										},
@@ -5042,7 +5042,7 @@
 											"font": "Arial;13;1",
 											"left": 717,
 											"top": 1748,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
 											"text": "Control::ApplyForRecruitment"
 										},
@@ -5077,7 +5077,7 @@
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 1728,
-									"width": 461.80712890625,
+									"width": 464.822265625,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBMFeakm4r7k="
@@ -5114,7 +5114,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1771,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
 											"text": "-gClient: GeneralClient",
 											"horizontalAlignment": 0
@@ -5131,7 +5131,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1786,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
 											"text": "-riList: RecruitmentInfoList",
 											"horizontalAlignment": 0
@@ -5148,7 +5148,7 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1801,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
 											"text": "-appliedRecruitmentInfo: RecruitmentInfo",
 											"horizontalAlignment": 0
@@ -5157,7 +5157,7 @@
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 1766,
-									"width": 461.80712890625,
+									"width": 464.822265625,
 									"height": 53
 								},
 								{
@@ -5182,9 +5182,9 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1824,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
-											"text": "+ApplyForRecruitmentInfo(GeneralClient* gClient, RecruitmentInfoList* riList)",
+											"text": "+ApplyForRecruitmentInfo(gClient: GeneralClient*, * riList: RecruitmentInfoList)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5199,16 +5199,16 @@
 											"font": "Arial;13;0",
 											"left": 717,
 											"top": 1839,
-											"width": 451.80712890625,
+											"width": 454.822265625,
 											"height": 13,
-											"text": "+addApplicant(string bn): void",
+											"text": "+addApplicant(bn: string): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 712,
 									"top": 1819,
-									"width": 461.80712890625,
+									"width": 464.822265625,
 									"height": 38
 								},
 								{
@@ -5248,7 +5248,7 @@
 							"containerChangeable": true,
 							"left": 712,
 							"top": 1728,
-							"width": 461.80712890625,
+							"width": 464.822265625,
 							"height": 129,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBMFeakm3xnM="
@@ -5295,7 +5295,7 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1501,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "«boundary»"
 										},
@@ -5308,7 +5308,7 @@
 											"font": "Arial;13;1",
 											"left": 45,
 											"top": 1516,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "User Interface::SearchRecruitmentInfoUI"
 										},
@@ -5343,7 +5343,7 @@
 									"font": "Arial;13;0",
 									"left": 40,
 									"top": 1496,
-									"width": 446.1474609375,
+									"width": 448.216796875,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBMFeaknC22w="
@@ -5380,7 +5380,7 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1539,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "-searchRecruitmentInfo: SearchRecruitmentInfo",
 											"horizontalAlignment": 0
@@ -5397,7 +5397,7 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1554,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "-companyName: string",
 											"horizontalAlignment": 0
@@ -5406,7 +5406,7 @@
 									"font": "Arial;13;0",
 									"left": 40,
 									"top": 1534,
-									"width": 446.1474609375,
+									"width": 448.216796875,
 									"height": 38
 								},
 								{
@@ -5431,9 +5431,9 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1577,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
-											"text": "+SearchRecruitmentInfoUI(SearchRecruitmentInfo* searchRecruitmentInfo)",
+											"text": "+SearchRecruitmentInfoUI(searchRecruitmentInfo: SearchRecruitmentInfo*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5448,7 +5448,7 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1592,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "+startInterface(): void",
 											"horizontalAlignment": 0
@@ -5465,7 +5465,7 @@
 											"font": "Arial;13;0",
 											"left": 45,
 											"top": 1607,
-											"width": 436.1474609375,
+											"width": 438.216796875,
 											"height": 13,
 											"text": "+fillInput(): void",
 											"horizontalAlignment": 0
@@ -5474,7 +5474,7 @@
 									"font": "Arial;13;0",
 									"left": 40,
 									"top": 1572,
-									"width": 446.1474609375,
+									"width": 448.216796875,
 									"height": 53
 								},
 								{
@@ -5514,7 +5514,7 @@
 							"containerChangeable": true,
 							"left": 40,
 							"top": 1496,
-							"width": 446.1474609375,
+							"width": 448.216796875,
 							"height": 129,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBMFeaknBRg0="
@@ -5716,7 +5716,7 @@
 											"top": 1592,
 											"width": 347.29931640625,
 											"height": 13,
-											"text": "+SearchRecruitmentInfo(RecruitmentInfoList* riList)",
+											"text": "+SearchRecruitmentInfo(riList: RecruitmentInfoList*)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5750,7 +5750,7 @@
 											"top": 1622,
 											"width": 347.29931640625,
 											"height": 13,
-											"text": "+searchRecruitmentInfoListByComName(string name): void",
+											"text": "+searchRecruitmentInfoListByComName(name: string): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6198,7 +6198,7 @@
 											"top": 2449,
 											"width": 534.16796875,
 											"height": 13,
-											"text": "+ViewStatisticsOfRegisteredRecruitmentInfo(CompanyClient *cClient)",
+											"text": "+ViewStatisticsOfRegisteredRecruitmentInfo(cClient: CompanyClient *)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6215,7 +6215,7 @@
 											"top": 2464,
 											"width": 534.16796875,
 											"height": 13,
-											"text": "+printStatisticsInfo(CompanyClient *cClient): void",
+											"text": "+printStatisticsInfo(cClient: CompanyClient *): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6663,7 +6663,7 @@
 											"top": 2625,
 											"width": 358.20458984375,
 											"height": 13,
-											"text": "+ViewStatisticsOfAppliedInfo(GeneralClient *gClient)",
+											"text": "+ViewStatisticsOfAppliedInfo(gClient: GeneralClient *)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6680,7 +6680,7 @@
 											"top": 2640,
 											"width": 358.20458984375,
 											"height": 13,
-											"text": "+printStatisticsInfo(GeneralClient *gClient)",
+											"text": "+printStatisticsInfo(gClient: GeneralClient *)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6912,7 +6912,7 @@
 											"top": 1257,
 											"width": 560.72021484375,
 											"height": 13,
-											"text": "+CompanyClient(int type, string name, string num, string id, string pw)",
+											"text": "+CompanyClient(type: int, name: string, num: string, id: string, pw: string)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6929,7 +6929,7 @@
 											"top": 1272,
 											"width": 560.72021484375,
 											"height": 13,
-											"text": "+addNewRecruitInfo(string task, int expectedApplicantNum, string finishDate): RecruitmentInfo",
+											"text": "+addNewRecruitInfo(task: string, expectedApplicantNum: int, finishDate: string): RecruitmentInfo",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7057,7 +7057,7 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1189,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -7070,7 +7070,7 @@
 											"font": "Arial;13;1",
 											"left": 1445,
 											"top": 1204,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "GeneralClient"
 										},
@@ -7105,7 +7105,7 @@
 									"font": "Arial;13;0",
 									"left": 1440,
 									"top": 1184,
-									"width": 419.6396484375,
+									"width": 420.75048828125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGIBMRukE70fEg="
@@ -7142,7 +7142,7 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1227,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "-rrn: string",
 											"horizontalAlignment": 0
@@ -7159,7 +7159,7 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1242,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "-appliedList: RecruitmentInfo[*]",
 											"horizontalAlignment": 0
@@ -7168,7 +7168,7 @@
 									"font": "Arial;13;0",
 									"left": 1440,
 									"top": 1222,
-									"width": 419.6396484375,
+									"width": 420.75048828125,
 									"height": 38
 								},
 								{
@@ -7247,9 +7247,9 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1267,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
-											"text": "+GeneralClient(int type, string name, string num, string id, string pw)",
+											"text": "+GeneralClient(type: int, name: string, num: string, id: string, pw: string)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7264,9 +7264,9 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1282,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
-											"text": "+addApplication(RecruitmentInfo* ri): void",
+											"text": "+addApplication(ri: RecruitmentInfo*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7281,7 +7281,7 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1297,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "+getAppliedInfo(): RecruitmentInfo[*]",
 											"horizontalAlignment": 0
@@ -7298,7 +7298,7 @@
 											"font": "Arial;13;0",
 											"left": 1445,
 											"top": 1312,
-											"width": 409.6396484375,
+											"width": 410.75048828125,
 											"height": 13,
 											"text": "+subApplication(bn: string): void",
 											"horizontalAlignment": 0
@@ -7307,7 +7307,7 @@
 									"font": "Arial;13;0",
 									"left": 1440,
 									"top": 1260,
-									"width": 419.6396484375,
+									"width": 420.75048828125,
 									"height": 70
 								},
 								{
@@ -7347,7 +7347,7 @@
 							"containerChangeable": true,
 							"left": 1440,
 							"top": 1184,
-							"width": 419.6396484375,
+							"width": 420.75048828125,
 							"height": 146,
 							"nameCompartment": {
 								"$ref": "AAAAAAGIBMRukE7zURc="
@@ -7600,7 +7600,7 @@
 											"top": 1213,
 											"width": 635.62890625,
 											"height": 13,
-											"text": "+RecruitmentInfo(string companyName, string bn, string task, int expectedApplicantNum, string finishDate)",
+											"text": "+RecruitmentInfo(companyName: string, bn: string, task: string, expectedApplicantNum: int, finishDate: string)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8286,7 +8286,7 @@
 										"$ref": "AAAAAAGIBqf0qAWH4g8="
 									},
 									"font": "Arial;13;0",
-									"left": 1990,
+									"left": 1991,
 									"top": 1244,
 									"width": 62.15625,
 									"height": 13,
@@ -8309,7 +8309,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 2023,
+									"left": 2024,
 									"top": 1200,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8330,7 +8330,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2025,
+									"left": 2026,
 									"top": 1244,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -8351,7 +8351,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1885,
+									"left": 1886,
 									"top": 1222,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -8372,7 +8372,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1886,
+									"left": 1887,
 									"top": 1209,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -8392,7 +8392,7 @@
 										"$ref": "AAAAAAGIBqf0qAWIfiU="
 									},
 									"font": "Arial;13;0",
-									"left": 1865,
+									"left": 1866,
 									"top": 1228,
 									"width": 19.5126953125,
 									"height": 13,
@@ -8506,7 +8506,7 @@
 								"$ref": "AAAAAAGIBMRukE7y+xY="
 							},
 							"lineStyle": 1,
-							"points": "1860:1245;2191:1228",
+							"points": "1861:1245;2191:1228",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGIBqf0qQWMjvQ="
@@ -8693,7 +8693,7 @@
 											"top": 1474,
 											"width": 157.47900390625,
 											"height": 13,
-											"text": "+addClient(Client* C): void",
+											"text": "+addClient(C: Client*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8744,7 +8744,7 @@
 											"top": 1519,
 											"width": 157.47900390625,
 											"height": 13,
-											"text": "+destroy(int idx): void",
+											"text": "+destroy(idx: int): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8838,7 +8838,7 @@
 											"font": "Arial;13;0",
 											"left": 1653,
 											"top": 1397,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
 											"text": "«entity»"
 										},
@@ -8851,7 +8851,7 @@
 											"font": "Arial;13;1",
 											"left": 1653,
 											"top": 1412,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
 											"text": "GeneralClientList"
 										},
@@ -8886,7 +8886,7 @@
 									"font": "Arial;13;0",
 									"left": 1648,
 									"top": 1392,
-									"width": 257.69189453125,
+									"width": 272.6533203125,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGITTYefugC/DQ="
@@ -8923,7 +8923,7 @@
 											"font": "Arial;13;0",
 											"left": 1653,
 											"top": 1435,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
 											"text": "-gCList: GeneralClient[*]",
 											"horizontalAlignment": 0
@@ -8932,7 +8932,7 @@
 									"font": "Arial;13;0",
 									"left": 1648,
 									"top": 1430,
-									"width": 257.69189453125,
+									"width": 272.6533203125,
 									"height": 23
 								},
 								{
@@ -8957,9 +8957,9 @@
 											"font": "Arial;13;0",
 											"left": 1653,
 											"top": 1458,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
-											"text": "+addGeneralClient(GeneralClient* C): void",
+											"text": "+addGeneralClient(C: GeneralClient*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8974,9 +8974,9 @@
 											"font": "Arial;13;0",
 											"left": 1653,
 											"top": 1473,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
-											"text": "+destroy(string id): void",
+											"text": "+destroy(id: string): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8991,16 +8991,16 @@
 											"font": "Arial;13;0",
 											"left": 1653,
 											"top": 1488,
-											"width": 247.69189453125,
+											"width": 262.6533203125,
 											"height": 13,
-											"text": "+findById(string id): GeneralClient",
+											"text": "+findById(id: string): GeneralClient",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1648,
 									"top": 1453,
-									"width": 257.69189453125,
+									"width": 272.6533203125,
 									"height": 53
 								},
 								{
@@ -9040,7 +9040,7 @@
 							"containerChangeable": true,
 							"left": 1648,
 							"top": 1392,
-							"width": 257.69189453125,
+							"width": 272.6533203125,
 							"height": 114,
 							"nameCompartment": {
 								"$ref": "AAAAAAGITTYefugBA8g="
@@ -9208,7 +9208,7 @@
 											"top": 1466,
 											"width": 269.15966796875,
 											"height": 13,
-											"text": "+addCompanyClient(CompanyClient* C): void",
+											"text": "+addCompanyClient(C: CompanyClient*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9225,7 +9225,7 @@
 											"top": 1481,
 											"width": 269.15966796875,
 											"height": 13,
-											"text": "+destroy(string id): void",
+											"text": "+destroy(id: string): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9242,7 +9242,7 @@
 											"top": 1496,
 											"width": 269.15966796875,
 											"height": 13,
-											"text": "+findById(string id): CompanyClient",
+											"text": "+findById(id: string): CompanyClient",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9491,7 +9491,7 @@
 											"top": 1704,
 											"width": 413.6767578125,
 											"height": 13,
-											"text": "+addNewRecruitmentInfoList(RecruitmentInfo* ri): void",
+											"text": "+addNewRecruitmentInfoList(ri: RecruitmentInfo*): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9508,7 +9508,7 @@
 											"top": 1719,
 											"width": 413.6767578125,
 											"height": 13,
-											"text": "+findByName(string companyName): RecruitmentInfo",
+											"text": "+findByName(companyName: string): RecruitmentInfo",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9525,7 +9525,7 @@
 											"top": 1734,
 											"width": 413.6767578125,
 											"height": 13,
-											"text": "+findByNum(string bn): RecruitmentInfo",
+											"text": "+findByNum(bn: string): RecruitmentInfo",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9720,7 +9720,7 @@
 											"top": 1424,
 											"width": 377.5458984375,
 											"height": 13,
-											"text": "+operator()(const RecruitmentInfo* a, const RecruitmentInfo* b)",
+											"text": "+operator()(a: const RecruitmentInfo*, b: const RecruitmentInfo*)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9872,8 +9872,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEhD/+1nRL8="
 									},
-									"name": "SignIn* refSignIn",
-									"type": ""
+									"name": "refSignIn",
+									"type": "SignIn*"
 								}
 							]
 						},
@@ -9988,8 +9988,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEmCe+12XZI="
 									},
-									"name": "ClientList* list",
-									"type": ""
+									"name": "list",
+									"type": "ClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -9997,8 +9997,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEmCe+12XZI="
 									},
-									"name": "GeneralClientList* gcList",
-									"type": ""
+									"name": "gcList",
+									"type": "GeneralClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10006,8 +10006,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEmCe+12XZI="
 									},
-									"name": "CompanyClientList* ccList",
-									"type": ""
+									"name": "ccList",
+									"type": "CompanyClientList*"
 								}
 							]
 						},
@@ -10025,8 +10025,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEnAVO1+vU4="
 									},
-									"name": "int type",
-									"type": ""
+									"name": "type",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10034,8 +10034,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEnAVO1+vU4="
 									},
-									"name": "string name",
-									"type": ""
+									"name": "name",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10043,8 +10043,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEnAVO1+vU4="
 									},
-									"name": "string num",
-									"type": ""
+									"name": "num",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10052,8 +10052,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEnAVO1+vU4="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10061,8 +10061,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBEnAVO1+vU4="
 									},
-									"name": "string pw",
-									"type": ""
+									"name": "pw",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10111,8 +10111,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFVwR/Bkmx4="
 									},
-									"name": "SignOut* refSignOut",
-									"type": ""
+									"name": "refSignOut",
+									"type": "SignOut*"
 								}
 							]
 						},
@@ -10130,8 +10130,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFYmv/BxsZI="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10139,8 +10139,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFYmv/BxsZI="
 									},
-									"name": "bool flag",
-									"type": ""
+									"name": "flag",
+									"type": "bool"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10238,8 +10238,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaikbuKGz8Y="
 									},
-									"name": "ClientList* list",
-									"type": ""
+									"name": "list",
+									"type": "ClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10247,8 +10247,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaikbuKGz8Y="
 									},
-									"name": "GeneralClientList* gcList",
-									"type": ""
+									"name": "gcList",
+									"type": "GeneralClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10256,8 +10256,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaikbuKGz8Y="
 									},
-									"name": "CompanyClientList* ccList",
-									"type": ""
+									"name": "ccList",
+									"type": "CompanyClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10265,8 +10265,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaikbuKGz8Y="
 									},
-									"name": "Client* client",
-									"type": ""
+									"name": "client",
+									"type": "Client*"
 								}
 							]
 						},
@@ -10285,8 +10285,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITajSXOQumvg="
 									},
-									"name": "Client* client",
-									"type": ""
+									"name": "client",
+									"type": "Client*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10376,8 +10376,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFeAevCtwSg="
 									},
-									"name": "int type",
-									"type": ""
+									"name": "type",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10385,8 +10385,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFeAevCtwSg="
 									},
-									"name": "string name",
-									"type": ""
+									"name": "name",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10394,8 +10394,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFeAevCtwSg="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10403,8 +10403,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBFeAevCtwSg="
 									},
-									"name": "string pw",
-									"type": ""
+									"name": "pw",
+									"type": "string"
 								}
 							]
 						},
@@ -10609,8 +10609,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBF0/SvEX1YU="
 									},
-									"name": "ClientList* list",
-									"type": ""
+									"name": "list",
+									"type": "ClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10618,8 +10618,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBF0/SvEX1YU="
 									},
-									"name": "GeneralClientList* gcList",
-									"type": ""
+									"name": "gcList",
+									"type": "GeneralClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10627,8 +10627,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBF0/SvEX1YU="
 									},
-									"name": "CompanyClientList* ccList",
-									"type": ""
+									"name": "ccList",
+									"type": "CompanyClientList*"
 								}
 							]
 						},
@@ -10646,8 +10646,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBF1gPvEeDRs="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10655,8 +10655,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBF1gPvEeDRs="
 									},
-									"name": "string pw",
-									"type": ""
+									"name": "pw",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10749,8 +10749,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaNQ8LXggYo="
 									},
-									"name": "LogIn* refLogIn",
-									"type": ""
+									"name": "refLogIn",
+									"type": "LogIn*"
 								}
 							]
 						},
@@ -10829,8 +10829,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGInpfHL5J4="
 									},
-									"name": "LogOut* refSignOut",
-									"type": ""
+									"name": "refSignOut",
+									"type": "LogOut*"
 								}
 							]
 						},
@@ -10848,8 +10848,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGJfsvHSgAo="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10857,8 +10857,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGJfsvHSgAo="
 									},
-									"name": "bool flag",
-									"type": ""
+									"name": "flag",
+									"type": "bool"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10956,8 +10956,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGKUk/HaZus="
 									},
-									"name": "ClientList* list",
-									"type": ""
+									"name": "list",
+									"type": "ClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10965,8 +10965,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGKUk/HaZus="
 									},
-									"name": "GeneralClientList* gcList",
-									"type": ""
+									"name": "gcList",
+									"type": "GeneralClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10974,8 +10974,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGKUk/HaZus="
 									},
-									"name": "CompanyClientList* ccList",
-									"type": ""
+									"name": "ccList",
+									"type": "CompanyClientList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10983,8 +10983,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBGKUk/HaZus="
 									},
-									"name": "Client* client",
-									"type": ""
+									"name": "client",
+									"type": "Client*"
 								}
 							]
 						},
@@ -11003,8 +11003,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITaa/O9TIjsM="
 									},
-									"name": "Client* client",
-									"type": ""
+									"name": "client",
+									"type": "Client*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11063,8 +11063,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITb3mJGF+7xU="
 									},
-									"name": "InquireRecruitmentInfo* inquireRecruitmentInfo",
-									"type": ""
+									"name": "inquireRecruitmentInfo",
+									"type": "InquireRecruitmentInfo*"
 								}
 							]
 						},
@@ -11082,8 +11082,11 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRTCv9cfwMQ="
 									},
-									"name": "RecruitmentInfo[*] riList",
-									"type": ""
+									"name": "riList",
+									"type": {
+										"$ref": "AAAAAAGIBMSTiE8b1hE="
+									},
+									"multiplicity": "*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11135,8 +11138,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbzKqFyrjDg="
 									},
-									"name": "CompanyClient* companyClient",
-									"type": ""
+									"name": "companyClient",
+									"type": "CompanyClient*"
 								}
 							]
 						}
@@ -11189,8 +11192,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbMFTRl2fvU="
 									},
-									"name": "RegisterRecruitmentInfo* registerRecruitmentInfo",
-									"type": ""
+									"name": "registerRecruitmentInfo",
+									"type": "RegisterRecruitmentInfo*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11198,8 +11201,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbMFTRl2fvU="
 									},
-									"name": "CompanyClient* companyClient",
-									"type": ""
+									"name": "companyClient",
+									"type": "CompanyClient*"
 								}
 							]
 						},
@@ -11236,8 +11239,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRp98dd00FY="
 									},
-									"name": "string task",
-									"type": ""
+									"name": "task",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11245,8 +11248,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRp98dd00FY="
 									},
-									"name": "int expectedApplicantNum",
-									"type": ""
+									"name": "expectedApplicantNum",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11254,8 +11257,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRp98dd00FY="
 									},
-									"name": "string finishDate",
-									"type": ""
+									"name": "finishDate",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11360,8 +11363,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRr7EteENZY="
 									},
-									"name": "CompanyClient* companyClient",
-									"type": ""
+									"name": "companyClient",
+									"type": "CompanyClient*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11369,8 +11372,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBRr7EteENZY="
 									},
-									"name": "RecruitmentInfoList* recruitmentInfoList",
-									"type": ""
+									"name": "recruitmentInfoList",
+									"type": "RecruitmentInfoList*"
 								}
 							]
 						},
@@ -11388,8 +11391,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbmi3UGvTVo="
 									},
-									"name": "string task",
-									"type": ""
+									"name": "task",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11397,8 +11400,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbmi3UGvTVo="
 									},
-									"name": "int expectedApplicantNum",
-									"type": ""
+									"name": "expectedApplicantNum",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11406,8 +11409,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITbmi3UGvTVo="
 									},
-									"name": "string finishDate",
-									"type": ""
+									"name": "finishDate",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11487,8 +11490,11 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPCsg9WqOeo="
 									},
-									"name": "RecruitmentInfo[*] gcAppliedList",
-									"type": ""
+									"name": "gcAppliedList",
+									"type": {
+										"$ref": "AAAAAAGIBMSTiE8b1hE="
+									},
+									"multiplicity": "*"
 								}
 							]
 						}
@@ -11544,8 +11550,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITccyI92gmmQ="
 									},
-									"name": "GeneralClient* gClient",
-									"type": ""
+									"name": "gClient",
+									"type": "GeneralClient*"
 								}
 							]
 						}
@@ -11586,8 +11592,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPLJ29XE7zk="
 									},
-									"name": "CancelApplicationInfo* cancelApplicationInfo",
-									"type": ""
+									"name": "cancelApplicationInfo",
+									"type": "CancelApplicationInfo*"
 								}
 							]
 						},
@@ -11605,8 +11611,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPJDFtW7s1I="
 									},
-									"name": "RecruitmentInfoList* riList",
-									"type": ""
+									"name": "riList",
+									"type": "RecruitmentInfoList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11716,8 +11722,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPOEQNXZ6wg="
 									},
-									"name": "GeneralClient* gClient",
-									"type": ""
+									"name": "gClient",
+									"type": "GeneralClient*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11725,8 +11731,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPOEQNXZ6wg="
 									},
-									"name": "RecruitmentInfoList* riList",
-									"type": ""
+									"name": "riList",
+									"type": "RecruitmentInfoList*"
 								}
 							]
 						},
@@ -11744,8 +11750,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPSbN9XnqPw="
 									},
-									"name": "string bn",
-									"type": ""
+									"name": "bn",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11805,8 +11811,16 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPkNtNZBQUM="
 									},
-									"name": "ApplyForRecruitmentInfo* applyForRecruitmentInfo",
-									"type": ""
+									"name": "applyForRecruitmentInfo"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGIUYAdVpY13FA=",
+									"_parent": {
+										"$ref": "AAAAAAGIBPkNtNZBQUM="
+									},
+									"type": "ApplyForRecruitmentInfo*",
+									"direction": "return"
 								}
 							]
 						},
@@ -11824,8 +11838,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPj1CdY7BjM="
 									},
-									"name": "RecruitmentInfoList* riList",
-									"type": ""
+									"name": "riList",
+									"type": "RecruitmentInfoList*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11920,8 +11934,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPnsX9ZKe+U="
 									},
-									"name": "GeneralClient* gClient",
-									"type": ""
+									"name": "gClient",
+									"type": "GeneralClient*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -11929,8 +11943,10 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPnsX9ZKe+U="
 									},
-									"name": "RecruitmentInfoList* riList",
-									"type": ""
+									"name": "* riList",
+									"type": {
+										"$ref": "AAAAAAGITTl7LPvhuKQ="
+									}
 								}
 							]
 						},
@@ -11948,8 +11964,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITcVVzcIeZlw="
 									},
-									"name": "string bn",
-									"type": ""
+									"name": "bn",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12009,8 +12025,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPtxGtZr0uY="
 									},
-									"name": "SearchRecruitmentInfo* searchRecruitmentInfo",
-									"type": ""
+									"name": "searchRecruitmentInfo",
+									"type": "SearchRecruitmentInfo*"
 								}
 							]
 						},
@@ -12113,8 +12129,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGIBPxFB9Z26Cw="
 									},
-									"name": "RecruitmentInfoList* riList",
-									"type": ""
+									"name": "riList",
+									"type": "RecruitmentInfoList*"
 								}
 							]
 						},
@@ -12153,8 +12169,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITcJjG5QDj8o="
 									},
-									"name": "string name",
-									"type": ""
+									"name": "name",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12248,8 +12264,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITO4UOQq4mAw="
 									},
-									"name": "CompanyClient *cClient",
-									"type": ""
+									"name": "cClient",
+									"type": "CompanyClient *"
 								}
 							]
 						},
@@ -12267,8 +12283,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITdCRp1J9B6I="
 									},
-									"name": "CompanyClient *cClient",
-									"type": ""
+									"name": "cClient",
+									"type": "CompanyClient *"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12361,8 +12377,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITdMHBGSlTXk="
 									},
-									"name": "GeneralClient *gClient",
-									"type": ""
+									"name": "gClient",
+									"type": "GeneralClient *"
 								}
 							]
 						},
@@ -12380,8 +12396,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITO9uhxFbcPs="
 									},
-									"name": "GeneralClient *gClient",
-									"type": ""
+									"name": "gClient",
+									"type": "GeneralClient *"
 								}
 							]
 						}
@@ -12512,8 +12528,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRwxI8n8NKM="
 									},
-									"name": "int type",
-									"type": ""
+									"name": "type",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12521,8 +12537,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRwxI8n8NKM="
 									},
-									"name": "string name",
-									"type": ""
+									"name": "name",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12530,8 +12546,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRwxI8n8NKM="
 									},
-									"name": "string num",
-									"type": ""
+									"name": "num",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12539,8 +12555,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRwxI8n8NKM="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12548,8 +12564,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRwxI8n8NKM="
 									},
-									"name": "string pw",
-									"type": ""
+									"name": "pw",
+									"type": "string"
 								}
 							]
 						},
@@ -12567,8 +12583,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRyJe8v8zts="
 									},
-									"name": "string task",
-									"type": ""
+									"name": "task",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12576,8 +12592,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRyJe8v8zts="
 									},
-									"name": "int expectedApplicantNum",
-									"type": ""
+									"name": "expectedApplicantNum",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12585,8 +12601,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRyJe8v8zts="
 									},
-									"name": "string finishDate",
-									"type": ""
+									"name": "finishDate",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12821,8 +12837,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRofDLSiTk0="
 									},
-									"name": "int type",
-									"type": ""
+									"name": "type",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12830,8 +12846,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRofDLSiTk0="
 									},
-									"name": "string name",
-									"type": ""
+									"name": "name",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12839,8 +12855,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRofDLSiTk0="
 									},
-									"name": "string num",
-									"type": ""
+									"name": "num",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12848,8 +12864,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRofDLSiTk0="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -12857,8 +12873,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRofDLSiTk0="
 									},
-									"name": "string pw",
-									"type": ""
+									"name": "pw",
+									"type": "string"
 								}
 							]
 						},
@@ -12876,8 +12892,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITRpntLZqm/M="
 									},
-									"name": "RecruitmentInfo* ri",
-									"type": ""
+									"name": "ri",
+									"type": "RecruitmentInfo*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13087,8 +13103,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITPbv5FfP1a0="
 									},
-									"name": "string companyName",
-									"type": ""
+									"name": "companyName",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13096,8 +13112,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITPbv5FfP1a0="
 									},
-									"name": "string bn",
-									"type": ""
+									"name": "bn",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13105,8 +13121,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITPbv5FfP1a0="
 									},
-									"name": "string task",
-									"type": ""
+									"name": "task",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13114,8 +13130,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITPbv5FfP1a0="
 									},
-									"name": "int expectedApplicantNum",
-									"type": ""
+									"name": "expectedApplicantNum",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13123,8 +13139,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITPbv5FfP1a0="
 									},
-									"name": "string finishDate",
-									"type": ""
+									"name": "finishDate",
+									"type": "string"
 								}
 							]
 						},
@@ -13322,8 +13338,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTT95+MYcjg="
 									},
-									"name": "Client* C",
-									"type": ""
+									"name": "C",
+									"type": "Client*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13391,8 +13407,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTVkfOSGTDQ="
 									},
-									"name": "int idx",
-									"type": ""
+									"name": "idx",
+									"type": "int"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13447,8 +13463,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTbPV+ygVqA="
 									},
-									"name": "GeneralClient* C",
-									"type": ""
+									"name": "C",
+									"type": "GeneralClient*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13475,8 +13491,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTbWrOz6eMM="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13503,8 +13519,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTbZFe02I0Y="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13561,8 +13577,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTijlfZA0m8="
 									},
-									"name": "CompanyClient* C",
-									"type": ""
+									"name": "C",
+									"type": "CompanyClient*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13589,8 +13605,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTirLPaam5s="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13617,8 +13633,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITTitQfbWYCs="
 									},
-									"name": "string id",
-									"type": ""
+									"name": "id",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13725,8 +13741,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITUGHxQkGEFQ="
 									},
-									"name": "RecruitmentInfo* ri",
-									"type": ""
+									"name": "ri",
+									"type": "RecruitmentInfo*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13753,8 +13769,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITUGKUQlCY2g="
 									},
-									"name": "string companyName",
-									"type": ""
+									"name": "companyName",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13783,8 +13799,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITUGNDAl+lOg="
 									},
-									"name": "string bn",
-									"type": ""
+									"name": "bn",
+									"type": "string"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13823,8 +13839,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITciT5ulPYDc="
 									},
-									"name": "const RecruitmentInfo* a",
-									"type": ""
+									"name": "a",
+									"type": "const RecruitmentInfo*"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13832,8 +13848,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGITciT5ulPYDc="
 									},
-									"name": "const RecruitmentInfo* b",
-									"type": ""
+									"name": "b",
+									"type": "const RecruitmentInfo*"
 								}
 							]
 						}
