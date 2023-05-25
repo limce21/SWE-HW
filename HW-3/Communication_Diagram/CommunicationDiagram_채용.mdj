@@ -72,7 +72,7 @@
 											"font": "Arial;13;0",
 											"width": 134.3671875,
 											"height": 13,
-											"text": "(from Collaboration2)"
+											"text": "(from 채용정보조회)"
 										},
 										{
 											"_type": "LabelView",
@@ -237,7 +237,7 @@
 											"font": "Arial;13;0",
 											"width": 134.3671875,
 											"height": 13,
-											"text": "(from Collaboration4)"
+											"text": "(from 채용정보등록)"
 										},
 										{
 											"_type": "LabelView",
@@ -4212,7 +4212,7 @@
 															"top": 519,
 															"width": 142,
 															"height": 13,
-															"text": ":tmpRecruitmentInfo"
+															"text": "tmp: RecruitmentInfo"
 														},
 														{
 															"_type": "LabelView",
@@ -7177,7 +7177,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGH/8sdZT36eLo="
 									},
-									"name": ":tmpRecruitmentInfo",
+									"name": "tmp",
 									"represent": {
 										"$ref": "AAAAAAGIBLsaM+R29go="
 									},
@@ -7221,10 +7221,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAWY9h5r6OuM="
 							},
-							"name": "Role9",
-							"type": {
-								"$ref": "AAAAAAGH//LRuVqIgRw="
-							}
+							"name": "Role9"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7241,10 +7238,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIAWY9h5r6OuM="
 							},
-							"name": "Role7",
-							"type": {
-								"$ref": "AAAAAAGH//LRuVqIgRw="
-							}
+							"name": "Role7"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7661,7 +7655,7 @@
 								"$ref": "AAAAAAGIAWY9h5r6OuM="
 							},
 							"name": "Role13",
-							"type": ""
+							"type": "RecruitmentInfo"
 						},
 						{
 							"_type": "UMLAttribute",
