@@ -1,0 +1,68 @@
+1 1 2 yoonsik 970513 yoon15 sik18
+1 1 1 hyundai 1234 hyun77 dai17
+2 1 hyun77 dai17
+3 1 FrontEnd 15 2023/09/20
+2 2
+1 1 1 samsung 31242 sam12 sumg14
+1 1 2 shihong 970426 shi11 hong13
+2 1 sam12 sumg14
+3 1 accounting 10 2023/05/26
+3 2
+3 2
+2 2 
+1 1 1 kakaoDev 10351 kakao19 dev189
+2 1 shi11 hong13
+2 2
+1 1 2 youthing 990102 youth913 thing17
+1 1 1 lgDisplay 0131 lgD112 display91
+2 1 kakao19 dev189
+3 1 FrontEnd 20 2023/07/21
+3 2
+2 2
+2 1 lgD112 display91
+3 1 manager 30 2023/06/21
+2 2 
+2 1 shi11 hong13
+4 1 kakaoDev 
+4 2 10351
+4 1 lgDisplay
+4 2 0131
+2 2 
+2 1 youth913 thing17
+4 1 lgDisplay
+4 2 0131
+4 1 samsung
+4 2 31242
+2 2
+2 1 yoon15 sik18
+4 1 samsung
+4 2 31242
+4 1 lgDisplay
+4 2 0131
+4 1 hyundai
+4 2 1234
+4 1 kakaoDev
+4 2 10351
+4 3 
+4 4 0131
+4 3
+5 1
+4 3 
+2 2
+2 1 shi11 hong13
+4 3
+5 1
+1 2
+2 1 lgD112 display91
+5 1
+2 2 
+1 1 1 sk 1421 sk1 d12
+2 1 sk1 d12
+5 1
+6 1
+
+
+
+
+ 
+
