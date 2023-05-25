@@ -2444,7 +2444,7 @@
 													"height": 13,
 													"alpha": 0.2609282177218408,
 													"distance": 197.6916791369834,
-													"text": "1.2 *[For all Company Client's RecruitmentInfo] : getType()"
+													"text": "1.2 *[For all Company Client's RecruitmentInfo] : getTask()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -2877,7 +2877,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIAM6riWTU0hQ="
 									},
-									"name": "getType()",
+									"name": "getTask()",
 									"source": {
 										"$ref": "AAAAAAGIANB4u2VM7oQ="
 									},
@@ -6279,7 +6279,7 @@
 													"height": 13,
 													"alpha": 0,
 													"distance": 178,
-													"text": "1.2 *[For all Company Client's RecruitmentInfo] : getType()"
+													"text": "1.2 *[For all Company Client's RecruitmentInfo] : getTask()"
 												},
 												{
 													"_type": "NodeLabelView",
@@ -6391,7 +6391,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIAN/q7Y/+mSU="
 									},
-									"name": "getType()",
+									"name": "getTask()",
 									"source": {
 										"$ref": "AAAAAAGIAOGPS5DiSVI="
 									},
